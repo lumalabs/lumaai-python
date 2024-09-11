@@ -58,12 +58,14 @@ class LumaAI(SyncAPIClient):
     with_streaming_response: LumaAIWithStreamedResponse
 
     # client options
+    auth_token: str
 
     _environment: Literal["production", "environment_1"] | NotGiven
 
     def __init__(
         self,
         *,
+        auth_token: str,
         environment: Literal["production", "environment_1"] | NotGiven = NOT_GIVEN,
         base_url: str | httpx.URL | None | NotGiven = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
@@ -85,6 +87,8 @@ class LumaAI(SyncAPIClient):
         _strict_response_validation: bool = False,
     ) -> None:
         """Construct a new synchronous luma_ai client instance."""
+        self.auth_token = auth_token
+
         self._environment = environment
 
         base_url_env = os.environ.get("LUMA_AI_BASE_URL")
@@ -134,6 +138,12 @@ class LumaAI(SyncAPIClient):
 
     @property
     @override
+    def auth_headers(self) -> dict[str, str]:
+        auth_token = self.auth_token
+        return {"Authorization": f"Bearer {auth_token}"}
+
+    @property
+    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -144,6 +154,7 @@ class LumaAI(SyncAPIClient):
     def copy(
         self,
         *,
+        auth_token: str | None = None,
         environment: Literal["production", "environment_1"] | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
@@ -178,6 +189,7 @@ class LumaAI(SyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
+            auth_token=auth_token or self.auth_token,
             base_url=base_url or self.base_url,
             environment=environment or self._environment,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
@@ -233,12 +245,14 @@ class AsyncLumaAI(AsyncAPIClient):
     with_streaming_response: AsyncLumaAIWithStreamedResponse
 
     # client options
+    auth_token: str
 
     _environment: Literal["production", "environment_1"] | NotGiven
 
     def __init__(
         self,
         *,
+        auth_token: str,
         environment: Literal["production", "environment_1"] | NotGiven = NOT_GIVEN,
         base_url: str | httpx.URL | None | NotGiven = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
@@ -260,6 +274,8 @@ class AsyncLumaAI(AsyncAPIClient):
         _strict_response_validation: bool = False,
     ) -> None:
         """Construct a new async luma_ai client instance."""
+        self.auth_token = auth_token
+
         self._environment = environment
 
         base_url_env = os.environ.get("LUMA_AI_BASE_URL")
@@ -309,6 +325,12 @@ class AsyncLumaAI(AsyncAPIClient):
 
     @property
     @override
+    def auth_headers(self) -> dict[str, str]:
+        auth_token = self.auth_token
+        return {"Authorization": f"Bearer {auth_token}"}
+
+    @property
+    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -319,6 +341,7 @@ class AsyncLumaAI(AsyncAPIClient):
     def copy(
         self,
         *,
+        auth_token: str | None = None,
         environment: Literal["production", "environment_1"] | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
@@ -353,6 +376,7 @@ class AsyncLumaAI(AsyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
+            auth_token=auth_token or self.auth_token,
             base_url=base_url or self.base_url,
             environment=environment or self._environment,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,

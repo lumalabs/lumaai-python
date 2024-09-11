@@ -30,6 +30,7 @@ The full API of this library can be found in [api.md](api.md).
 from luma_ai import LumaAI
 
 client = LumaAI(
+    auth_token="My Auth Token",
     # defaults to "production".
     environment="environment_1",
 )
@@ -47,6 +48,7 @@ import asyncio
 from luma_ai import AsyncLumaAI
 
 client = AsyncLumaAI(
+    auth_token="My Auth Token",
     # defaults to "production".
     environment="environment_1",
 )
