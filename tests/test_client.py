@@ -552,18 +552,6 @@ class TestLumaAI:
             client = LumaAI(auth_token=auth_token, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
-        # explicit environment arg requires explicitness
-        with update_env(LUMA_AI_BASE_URL="http://localhost:5000/from/env"):
-            with pytest.raises(ValueError, match=r"you must pass base_url=None"):
-                LumaAI(auth_token=auth_token, _strict_response_validation=True, environment="production")
-
-            client = LumaAI(
-                base_url=None, auth_token=auth_token, _strict_response_validation=True, environment="production"
-            )
-            assert str(client.base_url).startswith(
-                "http://internal-api.virginia.labs.lumalabs.ai/dream-machine/v1alpha"
-            )
-
     @pytest.mark.parametrize(
         "client",
         [
@@ -730,7 +718,7 @@ class TestLumaAI:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/generations",
-                body=cast(object, dict()),
+                body=cast(object, dict(prompt="time machine")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -745,7 +733,7 @@ class TestLumaAI:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/generations",
-                body=cast(object, dict()),
+                body=cast(object, dict(prompt="time machine")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1277,18 +1265,6 @@ class TestAsyncLumaAI:
             client = AsyncLumaAI(auth_token=auth_token, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
-        # explicit environment arg requires explicitness
-        with update_env(LUMA_AI_BASE_URL="http://localhost:5000/from/env"):
-            with pytest.raises(ValueError, match=r"you must pass base_url=None"):
-                AsyncLumaAI(auth_token=auth_token, _strict_response_validation=True, environment="production")
-
-            client = AsyncLumaAI(
-                base_url=None, auth_token=auth_token, _strict_response_validation=True, environment="production"
-            )
-            assert str(client.base_url).startswith(
-                "http://internal-api.virginia.labs.lumalabs.ai/dream-machine/v1alpha"
-            )
-
     @pytest.mark.parametrize(
         "client",
         [
@@ -1459,7 +1435,7 @@ class TestAsyncLumaAI:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/generations",
-                body=cast(object, dict()),
+                body=cast(object, dict(prompt="time machine")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1474,7 +1450,7 @@ class TestAsyncLumaAI:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/generations",
-                body=cast(object, dict()),
+                body=cast(object, dict(prompt="time machine")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
