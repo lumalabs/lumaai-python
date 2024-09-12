@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import CameraMotion, generation_list_params, generation_create_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import (
     maybe_transform,
     async_maybe_transform,
@@ -190,6 +190,40 @@ class GenerationsResource(SyncAPIResource):
             cast_to=GenerationListResponse,
         )
 
+    def delete(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Remove a specific generation by its ID
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            f"/generations/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class AsyncGenerationsResource(AsyncAPIResource):
     @cached_property
@@ -345,6 +379,40 @@ class AsyncGenerationsResource(AsyncAPIResource):
             cast_to=GenerationListResponse,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Remove a specific generation by its ID
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            f"/generations/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class GenerationsResourceWithRawResponse:
     def __init__(self, generations: GenerationsResource) -> None:
@@ -358,6 +426,9 @@ class GenerationsResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             generations.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            generations.delete,
         )
 
     @cached_property
@@ -378,6 +449,9 @@ class AsyncGenerationsResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             generations.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            generations.delete,
+        )
 
     @cached_property
     def camera_motion(self) -> AsyncCameraMotionResourceWithRawResponse:
@@ -397,6 +471,9 @@ class GenerationsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             generations.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            generations.delete,
+        )
 
     @cached_property
     def camera_motion(self) -> CameraMotionResourceWithStreamingResponse:
@@ -415,6 +492,9 @@ class AsyncGenerationsResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             generations.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            generations.delete,
         )
 
     @cached_property

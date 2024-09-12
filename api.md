@@ -23,6 +23,7 @@ Methods:
 - <code title="post /generations">client.generations.<a href="./src/luma_ai/resources/generations/generations.py">create</a>(\*\*<a href="src/luma_ai/types/generation_create_params.py">params</a>) -> <a href="./src/luma_ai/types/generation.py">Generation</a></code>
 - <code title="get /generations/{id}">client.generations.<a href="./src/luma_ai/resources/generations/generations.py">retrieve</a>(id) -> <a href="./src/luma_ai/types/generation.py">Generation</a></code>
 - <code title="get /generations">client.generations.<a href="./src/luma_ai/resources/generations/generations.py">list</a>(\*\*<a href="src/luma_ai/types/generation_list_params.py">params</a>) -> <a href="./src/luma_ai/types/generation_list_response.py">GenerationListResponse</a></code>
+- <code title="delete /generations/{id}">client.generations.<a href="./src/luma_ai/resources/generations/generations.py">delete</a>(id) -> None</code>
 
 ## CameraMotion
 
