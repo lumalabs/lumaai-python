@@ -9,7 +9,10 @@ import pytest
 
 from luma_ai import LumaAI, AsyncLumaAI
 from tests.utils import assert_matches_type
-from luma_ai.types import Generation, GenerationListResponse
+from luma_ai.types import (
+    Generation,
+    GenerationListResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

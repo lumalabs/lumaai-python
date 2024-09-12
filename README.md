@@ -15,8 +15,8 @@ The REST API documentation can be found on [lumalabs.ai](https://lumalabs.ai). T
 ## Installation
 
 ```sh
-# install from this staging repo
-pip install git+ssh://git@github.com/stainless-sdks/luma_ai-python.git
+# install from the production repo
+pip install git+ssh://git@github.com/lumalabs/luma_ai-python.git
 ```
 
 > [!NOTE]
@@ -30,11 +30,14 @@ The full API of this library can be found in [api.md](api.md).
 from luma_ai import LumaAI
 
 client = LumaAI(
-    # or 'production' | 'environment_2' | 'environment_3'; defaults to "production".
-    environment="environment_1",
+    auth_token="My Auth Token",
+    # or 'production' | 'staging' | 'localhost'; defaults to "production".
+    environment="production_api",
 )
 
-generation = client.generations.create()
+generation = client.generations.create(
+    prompt="time machine",
+)
 print(generation.id)
 ```
 
@@ -47,13 +50,16 @@ import asyncio
 from luma_ai import AsyncLumaAI
 
 client = AsyncLumaAI(
-    # or 'production' | 'environment_2' | 'environment_3'; defaults to "production".
-    environment="environment_1",
+    auth_token="My Auth Token",
+    # or 'production' | 'staging' | 'localhost'; defaults to "production".
+    environment="production_api",
 )
 
 
 async def main() -> None:
-    generation = await client.generations.create()
+    generation = await client.generations.create(
+        prompt="time machine",
+    )
     print(generation.id)
 
 
@@ -87,7 +93,9 @@ from luma_ai import LumaAI
 client = LumaAI()
 
 try:
-    client.generations.create()
+    client.generations.create(
+        prompt="time machine",
+    )
 except luma_ai.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -130,7 +138,9 @@ client = LumaAI(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).generations.create()
+client.with_options(max_retries=5).generations.create(
+    prompt="time machine",
+)
 ```
 
 ### Timeouts
@@ -153,7 +163,9 @@ client = LumaAI(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).generations.create()
+client.with_options(timeout=5.0).generations.create(
+    prompt="time machine",
+)
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -192,16 +204,18 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from luma_ai import LumaAI
 
 client = LumaAI()
-response = client.generations.with_raw_response.create()
+response = client.generations.with_raw_response.create(
+    prompt="time machine",
+)
 print(response.headers.get('X-My-Header'))
 
 generation = response.parse()  # get the object that `generations.create()` would have returned
 print(generation.id)
 ```
 
-These methods return an [`APIResponse`](https://github.com/stainless-sdks/luma_ai-python/tree/main/src/luma_ai/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/lumalabs/luma_ai-python/tree/main/src/luma_ai/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/luma_ai-python/tree/main/src/luma_ai/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/lumalabs/luma_ai-python/tree/main/src/luma_ai/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -210,7 +224,9 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.generations.with_streaming_response.create() as response:
+with client.generations.with_streaming_response.create(
+    prompt="time machine",
+) as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
@@ -295,7 +311,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/luma_ai-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/lumalabs/luma_ai-python/issues) with questions, bugs, or suggestions.
 
 ### Determining the installed version
 

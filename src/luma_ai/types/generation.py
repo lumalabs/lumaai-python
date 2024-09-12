@@ -6,7 +6,7 @@ from typing_extensions import Literal, Annotated, TypeAlias
 
 from .._utils import PropertyInfo
 from .._models import BaseModel
-from .generations.camera_motion import CameraMotion
+from .camera_motion import CameraMotion
 
 __all__ = [
     "Generation",
