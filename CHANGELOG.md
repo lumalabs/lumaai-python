@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2024-09-12)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/lumalabs/luma_ai-python/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** update via SDK Studio ([#4](https://github.com/lumalabs/luma_ai-python/issues/4)) ([bb6079e](https://github.com/lumalabs/luma_ai-python/commit/bb6079e0d80c9f8fe7244db223ec29712f7855f4))
+
 ## 0.1.0-alpha.1 (2024-09-12)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/lumalabs/luma_ai-python/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
