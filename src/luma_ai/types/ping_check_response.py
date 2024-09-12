@@ -4,9 +4,9 @@ from typing import Optional
 
 from .._models import BaseModel
 
-__all__ = ["PingRetrieveResponse"]
+__all__ = ["PingCheckResponse"]
 
 
-class PingRetrieveResponse(BaseModel):
+class PingCheckResponse(BaseModel):
     message: Optional[str] = None
     """The message"""
