@@ -3,19 +3,19 @@
 Types:
 
 ```python
-from luma_ai.types import PingRetrieveResponse
+from luma_ai.types import PingCheckResponse
 ```
 
 Methods:
 
-- <code title="get /ping">client.ping.<a href="./src/luma_ai/resources/ping.py">retrieve</a>() -> <a href="./src/luma_ai/types/ping_retrieve_response.py">PingRetrieveResponse</a></code>
+- <code title="get /ping">client.ping.<a href="./src/luma_ai/resources/ping.py">check</a>() -> <a href="./src/luma_ai/types/ping_check_response.py">PingCheckResponse</a></code>
 
 # Generations
 
 Types:
 
 ```python
-from luma_ai.types import Generation, GenerationListResponse
+from luma_ai.types import CameraMotion, Generation, GenerationListResponse
 ```
 
 Methods:
@@ -30,7 +30,7 @@ Methods:
 Types:
 
 ```python
-from luma_ai.types.generations import CameraMotion, CameraMotionListResponse
+from luma_ai.types.generations import CameraMotionListResponse
 ```
 
 Methods:

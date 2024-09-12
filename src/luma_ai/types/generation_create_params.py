@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
-from .generations.camera_motion import CameraMotion
+from .camera_motion import CameraMotion
 
 __all__ = [
     "GenerationCreateParams",
