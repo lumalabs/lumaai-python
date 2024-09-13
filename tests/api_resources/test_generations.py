@@ -9,10 +9,7 @@ import pytest
 
 from lumaai import Lumaai, AsyncLumaai
 from tests.utils import assert_matches_type
-from lumaai.types import (
-    Generation,
-    GenerationListResponse,
-)
+from lumaai.types import Generation, GenerationListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -29,7 +26,7 @@ class TestGenerations:
     def test_method_create_with_all_params(self, client: Lumaai) -> None:
         generation = client.generations.create(
             aspect_ratio="1:1",
-            camera_motion="static",
+            camera_motion="camera_motion",
             keyframes={
                 "frame0": {
                     "type": "image",
@@ -187,7 +184,7 @@ class TestAsyncGenerations:
     async def test_method_create_with_all_params(self, async_client: AsyncLumaai) -> None:
         generation = await async_client.generations.create(
             aspect_ratio="1:1",
-            camera_motion="static",
+            camera_motion="camera_motion",
             keyframes={
                 "frame0": {
                     "type": "image",

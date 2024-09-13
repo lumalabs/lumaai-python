@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from .generation import Generation as Generation
-from .camera_motion import CameraMotion as CameraMotion
 from .ping_check_response import PingCheckResponse as PingCheckResponse
 from .generation_list_params import GenerationListParams as GenerationListParams
 from .generation_create_params import GenerationCreateParams as GenerationCreateParams
