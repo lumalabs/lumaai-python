@@ -3,7 +3,7 @@
 Types:
 
 ```python
-from lumaai.types import CameraMotion, Generation, GenerationListResponse
+from lumaai.types import Generation, GenerationListResponse
 ```
 
 Methods:
