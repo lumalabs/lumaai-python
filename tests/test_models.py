@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from luma_ai._utils import PropertyInfo
-from luma_ai._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from luma_ai._models import BaseModel, construct_type
+from lumaai._utils import PropertyInfo
+from lumaai._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from lumaai._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):

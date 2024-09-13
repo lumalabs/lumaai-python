@@ -32,7 +32,7 @@ $ pip install -r requirements-dev.lock
 ## Modifying/Adding code
 
 Most of the SDK is generated code, and any modified code will be overridden on the next generation. The
-`src/luma_ai/lib/` and `examples/` directories are exceptions and will never be overridden.
+`src/lumaai/lib/` and `examples/` directories are exceptions and will never be overridden.
 
 ## Adding and running examples
 
@@ -59,7 +59,7 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```bash
-pip install git+ssh://git@github.com/lumalabs/luma_ai-python.git
+pip install git+ssh://git@github.com/lumalabs/lumaai-python.git
 ```
 
 Alternatively, you can build from source and install the wheel file:
@@ -117,7 +117,7 @@ the changes aren't made through the automated pipeline, you may want to make rel
 
 ### Publish with a GitHub workflow
 
-You can release to package managers by using [the `Publish PyPI` GitHub action](https://www.github.com/lumalabs/luma_ai-python/actions/workflows/publish-pypi.yml). This requires a setup organization or repository secret to be set up.
+You can release to package managers by using [the `Publish PyPI` GitHub action](https://www.github.com/lumalabs/lumaai-python/actions/workflows/publish-pypi.yml). This requires a setup organization or repository secret to be set up.
 
 ### Publish manually
 

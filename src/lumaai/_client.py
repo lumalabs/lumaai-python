@@ -38,18 +38,18 @@ __all__ = [
     "ProxiesTypes",
     "RequestOptions",
     "resources",
-    "LumaAI",
-    "AsyncLumaAI",
+    "Lumaai",
+    "AsyncLumaai",
     "Client",
     "AsyncClient",
 ]
 
 
-class LumaAI(SyncAPIClient):
+class Lumaai(SyncAPIClient):
     ping: resources.PingResource
     generations: resources.GenerationsResource
-    with_raw_response: LumaAIWithRawResponse
-    with_streaming_response: LumaAIWithStreamedResponse
+    with_raw_response: LumaaiWithRawResponse
+    with_streaming_response: LumaaiWithStreamedResponse
 
     # client options
     auth_token: str
@@ -77,11 +77,11 @@ class LumaAI(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous luma_ai client instance."""
+        """Construct a new synchronous lumaai client instance."""
         self.auth_token = auth_token
 
         if base_url is None:
-            base_url = os.environ.get("LUMA_AI_BASE_URL")
+            base_url = os.environ.get("LUMAAI_BASE_URL")
         if base_url is None:
             base_url = f"https://api.lumalabs.ai/dream-machine/v1alpha"
 
@@ -98,8 +98,8 @@ class LumaAI(SyncAPIClient):
 
         self.ping = resources.PingResource(self)
         self.generations = resources.GenerationsResource(self)
-        self.with_raw_response = LumaAIWithRawResponse(self)
-        self.with_streaming_response = LumaAIWithStreamedResponse(self)
+        self.with_raw_response = LumaaiWithRawResponse(self)
+        self.with_streaming_response = LumaaiWithStreamedResponse(self)
 
     @property
     @override
@@ -206,11 +206,11 @@ class LumaAI(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncLumaAI(AsyncAPIClient):
+class AsyncLumaai(AsyncAPIClient):
     ping: resources.AsyncPingResource
     generations: resources.AsyncGenerationsResource
-    with_raw_response: AsyncLumaAIWithRawResponse
-    with_streaming_response: AsyncLumaAIWithStreamedResponse
+    with_raw_response: AsyncLumaaiWithRawResponse
+    with_streaming_response: AsyncLumaaiWithStreamedResponse
 
     # client options
     auth_token: str
@@ -238,11 +238,11 @@ class AsyncLumaAI(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async luma_ai client instance."""
+        """Construct a new async lumaai client instance."""
         self.auth_token = auth_token
 
         if base_url is None:
-            base_url = os.environ.get("LUMA_AI_BASE_URL")
+            base_url = os.environ.get("LUMAAI_BASE_URL")
         if base_url is None:
             base_url = f"https://api.lumalabs.ai/dream-machine/v1alpha"
 
@@ -259,8 +259,8 @@ class AsyncLumaAI(AsyncAPIClient):
 
         self.ping = resources.AsyncPingResource(self)
         self.generations = resources.AsyncGenerationsResource(self)
-        self.with_raw_response = AsyncLumaAIWithRawResponse(self)
-        self.with_streaming_response = AsyncLumaAIWithStreamedResponse(self)
+        self.with_raw_response = AsyncLumaaiWithRawResponse(self)
+        self.with_streaming_response = AsyncLumaaiWithStreamedResponse(self)
 
     @property
     @override
@@ -367,30 +367,30 @@ class AsyncLumaAI(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class LumaAIWithRawResponse:
-    def __init__(self, client: LumaAI) -> None:
+class LumaaiWithRawResponse:
+    def __init__(self, client: Lumaai) -> None:
         self.ping = resources.PingResourceWithRawResponse(client.ping)
         self.generations = resources.GenerationsResourceWithRawResponse(client.generations)
 
 
-class AsyncLumaAIWithRawResponse:
-    def __init__(self, client: AsyncLumaAI) -> None:
+class AsyncLumaaiWithRawResponse:
+    def __init__(self, client: AsyncLumaai) -> None:
         self.ping = resources.AsyncPingResourceWithRawResponse(client.ping)
         self.generations = resources.AsyncGenerationsResourceWithRawResponse(client.generations)
 
 
-class LumaAIWithStreamedResponse:
-    def __init__(self, client: LumaAI) -> None:
+class LumaaiWithStreamedResponse:
+    def __init__(self, client: Lumaai) -> None:
         self.ping = resources.PingResourceWithStreamingResponse(client.ping)
         self.generations = resources.GenerationsResourceWithStreamingResponse(client.generations)
 
 
-class AsyncLumaAIWithStreamedResponse:
-    def __init__(self, client: AsyncLumaAI) -> None:
+class AsyncLumaaiWithStreamedResponse:
+    def __init__(self, client: AsyncLumaai) -> None:
         self.ping = resources.AsyncPingResourceWithStreamingResponse(client.ping)
         self.generations = resources.AsyncGenerationsResourceWithStreamingResponse(client.generations)
 
 
-Client = LumaAI
+Client = Lumaai
 
-AsyncClient = AsyncLumaAI
+AsyncClient = AsyncLumaai

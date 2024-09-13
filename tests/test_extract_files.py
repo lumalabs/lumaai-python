@@ -4,8 +4,8 @@ from typing import Sequence
 
 import pytest
 
-from luma_ai._types import FileTypes
-from luma_ai._utils import extract_files
+from lumaai._types import FileTypes
+from lumaai._utils import extract_files
 
 
 def test_removes_files_from_input() -> None:
