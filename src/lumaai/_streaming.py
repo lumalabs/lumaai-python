@@ -12,7 +12,7 @@ import httpx
 from ._utils import extract_type_var_from_base
 
 if TYPE_CHECKING:
-    from ._client import LumaAI, AsyncLumaAI
+    from ._client import Lumaai, AsyncLumaai
 
 
 _T = TypeVar("_T")
@@ -30,7 +30,7 @@ class Stream(Generic[_T]):
         *,
         cast_to: type[_T],
         response: httpx.Response,
-        client: LumaAI,
+        client: Lumaai,
     ) -> None:
         self.response = response
         self._cast_to = cast_to
@@ -93,7 +93,7 @@ class AsyncStream(Generic[_T]):
         *,
         cast_to: type[_T],
         response: httpx.Response,
-        client: AsyncLumaAI,
+        client: AsyncLumaai,
     ) -> None:
         self.response = response
         self._cast_to = cast_to

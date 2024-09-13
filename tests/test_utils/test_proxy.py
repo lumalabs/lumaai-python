@@ -2,7 +2,7 @@ import operator
 from typing import Any
 from typing_extensions import override
 
-from luma_ai._utils import LazyProxy
+from lumaai._utils import LazyProxy
 
 
 class RecursiveLazyProxy(LazyProxy[Any]):

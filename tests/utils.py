@@ -8,8 +8,8 @@ from typing import Any, TypeVar, Iterator, cast
 from datetime import date, datetime
 from typing_extensions import Literal, get_args, get_origin, assert_type
 
-from luma_ai._types import Omit, NoneType
-from luma_ai._utils import (
+from lumaai._types import Omit, NoneType
+from lumaai._utils import (
     is_dict,
     is_list,
     is_list_type,
@@ -17,8 +17,8 @@ from luma_ai._utils import (
     extract_type_arg,
     is_annotated_type,
 )
-from luma_ai._compat import PYDANTIC_V2, field_outer_type, get_model_fields
-from luma_ai._models import BaseModel
+from lumaai._compat import PYDANTIC_V2, field_outer_type, get_model_fields
+from lumaai._models import BaseModel
 
 BaseModelT = TypeVar("BaseModelT", bound=BaseModel)
 

@@ -1,8 +1,8 @@
-# Luma AI Python API library
+# Lumaai Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/luma_ai.svg)](https://pypi.org/project/luma_ai/)
+[![PyPI version](https://img.shields.io/pypi/v/lumaai.svg)](https://pypi.org/project/lumaai/)
 
-The Luma AI Python library provides convenient access to the Luma AI REST API from any Python 3.7+
+The Lumaai Python library provides convenient access to the Lumaai REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -16,20 +16,20 @@ The REST API documentation can be found on [lumalabs.ai](https://lumalabs.ai). T
 
 ```sh
 # install from the production repo
-pip install git+ssh://git@github.com/lumalabs/luma_ai-python.git
+pip install git+ssh://git@github.com/lumalabs/lumaai-python.git
 ```
 
 > [!NOTE]
-> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre luma_ai`
+> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre lumaai`
 
 ## Usage
 
 The full API of this library can be found in [api.md](api.md).
 
 ```python
-from luma_ai import LumaAI
+from lumaai import Lumaai
 
-client = LumaAI(
+client = Lumaai(
     auth_token="My Auth Token",
 )
 
@@ -41,13 +41,13 @@ print(generation.id)
 
 ## Async usage
 
-Simply import `AsyncLumaAI` instead of `LumaAI` and use `await` with each API call:
+Simply import `AsyncLumaai` instead of `Lumaai` and use `await` with each API call:
 
 ```python
 import asyncio
-from luma_ai import AsyncLumaAI
+from lumaai import AsyncLumaai
 
-client = AsyncLumaAI(
+client = AsyncLumaai(
     auth_token="My Auth Token",
 )
 
@@ -75,29 +75,29 @@ Typed requests and responses provide autocomplete and documentation within your 
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `luma_ai.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `lumaai.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `luma_ai.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `lumaai.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `luma_ai.APIError`.
+All errors inherit from `lumaai.APIError`.
 
 ```python
-import luma_ai
-from luma_ai import LumaAI
+import lumaai
+from lumaai import Lumaai
 
-client = LumaAI()
+client = Lumaai()
 
 try:
     client.generations.create(
         prompt="time machine",
     )
-except luma_ai.APIConnectionError as e:
+except lumaai.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except luma_ai.RateLimitError as e:
+except lumaai.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except luma_ai.APIStatusError as e:
+except lumaai.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -125,10 +125,10 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from luma_ai import LumaAI
+from lumaai import Lumaai
 
 # Configure the default for all requests:
-client = LumaAI(
+client = Lumaai(
     # default is 2
     max_retries=0,
 )
@@ -145,16 +145,16 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from luma_ai import LumaAI
+from lumaai import Lumaai
 
 # Configure the default for all requests:
-client = LumaAI(
+client = Lumaai(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
 )
 
 # More granular control:
-client = LumaAI(
+client = Lumaai(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
@@ -174,10 +174,10 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `LUMA_AI_LOG` to `debug`.
+You can enable logging by setting the environment variable `LUMAAI_LOG` to `debug`.
 
 ```shell
-$ export LUMA_AI_LOG=debug
+$ export LUMAAI_LOG=debug
 ```
 
 ### How to tell whether `None` means `null` or missing
@@ -197,9 +197,9 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from luma_ai import LumaAI
+from lumaai import Lumaai
 
-client = LumaAI()
+client = Lumaai()
 response = client.generations.with_raw_response.create(
     prompt="time machine",
 )
@@ -209,9 +209,9 @@ generation = response.parse()  # get the object that `generations.create()` woul
 print(generation.id)
 ```
 
-These methods return an [`APIResponse`](https://github.com/lumalabs/luma_ai-python/tree/main/src/luma_ai/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/lumalabs/lumaai-python/tree/main/src/lumaai/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/lumalabs/luma_ai-python/tree/main/src/luma_ai/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/lumalabs/lumaai-python/tree/main/src/lumaai/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -275,10 +275,10 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 - Additional [advanced](https://www.python-httpx.org/advanced/clients/) functionality
 
 ```python
-from luma_ai import LumaAI, DefaultHttpxClient
+from lumaai import Lumaai, DefaultHttpxClient
 
-client = LumaAI(
-    # Or use the `LUMA_AI_BASE_URL` env var
+client = Lumaai(
+    # Or use the `LUMAAI_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
         proxies="http://my.test.proxy.example.com",
@@ -307,7 +307,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/lumalabs/luma_ai-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/lumalabs/lumaai-python/issues) with questions, bugs, or suggestions.
 
 ### Determining the installed version
 
@@ -316,8 +316,8 @@ If you've upgraded to the latest version but aren't seeing any new features you 
 You can determine the version that is being used at runtime with:
 
 ```py
-import luma_ai
-print(luma_ai.__version__)
+import lumaai
+print(lumaai.__version__)
 ```
 
 ## Requirements
