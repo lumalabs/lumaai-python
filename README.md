@@ -31,8 +31,6 @@ from luma_ai import LumaAI
 
 client = LumaAI(
     auth_token="My Auth Token",
-    # or 'production' | 'staging' | 'localhost'; defaults to "production".
-    environment="production_api",
 )
 
 generation = client.generations.create(
@@ -51,8 +49,6 @@ from luma_ai import AsyncLumaAI
 
 client = AsyncLumaAI(
     auth_token="My Auth Token",
-    # or 'production' | 'staging' | 'localhost'; defaults to "production".
-    environment="production_api",
 )
 
 
