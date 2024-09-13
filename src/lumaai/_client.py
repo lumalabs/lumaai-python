@@ -46,8 +46,8 @@ __all__ = [
 
 
 class Lumaai(SyncAPIClient):
-    ping: resources.PingResource
     generations: resources.GenerationsResource
+    ping: resources.PingResource
     with_raw_response: LumaaiWithRawResponse
     with_streaming_response: LumaaiWithStreamedResponse
 
@@ -96,8 +96,8 @@ class Lumaai(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.ping = resources.PingResource(self)
         self.generations = resources.GenerationsResource(self)
+        self.ping = resources.PingResource(self)
         self.with_raw_response = LumaaiWithRawResponse(self)
         self.with_streaming_response = LumaaiWithStreamedResponse(self)
 
@@ -207,8 +207,8 @@ class Lumaai(SyncAPIClient):
 
 
 class AsyncLumaai(AsyncAPIClient):
-    ping: resources.AsyncPingResource
     generations: resources.AsyncGenerationsResource
+    ping: resources.AsyncPingResource
     with_raw_response: AsyncLumaaiWithRawResponse
     with_streaming_response: AsyncLumaaiWithStreamedResponse
 
@@ -257,8 +257,8 @@ class AsyncLumaai(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.ping = resources.AsyncPingResource(self)
         self.generations = resources.AsyncGenerationsResource(self)
+        self.ping = resources.AsyncPingResource(self)
         self.with_raw_response = AsyncLumaaiWithRawResponse(self)
         self.with_streaming_response = AsyncLumaaiWithStreamedResponse(self)
 
@@ -369,26 +369,26 @@ class AsyncLumaai(AsyncAPIClient):
 
 class LumaaiWithRawResponse:
     def __init__(self, client: Lumaai) -> None:
-        self.ping = resources.PingResourceWithRawResponse(client.ping)
         self.generations = resources.GenerationsResourceWithRawResponse(client.generations)
+        self.ping = resources.PingResourceWithRawResponse(client.ping)
 
 
 class AsyncLumaaiWithRawResponse:
     def __init__(self, client: AsyncLumaai) -> None:
-        self.ping = resources.AsyncPingResourceWithRawResponse(client.ping)
         self.generations = resources.AsyncGenerationsResourceWithRawResponse(client.generations)
+        self.ping = resources.AsyncPingResourceWithRawResponse(client.ping)
 
 
 class LumaaiWithStreamedResponse:
     def __init__(self, client: Lumaai) -> None:
-        self.ping = resources.PingResourceWithStreamingResponse(client.ping)
         self.generations = resources.GenerationsResourceWithStreamingResponse(client.generations)
+        self.ping = resources.PingResourceWithStreamingResponse(client.ping)
 
 
 class AsyncLumaaiWithStreamedResponse:
     def __init__(self, client: AsyncLumaai) -> None:
-        self.ping = resources.AsyncPingResourceWithStreamingResponse(client.ping)
         self.generations = resources.AsyncGenerationsResourceWithStreamingResponse(client.generations)
+        self.ping = resources.AsyncPingResourceWithStreamingResponse(client.ping)
 
 
 Client = Lumaai

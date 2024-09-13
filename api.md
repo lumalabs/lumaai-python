@@ -1,15 +1,3 @@
-# Ping
-
-Types:
-
-```python
-from lumaai.types import PingCheckResponse
-```
-
-Methods:
-
-- <code title="get /ping">client.ping.<a href="./src/lumaai/resources/ping.py">check</a>() -> <a href="./src/lumaai/types/ping_check_response.py">PingCheckResponse</a></code>
-
 # Generations
 
 Types:
@@ -36,3 +24,15 @@ from lumaai.types.generations import CameraMotionListResponse
 Methods:
 
 - <code title="get /generations/camera_motion/list">client.generations.camera_motion.<a href="./src/lumaai/resources/generations/camera_motion.py">list</a>() -> <a href="./src/lumaai/types/generations/camera_motion_list_response.py">CameraMotionListResponse</a></code>
+
+# Ping
+
+Types:
+
+```python
+from lumaai.types import PingCheckResponse
+```
+
+Methods:
+
+- <code title="get /ping">client.ping.<a href="./src/lumaai/resources/ping.py">check</a>() -> <a href="./src/lumaai/types/ping_check_response.py">PingCheckResponse</a></code>
