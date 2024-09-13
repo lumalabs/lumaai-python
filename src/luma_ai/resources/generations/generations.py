@@ -115,39 +115,6 @@ class GenerationsResource(SyncAPIResource):
             cast_to=Generation,
         )
 
-    def retrieve(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Generation:
-        """
-        Retrieve details of a specific generation by its ID
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._get(
-            f"/generations/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=Generation,
-        )
-
     def list(
         self,
         *,
@@ -222,6 +189,39 @@ class GenerationsResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
+        )
+
+    def get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Generation:
+        """
+        Retrieve details of a specific generation by its ID
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._get(
+            f"/generations/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Generation,
         )
 
 
@@ -304,39 +304,6 @@ class AsyncGenerationsResource(AsyncAPIResource):
             cast_to=Generation,
         )
 
-    async def retrieve(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Generation:
-        """
-        Retrieve details of a specific generation by its ID
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._get(
-            f"/generations/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=Generation,
-        )
-
     async def list(
         self,
         *,
@@ -413,6 +380,39 @@ class AsyncGenerationsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def get(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Generation:
+        """
+        Retrieve details of a specific generation by its ID
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._get(
+            f"/generations/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Generation,
+        )
+
 
 class GenerationsResourceWithRawResponse:
     def __init__(self, generations: GenerationsResource) -> None:
@@ -421,14 +421,14 @@ class GenerationsResourceWithRawResponse:
         self.create = to_raw_response_wrapper(
             generations.create,
         )
-        self.retrieve = to_raw_response_wrapper(
-            generations.retrieve,
-        )
         self.list = to_raw_response_wrapper(
             generations.list,
         )
         self.delete = to_raw_response_wrapper(
             generations.delete,
+        )
+        self.get = to_raw_response_wrapper(
+            generations.get,
         )
 
     @cached_property
@@ -443,14 +443,14 @@ class AsyncGenerationsResourceWithRawResponse:
         self.create = async_to_raw_response_wrapper(
             generations.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
-            generations.retrieve,
-        )
         self.list = async_to_raw_response_wrapper(
             generations.list,
         )
         self.delete = async_to_raw_response_wrapper(
             generations.delete,
+        )
+        self.get = async_to_raw_response_wrapper(
+            generations.get,
         )
 
     @cached_property
@@ -465,14 +465,14 @@ class GenerationsResourceWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             generations.create,
         )
-        self.retrieve = to_streamed_response_wrapper(
-            generations.retrieve,
-        )
         self.list = to_streamed_response_wrapper(
             generations.list,
         )
         self.delete = to_streamed_response_wrapper(
             generations.delete,
+        )
+        self.get = to_streamed_response_wrapper(
+            generations.get,
         )
 
     @cached_property
@@ -487,14 +487,14 @@ class AsyncGenerationsResourceWithStreamingResponse:
         self.create = async_to_streamed_response_wrapper(
             generations.create,
         )
-        self.retrieve = async_to_streamed_response_wrapper(
-            generations.retrieve,
-        )
         self.list = async_to_streamed_response_wrapper(
             generations.list,
         )
         self.delete = async_to_streamed_response_wrapper(
             generations.delete,
+        )
+        self.get = async_to_streamed_response_wrapper(
+            generations.get,
         )
 
     @cached_property
