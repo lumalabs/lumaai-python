@@ -21,9 +21,6 @@ class GenerationCreateParams(TypedDict, total=False):
     aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]
     """The aspect ratio of the generation"""
 
-    camera_motion: str
-    """The camera motion of the generation"""
-
     keyframes: Keyframes
     """The keyframes of the generation"""
 
