@@ -8,15 +8,15 @@ from typing_extensions import Required, Annotated, TypedDict
 
 import pytest
 
-from luma_ai._types import Base64FileInput
-from luma_ai._utils import (
+from lumaai._types import Base64FileInput
+from lumaai._utils import (
     PropertyInfo,
     transform as _transform,
     parse_datetime,
     async_transform as _async_transform,
 )
-from luma_ai._compat import PYDANTIC_V2
-from luma_ai._models import BaseModel
+from lumaai._compat import PYDANTIC_V2
+from lumaai._models import BaseModel
 
 _T = TypeVar("_T")
 
