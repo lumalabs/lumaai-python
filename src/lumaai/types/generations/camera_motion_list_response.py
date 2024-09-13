@@ -3,8 +3,6 @@
 from typing import List
 from typing_extensions import TypeAlias
 
-from ..camera_motion import CameraMotion
-
 __all__ = ["CameraMotionListResponse"]
 
-CameraMotionListResponse: TypeAlias = List[CameraMotion]
+CameraMotionListResponse: TypeAlias = List[str]
