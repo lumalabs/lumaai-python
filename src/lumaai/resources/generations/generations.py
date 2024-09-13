@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...types import CameraMotion, generation_list_params, generation_create_params
+from ...types import generation_list_params, generation_create_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -30,7 +30,6 @@ from .camera_motion import (
 )
 from ..._base_client import make_request_options
 from ...types.generation import Generation
-from ...types.camera_motion import CameraMotion
 from ...types.generation_list_response import GenerationListResponse
 
 __all__ = ["GenerationsResource", "AsyncGenerationsResource"]
@@ -64,7 +63,7 @@ class GenerationsResource(SyncAPIResource):
         self,
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
-        camera_motion: CameraMotion | NotGiven = NOT_GIVEN,
+        camera_motion: str | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
@@ -253,7 +252,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
         self,
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
-        camera_motion: CameraMotion | NotGiven = NOT_GIVEN,
+        camera_motion: str | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,

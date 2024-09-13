@@ -5,8 +5,6 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
-from .camera_motion import CameraMotion
-
 __all__ = [
     "GenerationCreateParams",
     "Keyframes",
@@ -23,7 +21,7 @@ class GenerationCreateParams(TypedDict, total=False):
     aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]
     """The aspect ratio of the generation"""
 
-    camera_motion: CameraMotion
+    camera_motion: str
     """The camera motion of the generation"""
 
     keyframes: Keyframes
