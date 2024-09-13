@@ -78,9 +78,6 @@ class Request(BaseModel):
     aspect_ratio: Optional[Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]] = None
     """The aspect ratio of the generation"""
 
-    camera_motion: Optional[str] = None
-    """The camera motion of the generation"""
-
     keyframes: Optional[RequestKeyframes] = None
     """The keyframes of the generation"""
 
