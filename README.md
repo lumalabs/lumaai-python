@@ -32,7 +32,9 @@ client = Lumaai(
 )
 
 generation = client.generations.create(
-    prompt="time machine",
+    aspect_ratio="16:9",
+    loop=False,
+    prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
 )
 print(generation.id)
 ```
@@ -52,7 +54,9 @@ client = AsyncLumaai(
 
 async def main() -> None:
     generation = await client.generations.create(
-        prompt="time machine",
+        aspect_ratio="16:9",
+        loop=False,
+        prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
     )
     print(generation.id)
 
@@ -88,7 +92,9 @@ client = Lumaai()
 
 try:
     client.generations.create(
-        prompt="time machine",
+        aspect_ratio="16:9",
+        loop=False,
+        prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
     )
 except lumaai.APIConnectionError as e:
     print("The server could not be reached")
@@ -133,7 +139,9 @@ client = Lumaai(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).generations.create(
-    prompt="time machine",
+    aspect_ratio="16:9",
+    loop=False,
+    prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
 )
 ```
 
@@ -158,7 +166,9 @@ client = Lumaai(
 
 # Override per-request:
 client.with_options(timeout=5.0).generations.create(
-    prompt="time machine",
+    aspect_ratio="16:9",
+    loop=False,
+    prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
 )
 ```
 
@@ -199,7 +209,9 @@ from lumaai import Lumaai
 
 client = Lumaai()
 response = client.generations.with_raw_response.create(
-    prompt="time machine",
+    aspect_ratio="16:9",
+    loop=False,
+    prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -219,7 +231,9 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.generations.with_streaming_response.create(
-    prompt="time machine",
+    aspect_ratio="16:9",
+    loop=False,
+    prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
