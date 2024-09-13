@@ -29,7 +29,7 @@ class TestGenerations:
             keyframes={
                 "frame0": {
                     "type": "image",
-                    "url": "https://api.lumalabs.ai/dream-machine/v1alpha/images/123.jpg",
+                    "url": "https://example.com/image.jpg",
                 },
                 "frame1": {
                     "id": "123e4567-e89b-12d3-a456-426614174000",
@@ -37,7 +37,7 @@ class TestGenerations:
                 },
             },
             loop=True,
-            prompt="prompt",
+            prompt="A serene lake surrounded by mountains at sunset",
         )
         assert_matches_type(Generation, generation, path=["response"])
 
@@ -186,7 +186,7 @@ class TestAsyncGenerations:
             keyframes={
                 "frame0": {
                     "type": "image",
-                    "url": "https://api.lumalabs.ai/dream-machine/v1alpha/images/123.jpg",
+                    "url": "https://example.com/image.jpg",
                 },
                 "frame1": {
                     "id": "123e4567-e89b-12d3-a456-426614174000",
@@ -194,7 +194,7 @@ class TestAsyncGenerations:
                 },
             },
             loop=True,
-            prompt="prompt",
+            prompt="A serene lake surrounded by mountains at sunset",
         )
         assert_matches_type(Generation, generation, path=["response"])
 
