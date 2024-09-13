@@ -713,7 +713,14 @@ class TestLumaai:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/generations",
-                body=cast(object, dict(prompt="time machine")),
+                body=cast(
+                    object,
+                    dict(
+                        aspect_ratio="16:9",
+                        loop=False,
+                        prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -728,7 +735,14 @@ class TestLumaai:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/generations",
-                body=cast(object, dict(prompt="time machine")),
+                body=cast(
+                    object,
+                    dict(
+                        aspect_ratio="16:9",
+                        loop=False,
+                        prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1430,7 +1444,14 @@ class TestAsyncLumaai:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/generations",
-                body=cast(object, dict(prompt="time machine")),
+                body=cast(
+                    object,
+                    dict(
+                        aspect_ratio="16:9",
+                        loop=False,
+                        prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1445,7 +1466,14 @@ class TestAsyncLumaai:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/generations",
-                body=cast(object, dict(prompt="time machine")),
+                body=cast(
+                    object,
+                    dict(
+                        aspect_ratio="16:9",
+                        loop=False,
+                        prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
