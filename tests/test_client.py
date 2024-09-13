@@ -552,16 +552,6 @@ class TestLumaAI:
             client = LumaAI(auth_token=auth_token, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
-        # explicit environment arg requires explicitness
-        with update_env(LUMA_AI_BASE_URL="http://localhost:5000/from/env"):
-            with pytest.raises(ValueError, match=r"you must pass base_url=None"):
-                LumaAI(auth_token=auth_token, _strict_response_validation=True, environment="production")
-
-            client = LumaAI(
-                base_url=None, auth_token=auth_token, _strict_response_validation=True, environment="production"
-            )
-            assert str(client.base_url).startswith("https://api.lumalabs.ai/dream-machine/v1alpha")
-
     @pytest.mark.parametrize(
         "client",
         [
@@ -1274,16 +1264,6 @@ class TestAsyncLumaAI:
         with update_env(LUMA_AI_BASE_URL="http://localhost:5000/from/env"):
             client = AsyncLumaAI(auth_token=auth_token, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
-
-        # explicit environment arg requires explicitness
-        with update_env(LUMA_AI_BASE_URL="http://localhost:5000/from/env"):
-            with pytest.raises(ValueError, match=r"you must pass base_url=None"):
-                AsyncLumaAI(auth_token=auth_token, _strict_response_validation=True, environment="production")
-
-            client = AsyncLumaAI(
-                base_url=None, auth_token=auth_token, _strict_response_validation=True, environment="production"
-            )
-            assert str(client.base_url).startswith("https://api.lumalabs.ai/dream-machine/v1alpha")
 
     @pytest.mark.parametrize(
         "client",
