@@ -18,16 +18,16 @@ from .generations import (
 )
 
 __all__ = [
-    "PingResource",
-    "AsyncPingResource",
-    "PingResourceWithRawResponse",
-    "AsyncPingResourceWithRawResponse",
-    "PingResourceWithStreamingResponse",
-    "AsyncPingResourceWithStreamingResponse",
     "GenerationsResource",
     "AsyncGenerationsResource",
     "GenerationsResourceWithRawResponse",
     "AsyncGenerationsResourceWithRawResponse",
     "GenerationsResourceWithStreamingResponse",
     "AsyncGenerationsResourceWithStreamingResponse",
+    "PingResource",
+    "AsyncPingResource",
+    "PingResourceWithRawResponse",
+    "AsyncPingResourceWithRawResponse",
+    "PingResourceWithStreamingResponse",
+    "AsyncPingResourceWithStreamingResponse",
 ]
