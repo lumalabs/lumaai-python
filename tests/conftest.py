@@ -7,14 +7,14 @@ from typing import TYPE_CHECKING, Iterator, AsyncIterator
 
 import pytest
 
-from luma_ai import LumaAI, AsyncLumaAI
+from lumaai import Lumaai, AsyncLumaai
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest
 
 pytest.register_assert_rewrite("tests.utils")
 
-logging.getLogger("luma_ai").setLevel(logging.DEBUG)
+logging.getLogger("lumaai").setLevel(logging.DEBUG)
 
 
 @pytest.fixture(scope="session")
@@ -30,20 +30,20 @@ auth_token = "My Auth Token"
 
 
 @pytest.fixture(scope="session")
-def client(request: FixtureRequest) -> Iterator[LumaAI]:
+def client(request: FixtureRequest) -> Iterator[Lumaai]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    with LumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=strict) as client:
+    with Lumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=strict) as client:
         yield client
 
 
 @pytest.fixture(scope="session")
-async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncLumaAI]:
+async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncLumaai]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    async with AsyncLumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=strict) as client:
+    async with AsyncLumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=strict) as client:
         yield client

@@ -18,11 +18,11 @@ __all__ = [
 ]
 
 
-class LumaAIError(Exception):
+class LumaaiError(Exception):
     pass
 
 
-class APIError(LumaAIError):
+class APIError(LumaaiError):
     message: str
     request: httpx.Request
 
