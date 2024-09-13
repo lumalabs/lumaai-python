@@ -63,7 +63,6 @@ class GenerationsResource(SyncAPIResource):
         self,
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
-        camera_motion: str | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
@@ -79,8 +78,6 @@ class GenerationsResource(SyncAPIResource):
 
         Args:
           aspect_ratio: The aspect ratio of the generation
-
-          camera_motion: The camera motion of the generation
 
           keyframes: The keyframes of the generation
 
@@ -101,7 +98,6 @@ class GenerationsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "aspect_ratio": aspect_ratio,
-                    "camera_motion": camera_motion,
                     "keyframes": keyframes,
                     "loop": loop,
                     "prompt": prompt,
@@ -252,7 +248,6 @@ class AsyncGenerationsResource(AsyncAPIResource):
         self,
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
-        camera_motion: str | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
@@ -268,8 +263,6 @@ class AsyncGenerationsResource(AsyncAPIResource):
 
         Args:
           aspect_ratio: The aspect ratio of the generation
-
-          camera_motion: The camera motion of the generation
 
           keyframes: The keyframes of the generation
 
@@ -290,7 +283,6 @@ class AsyncGenerationsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "aspect_ratio": aspect_ratio,
-                    "camera_motion": camera_motion,
                     "keyframes": keyframes,
                     "loop": loop,
                     "prompt": prompt,
