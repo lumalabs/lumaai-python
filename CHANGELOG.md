@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.2 (2024-09-16)
+
+Full Changelog: [v1.0.1...v1.0.2](https://github.com/lumalabs/lumaai-python/compare/v1.0.1...v1.0.2)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#33](https://github.com/lumalabs/lumaai-python/issues/33)) ([3450192](https://github.com/lumalabs/lumaai-python/commit/34501925cbdcfbacb57634b77368300f378b59d5))
+
 ## 1.0.1 (2024-09-16)
 
 Full Changelog: [v1.0.0...v1.0.1](https://github.com/lumalabs/lumaai-python/compare/v1.0.0...v1.0.1)
