@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.0 (2024-09-16)
+
+Full Changelog: [v0.1.0-alpha.1...v1.0.0](https://github.com/lumalabs/lumaai-python/compare/v0.1.0-alpha.1...v1.0.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#27](https://github.com/lumalabs/lumaai-python/issues/27)) ([23fe5ec](https://github.com/lumalabs/lumaai-python/commit/23fe5ecb07c1c7f6305b14f139220af293c8c980))
+
+
+### Chores
+
+* **internal:** bump pyright / mypy version ([#24](https://github.com/lumalabs/lumaai-python/issues/24)) ([be1f767](https://github.com/lumalabs/lumaai-python/commit/be1f767627075f4dd7b8a0356970c115287e751d))
+* update SDK settings ([#26](https://github.com/lumalabs/lumaai-python/issues/26)) ([051824c](https://github.com/lumalabs/lumaai-python/commit/051824ca02ad4adcadcac6eb96cb30eb6dea4dbf))
+
 ## 0.1.0-alpha.1 (2024-09-16)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/lumalabs/lumaai-python/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
