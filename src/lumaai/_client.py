@@ -25,7 +25,7 @@ from ._utils import (
 )
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError
+from ._exceptions import LumaaiError, APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -57,7 +57,7 @@ class Lumaai(SyncAPIClient):
     def __init__(
         self,
         *,
-        auth_token: str,
+        auth_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -77,7 +77,16 @@ class Lumaai(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous lumaai client instance."""
+        """Construct a new synchronous lumaai client instance.
+
+        This automatically infers the `auth_token` argument from the `LUMAAI_API_KEY` environment variable if it is not provided.
+        """
+        if auth_token is None:
+            auth_token = os.environ.get("LUMAAI_API_KEY")
+        if auth_token is None:
+            raise LumaaiError(
+                "The auth_token client option must be set either by passing auth_token to the client or by setting the LUMAAI_API_KEY environment variable"
+            )
         self.auth_token = auth_token
 
         if base_url is None:
@@ -218,7 +227,7 @@ class AsyncLumaai(AsyncAPIClient):
     def __init__(
         self,
         *,
-        auth_token: str,
+        auth_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -238,7 +247,16 @@ class AsyncLumaai(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async lumaai client instance."""
+        """Construct a new async lumaai client instance.
+
+        This automatically infers the `auth_token` argument from the `LUMAAI_API_KEY` environment variable if it is not provided.
+        """
+        if auth_token is None:
+            auth_token = os.environ.get("LUMAAI_API_KEY")
+        if auth_token is None:
+            raise LumaaiError(
+                "The auth_token client option must be set either by passing auth_token to the client or by setting the LUMAAI_API_KEY environment variable"
+            )
         self.auth_token = auth_token
 
         if base_url is None:

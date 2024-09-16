@@ -25,10 +25,12 @@ pip install git+ssh://git@github.com/lumalabs/lumaai-python.git
 The full API of this library can be found in [api.md](api.md).
 
 ```python
+import os
 from lumaai import Lumaai
 
 client = Lumaai(
-    auth_token="My Auth Token",
+    # This is the default and can be omitted
+    auth_token=os.environ.get("LUMAAI_API_KEY"),
 )
 
 generation = client.generations.create(
@@ -39,16 +41,23 @@ generation = client.generations.create(
 print(generation.id)
 ```
 
+While you can provide a `auth_token` keyword argument,
+we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
+to add `LUMAAI_API_KEY="My Auth Token"` to your `.env` file
+so that your Auth Token is not stored in source control.
+
 ## Async usage
 
 Simply import `AsyncLumaai` instead of `Lumaai` and use `await` with each API call:
 
 ```python
+import os
 import asyncio
 from lumaai import AsyncLumaai
 
 client = AsyncLumaai(
-    auth_token="My Auth Token",
+    # This is the default and can be omitted
+    auth_token=os.environ.get("LUMAAI_API_KEY"),
 )
 
 
