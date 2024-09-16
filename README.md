@@ -13,12 +13,9 @@ The REST API documentation can be found on [lumalabs.ai](https://lumalabs.ai). T
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/lumalabs/lumaai-python.git
+# install from PyPI
+pip install lumaai
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre lumaai`
 
 ## Usage
 
