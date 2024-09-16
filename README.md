@@ -18,7 +18,7 @@ pip install git+ssh://git@github.com/lumalabs/lumaai-python.git
 ```
 
 > [!NOTE]
-> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install lumaai`
+> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre lumaai`
 
 ## Usage
 
