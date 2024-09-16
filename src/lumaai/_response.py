@@ -29,7 +29,7 @@ from ._utils import is_given, extract_type_arg, is_annotated_type, extract_type_
 from ._models import BaseModel, is_basemodel
 from ._constants import RAW_RESPONSE_HEADER, OVERRIDE_CAST_TO_HEADER
 from ._streaming import Stream, AsyncStream, is_stream_class_type, extract_stream_chunk_type
-from ._exceptions import LumaaiError, APIResponseValidationError
+from ._exceptions import LumaAIError, APIResponseValidationError
 
 if TYPE_CHECKING:
     from ._models import FinalRequestOptions
@@ -551,7 +551,7 @@ class MissingStreamClassError(TypeError):
         )
 
 
-class StreamAlreadyConsumed(LumaaiError):
+class StreamAlreadyConsumed(LumaAIError):
     """
     Attempted to read or stream content, but the content has already
     been streamed.

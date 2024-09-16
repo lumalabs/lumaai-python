@@ -1,11 +1,11 @@
 [project]
 name = "lumaai"
-version = "1.0.1"
+version = "1.0.2"
 description = "The official Python library for the lumaai API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Lumaai", email = "support@lumalabs.ai" },
+{ name = "LumaAI", email = "support@lumalabs.ai" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",

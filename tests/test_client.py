@@ -16,11 +16,11 @@ import pytest
 from respx import MockRouter
 from pydantic import ValidationError
 
-from lumaai import Lumaai, AsyncLumaai, APIResponseValidationError
+from lumaai import LumaAI, AsyncLumaAI, APIResponseValidationError
 from lumaai._types import Omit
 from lumaai._models import BaseModel, FinalRequestOptions
 from lumaai._constants import RAW_RESPONSE_HEADER
-from lumaai._exceptions import LumaaiError, APIStatusError, APITimeoutError, APIResponseValidationError
+from lumaai._exceptions import LumaAIError, APIStatusError, APITimeoutError, APIResponseValidationError
 from lumaai._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
 
 from .utils import update_env
@@ -39,7 +39,7 @@ def _low_retry_timeout(*_args: Any, **_kwargs: Any) -> float:
     return 0.1
 
 
-def _get_open_connections(client: Lumaai | AsyncLumaai) -> int:
+def _get_open_connections(client: LumaAI | AsyncLumaAI) -> int:
     transport = client._client._transport
     assert isinstance(transport, httpx.HTTPTransport) or isinstance(transport, httpx.AsyncHTTPTransport)
 
@@ -47,8 +47,8 @@ def _get_open_connections(client: Lumaai | AsyncLumaai) -> int:
     return len(pool._requests)
 
 
-class TestLumaai:
-    client = Lumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
+class TestLumaAI:
+    client = LumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response(self, respx_mock: MockRouter) -> None:
@@ -95,7 +95,7 @@ class TestLumaai:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = Lumaai(
+        client = LumaAI(
             base_url=base_url, auth_token=auth_token, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         assert client.default_headers["X-Foo"] == "bar"
@@ -129,7 +129,7 @@ class TestLumaai:
             client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = Lumaai(
+        client = LumaAI(
             base_url=base_url, auth_token=auth_token, _strict_response_validation=True, default_query={"foo": "bar"}
         )
         assert _get_params(client)["foo"] == "bar"
@@ -254,7 +254,7 @@ class TestLumaai:
         assert timeout == httpx.Timeout(100.0)
 
     def test_client_timeout_option(self) -> None:
-        client = Lumaai(
+        client = LumaAI(
             base_url=base_url, auth_token=auth_token, _strict_response_validation=True, timeout=httpx.Timeout(0)
         )
 
@@ -265,7 +265,7 @@ class TestLumaai:
     def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         with httpx.Client(timeout=None) as http_client:
-            client = Lumaai(
+            client = LumaAI(
                 base_url=base_url, auth_token=auth_token, _strict_response_validation=True, http_client=http_client
             )
 
@@ -275,7 +275,7 @@ class TestLumaai:
 
         # no timeout given to the httpx client should not use the httpx default
         with httpx.Client() as http_client:
-            client = Lumaai(
+            client = LumaAI(
                 base_url=base_url, auth_token=auth_token, _strict_response_validation=True, http_client=http_client
             )
 
@@ -285,7 +285,7 @@ class TestLumaai:
 
         # explicitly passing the default timeout currently results in it being ignored
         with httpx.Client(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = Lumaai(
+            client = LumaAI(
                 base_url=base_url, auth_token=auth_token, _strict_response_validation=True, http_client=http_client
             )
 
@@ -296,7 +296,7 @@ class TestLumaai:
     async def test_invalid_http_client(self) -> None:
         with pytest.raises(TypeError, match="Invalid `http_client` arg"):
             async with httpx.AsyncClient() as http_client:
-                Lumaai(
+                LumaAI(
                     base_url=base_url,
                     auth_token=auth_token,
                     _strict_response_validation=True,
@@ -304,14 +304,14 @@ class TestLumaai:
                 )
 
     def test_default_headers_option(self) -> None:
-        client = Lumaai(
+        client = LumaAI(
             base_url=base_url, auth_token=auth_token, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
-        client2 = Lumaai(
+        client2 = LumaAI(
             base_url=base_url,
             auth_token=auth_token,
             _strict_response_validation=True,
@@ -325,17 +325,17 @@ class TestLumaai:
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_validate_headers(self) -> None:
-        client = Lumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
+        client = LumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {auth_token}"
 
-        with pytest.raises(LumaaiError):
+        with pytest.raises(LumaAIError):
             with update_env(**{"LUMAAI_API_KEY": Omit()}):
-                client2 = Lumaai(base_url=base_url, auth_token=None, _strict_response_validation=True)
+                client2 = LumaAI(base_url=base_url, auth_token=None, _strict_response_validation=True)
             _ = client2
 
     def test_default_query_option(self) -> None:
-        client = Lumaai(
+        client = LumaAI(
             base_url=base_url,
             auth_token=auth_token,
             _strict_response_validation=True,
@@ -452,7 +452,7 @@ class TestLumaai:
         params = dict(request.url.params)
         assert params == {"foo": "2"}
 
-    def test_multipart_repeating_array(self, client: Lumaai) -> None:
+    def test_multipart_repeating_array(self, client: LumaAI) -> None:
         request = client._build_request(
             FinalRequestOptions.construct(
                 method="get",
@@ -539,7 +539,7 @@ class TestLumaai:
         assert response.foo == 2
 
     def test_base_url_setter(self) -> None:
-        client = Lumaai(
+        client = LumaAI(
             base_url="https://example.com/from_init", auth_token=auth_token, _strict_response_validation=True
         )
         assert client.base_url == "https://example.com/from_init/"
@@ -550,16 +550,16 @@ class TestLumaai:
 
     def test_base_url_env(self) -> None:
         with update_env(LUMAAI_BASE_URL="http://localhost:5000/from/env"):
-            client = Lumaai(auth_token=auth_token, _strict_response_validation=True)
+            client = LumaAI(auth_token=auth_token, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",
         [
-            Lumaai(
+            LumaAI(
                 base_url="http://localhost:5000/custom/path/", auth_token=auth_token, _strict_response_validation=True
             ),
-            Lumaai(
+            LumaAI(
                 base_url="http://localhost:5000/custom/path/",
                 auth_token=auth_token,
                 _strict_response_validation=True,
@@ -568,7 +568,7 @@ class TestLumaai:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_trailing_slash(self, client: Lumaai) -> None:
+    def test_base_url_trailing_slash(self, client: LumaAI) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -581,10 +581,10 @@ class TestLumaai:
     @pytest.mark.parametrize(
         "client",
         [
-            Lumaai(
+            LumaAI(
                 base_url="http://localhost:5000/custom/path/", auth_token=auth_token, _strict_response_validation=True
             ),
-            Lumaai(
+            LumaAI(
                 base_url="http://localhost:5000/custom/path/",
                 auth_token=auth_token,
                 _strict_response_validation=True,
@@ -593,7 +593,7 @@ class TestLumaai:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_no_trailing_slash(self, client: Lumaai) -> None:
+    def test_base_url_no_trailing_slash(self, client: LumaAI) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -606,10 +606,10 @@ class TestLumaai:
     @pytest.mark.parametrize(
         "client",
         [
-            Lumaai(
+            LumaAI(
                 base_url="http://localhost:5000/custom/path/", auth_token=auth_token, _strict_response_validation=True
             ),
-            Lumaai(
+            LumaAI(
                 base_url="http://localhost:5000/custom/path/",
                 auth_token=auth_token,
                 _strict_response_validation=True,
@@ -618,7 +618,7 @@ class TestLumaai:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_absolute_request_url(self, client: Lumaai) -> None:
+    def test_absolute_request_url(self, client: LumaAI) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -629,7 +629,7 @@ class TestLumaai:
         assert request.url == "https://myapi.com/foo"
 
     def test_copied_client_does_not_close_http(self) -> None:
-        client = Lumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
+        client = LumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -640,7 +640,7 @@ class TestLumaai:
         assert not client.is_closed()
 
     def test_client_context_manager(self) -> None:
-        client = Lumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
+        client = LumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
         with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -661,7 +661,7 @@ class TestLumaai:
 
     def test_client_max_retries_validation(self) -> None:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
-            Lumaai(
+            LumaAI(
                 base_url=base_url, auth_token=auth_token, _strict_response_validation=True, max_retries=cast(Any, None)
             )
 
@@ -672,12 +672,12 @@ class TestLumaai:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = Lumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
+        strict_client = LumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             strict_client.get("/foo", cast_to=Model)
 
-        client = Lumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=False)
+        client = LumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=False)
 
         response = client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -704,7 +704,7 @@ class TestLumaai:
     )
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = Lumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
+        client = LumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
@@ -758,7 +758,7 @@ class TestLumaai:
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
     @mock.patch("lumaai._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    def test_retries_taken(self, client: Lumaai, failures_before_success: int, respx_mock: MockRouter) -> None:
+    def test_retries_taken(self, client: LumaAI, failures_before_success: int, respx_mock: MockRouter) -> None:
         client = client.with_options(max_retries=4)
 
         nb_retries = 0
@@ -777,8 +777,8 @@ class TestLumaai:
         assert response.retries_taken == failures_before_success
 
 
-class TestAsyncLumaai:
-    client = AsyncLumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
+class TestAsyncLumaAI:
+    client = AsyncLumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
@@ -827,7 +827,7 @@ class TestAsyncLumaai:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = AsyncLumaai(
+        client = AsyncLumaAI(
             base_url=base_url, auth_token=auth_token, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         assert client.default_headers["X-Foo"] == "bar"
@@ -861,7 +861,7 @@ class TestAsyncLumaai:
             client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = AsyncLumaai(
+        client = AsyncLumaAI(
             base_url=base_url, auth_token=auth_token, _strict_response_validation=True, default_query={"foo": "bar"}
         )
         assert _get_params(client)["foo"] == "bar"
@@ -986,7 +986,7 @@ class TestAsyncLumaai:
         assert timeout == httpx.Timeout(100.0)
 
     async def test_client_timeout_option(self) -> None:
-        client = AsyncLumaai(
+        client = AsyncLumaAI(
             base_url=base_url, auth_token=auth_token, _strict_response_validation=True, timeout=httpx.Timeout(0)
         )
 
@@ -997,7 +997,7 @@ class TestAsyncLumaai:
     async def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         async with httpx.AsyncClient(timeout=None) as http_client:
-            client = AsyncLumaai(
+            client = AsyncLumaAI(
                 base_url=base_url, auth_token=auth_token, _strict_response_validation=True, http_client=http_client
             )
 
@@ -1007,7 +1007,7 @@ class TestAsyncLumaai:
 
         # no timeout given to the httpx client should not use the httpx default
         async with httpx.AsyncClient() as http_client:
-            client = AsyncLumaai(
+            client = AsyncLumaAI(
                 base_url=base_url, auth_token=auth_token, _strict_response_validation=True, http_client=http_client
             )
 
@@ -1017,7 +1017,7 @@ class TestAsyncLumaai:
 
         # explicitly passing the default timeout currently results in it being ignored
         async with httpx.AsyncClient(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = AsyncLumaai(
+            client = AsyncLumaAI(
                 base_url=base_url, auth_token=auth_token, _strict_response_validation=True, http_client=http_client
             )
 
@@ -1028,7 +1028,7 @@ class TestAsyncLumaai:
     def test_invalid_http_client(self) -> None:
         with pytest.raises(TypeError, match="Invalid `http_client` arg"):
             with httpx.Client() as http_client:
-                AsyncLumaai(
+                AsyncLumaAI(
                     base_url=base_url,
                     auth_token=auth_token,
                     _strict_response_validation=True,
@@ -1036,14 +1036,14 @@ class TestAsyncLumaai:
                 )
 
     def test_default_headers_option(self) -> None:
-        client = AsyncLumaai(
+        client = AsyncLumaAI(
             base_url=base_url, auth_token=auth_token, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
-        client2 = AsyncLumaai(
+        client2 = AsyncLumaAI(
             base_url=base_url,
             auth_token=auth_token,
             _strict_response_validation=True,
@@ -1057,17 +1057,17 @@ class TestAsyncLumaai:
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_validate_headers(self) -> None:
-        client = AsyncLumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
+        client = AsyncLumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {auth_token}"
 
-        with pytest.raises(LumaaiError):
+        with pytest.raises(LumaAIError):
             with update_env(**{"LUMAAI_API_KEY": Omit()}):
-                client2 = AsyncLumaai(base_url=base_url, auth_token=None, _strict_response_validation=True)
+                client2 = AsyncLumaAI(base_url=base_url, auth_token=None, _strict_response_validation=True)
             _ = client2
 
     def test_default_query_option(self) -> None:
-        client = AsyncLumaai(
+        client = AsyncLumaAI(
             base_url=base_url,
             auth_token=auth_token,
             _strict_response_validation=True,
@@ -1184,7 +1184,7 @@ class TestAsyncLumaai:
         params = dict(request.url.params)
         assert params == {"foo": "2"}
 
-    def test_multipart_repeating_array(self, async_client: AsyncLumaai) -> None:
+    def test_multipart_repeating_array(self, async_client: AsyncLumaAI) -> None:
         request = async_client._build_request(
             FinalRequestOptions.construct(
                 method="get",
@@ -1271,7 +1271,7 @@ class TestAsyncLumaai:
         assert response.foo == 2
 
     def test_base_url_setter(self) -> None:
-        client = AsyncLumaai(
+        client = AsyncLumaAI(
             base_url="https://example.com/from_init", auth_token=auth_token, _strict_response_validation=True
         )
         assert client.base_url == "https://example.com/from_init/"
@@ -1282,16 +1282,16 @@ class TestAsyncLumaai:
 
     def test_base_url_env(self) -> None:
         with update_env(LUMAAI_BASE_URL="http://localhost:5000/from/env"):
-            client = AsyncLumaai(auth_token=auth_token, _strict_response_validation=True)
+            client = AsyncLumaAI(auth_token=auth_token, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncLumaai(
+            AsyncLumaAI(
                 base_url="http://localhost:5000/custom/path/", auth_token=auth_token, _strict_response_validation=True
             ),
-            AsyncLumaai(
+            AsyncLumaAI(
                 base_url="http://localhost:5000/custom/path/",
                 auth_token=auth_token,
                 _strict_response_validation=True,
@@ -1300,7 +1300,7 @@ class TestAsyncLumaai:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_trailing_slash(self, client: AsyncLumaai) -> None:
+    def test_base_url_trailing_slash(self, client: AsyncLumaAI) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1313,10 +1313,10 @@ class TestAsyncLumaai:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncLumaai(
+            AsyncLumaAI(
                 base_url="http://localhost:5000/custom/path/", auth_token=auth_token, _strict_response_validation=True
             ),
-            AsyncLumaai(
+            AsyncLumaAI(
                 base_url="http://localhost:5000/custom/path/",
                 auth_token=auth_token,
                 _strict_response_validation=True,
@@ -1325,7 +1325,7 @@ class TestAsyncLumaai:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_no_trailing_slash(self, client: AsyncLumaai) -> None:
+    def test_base_url_no_trailing_slash(self, client: AsyncLumaAI) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1338,10 +1338,10 @@ class TestAsyncLumaai:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncLumaai(
+            AsyncLumaAI(
                 base_url="http://localhost:5000/custom/path/", auth_token=auth_token, _strict_response_validation=True
             ),
-            AsyncLumaai(
+            AsyncLumaAI(
                 base_url="http://localhost:5000/custom/path/",
                 auth_token=auth_token,
                 _strict_response_validation=True,
@@ -1350,7 +1350,7 @@ class TestAsyncLumaai:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_absolute_request_url(self, client: AsyncLumaai) -> None:
+    def test_absolute_request_url(self, client: AsyncLumaAI) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1361,7 +1361,7 @@ class TestAsyncLumaai:
         assert request.url == "https://myapi.com/foo"
 
     async def test_copied_client_does_not_close_http(self) -> None:
-        client = AsyncLumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
+        client = AsyncLumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -1373,7 +1373,7 @@ class TestAsyncLumaai:
         assert not client.is_closed()
 
     async def test_client_context_manager(self) -> None:
-        client = AsyncLumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
+        client = AsyncLumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
         async with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -1395,7 +1395,7 @@ class TestAsyncLumaai:
 
     async def test_client_max_retries_validation(self) -> None:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
-            AsyncLumaai(
+            AsyncLumaAI(
                 base_url=base_url, auth_token=auth_token, _strict_response_validation=True, max_retries=cast(Any, None)
             )
 
@@ -1407,12 +1407,12 @@ class TestAsyncLumaai:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = AsyncLumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
+        strict_client = AsyncLumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             await strict_client.get("/foo", cast_to=Model)
 
-        client = AsyncLumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=False)
+        client = AsyncLumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=False)
 
         response = await client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -1440,7 +1440,7 @@ class TestAsyncLumaai:
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     @pytest.mark.asyncio
     async def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = AsyncLumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
+        client = AsyncLumaAI(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
@@ -1496,7 +1496,7 @@ class TestAsyncLumaai:
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
     async def test_retries_taken(
-        self, async_client: AsyncLumaai, failures_before_success: int, respx_mock: MockRouter
+        self, async_client: AsyncLumaAI, failures_before_success: int, respx_mock: MockRouter
     ) -> None:
         client = async_client.with_options(max_retries=4)
 
