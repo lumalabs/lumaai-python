@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from lumaai import Lumaai, AsyncLumaai
+from lumaai import LumaAI, AsyncLumaAI
 from tests.utils import assert_matches_type
 from lumaai.types import Generation, GenerationListResponse
 
@@ -18,12 +18,12 @@ class TestGenerations:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_create(self, client: Lumaai) -> None:
+    def test_method_create(self, client: LumaAI) -> None:
         generation = client.generations.create()
         assert_matches_type(Generation, generation, path=["response"])
 
     @parametrize
-    def test_method_create_with_all_params(self, client: Lumaai) -> None:
+    def test_method_create_with_all_params(self, client: LumaAI) -> None:
         generation = client.generations.create(
             aspect_ratio="1:1",
             keyframes={
@@ -42,7 +42,7 @@ class TestGenerations:
         assert_matches_type(Generation, generation, path=["response"])
 
     @parametrize
-    def test_raw_response_create(self, client: Lumaai) -> None:
+    def test_raw_response_create(self, client: LumaAI) -> None:
         response = client.generations.with_raw_response.create()
 
         assert response.is_closed is True
@@ -51,7 +51,7 @@ class TestGenerations:
         assert_matches_type(Generation, generation, path=["response"])
 
     @parametrize
-    def test_streaming_response_create(self, client: Lumaai) -> None:
+    def test_streaming_response_create(self, client: LumaAI) -> None:
         with client.generations.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -62,12 +62,12 @@ class TestGenerations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_list(self, client: Lumaai) -> None:
+    def test_method_list(self, client: LumaAI) -> None:
         generation = client.generations.list()
         assert_matches_type(GenerationListResponse, generation, path=["response"])
 
     @parametrize
-    def test_method_list_with_all_params(self, client: Lumaai) -> None:
+    def test_method_list_with_all_params(self, client: LumaAI) -> None:
         generation = client.generations.list(
             limit=0,
             offset=0,
@@ -75,7 +75,7 @@ class TestGenerations:
         assert_matches_type(GenerationListResponse, generation, path=["response"])
 
     @parametrize
-    def test_raw_response_list(self, client: Lumaai) -> None:
+    def test_raw_response_list(self, client: LumaAI) -> None:
         response = client.generations.with_raw_response.list()
 
         assert response.is_closed is True
@@ -84,7 +84,7 @@ class TestGenerations:
         assert_matches_type(GenerationListResponse, generation, path=["response"])
 
     @parametrize
-    def test_streaming_response_list(self, client: Lumaai) -> None:
+    def test_streaming_response_list(self, client: LumaAI) -> None:
         with client.generations.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -95,14 +95,14 @@ class TestGenerations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_delete(self, client: Lumaai) -> None:
+    def test_method_delete(self, client: LumaAI) -> None:
         generation = client.generations.delete(
             "id",
         )
         assert generation is None
 
     @parametrize
-    def test_raw_response_delete(self, client: Lumaai) -> None:
+    def test_raw_response_delete(self, client: LumaAI) -> None:
         response = client.generations.with_raw_response.delete(
             "id",
         )
@@ -113,7 +113,7 @@ class TestGenerations:
         assert generation is None
 
     @parametrize
-    def test_streaming_response_delete(self, client: Lumaai) -> None:
+    def test_streaming_response_delete(self, client: LumaAI) -> None:
         with client.generations.with_streaming_response.delete(
             "id",
         ) as response:
@@ -126,21 +126,21 @@ class TestGenerations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_delete(self, client: Lumaai) -> None:
+    def test_path_params_delete(self, client: LumaAI) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.generations.with_raw_response.delete(
                 "",
             )
 
     @parametrize
-    def test_method_get(self, client: Lumaai) -> None:
+    def test_method_get(self, client: LumaAI) -> None:
         generation = client.generations.get(
             "id",
         )
         assert_matches_type(Generation, generation, path=["response"])
 
     @parametrize
-    def test_raw_response_get(self, client: Lumaai) -> None:
+    def test_raw_response_get(self, client: LumaAI) -> None:
         response = client.generations.with_raw_response.get(
             "id",
         )
@@ -151,7 +151,7 @@ class TestGenerations:
         assert_matches_type(Generation, generation, path=["response"])
 
     @parametrize
-    def test_streaming_response_get(self, client: Lumaai) -> None:
+    def test_streaming_response_get(self, client: LumaAI) -> None:
         with client.generations.with_streaming_response.get(
             "id",
         ) as response:
@@ -164,7 +164,7 @@ class TestGenerations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_get(self, client: Lumaai) -> None:
+    def test_path_params_get(self, client: LumaAI) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.generations.with_raw_response.get(
                 "",
@@ -175,12 +175,12 @@ class TestAsyncGenerations:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, async_client: AsyncLumaai) -> None:
+    async def test_method_create(self, async_client: AsyncLumaAI) -> None:
         generation = await async_client.generations.create()
         assert_matches_type(Generation, generation, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncLumaai) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncLumaAI) -> None:
         generation = await async_client.generations.create(
             aspect_ratio="1:1",
             keyframes={
@@ -199,7 +199,7 @@ class TestAsyncGenerations:
         assert_matches_type(Generation, generation, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncLumaai) -> None:
+    async def test_raw_response_create(self, async_client: AsyncLumaAI) -> None:
         response = await async_client.generations.with_raw_response.create()
 
         assert response.is_closed is True
@@ -208,7 +208,7 @@ class TestAsyncGenerations:
         assert_matches_type(Generation, generation, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncLumaai) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncLumaAI) -> None:
         async with async_client.generations.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -219,12 +219,12 @@ class TestAsyncGenerations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_list(self, async_client: AsyncLumaai) -> None:
+    async def test_method_list(self, async_client: AsyncLumaAI) -> None:
         generation = await async_client.generations.list()
         assert_matches_type(GenerationListResponse, generation, path=["response"])
 
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncLumaai) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncLumaAI) -> None:
         generation = await async_client.generations.list(
             limit=0,
             offset=0,
@@ -232,7 +232,7 @@ class TestAsyncGenerations:
         assert_matches_type(GenerationListResponse, generation, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncLumaai) -> None:
+    async def test_raw_response_list(self, async_client: AsyncLumaAI) -> None:
         response = await async_client.generations.with_raw_response.list()
 
         assert response.is_closed is True
@@ -241,7 +241,7 @@ class TestAsyncGenerations:
         assert_matches_type(GenerationListResponse, generation, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncLumaai) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncLumaAI) -> None:
         async with async_client.generations.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -252,14 +252,14 @@ class TestAsyncGenerations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_delete(self, async_client: AsyncLumaai) -> None:
+    async def test_method_delete(self, async_client: AsyncLumaAI) -> None:
         generation = await async_client.generations.delete(
             "id",
         )
         assert generation is None
 
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncLumaai) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncLumaAI) -> None:
         response = await async_client.generations.with_raw_response.delete(
             "id",
         )
@@ -270,7 +270,7 @@ class TestAsyncGenerations:
         assert generation is None
 
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncLumaai) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncLumaAI) -> None:
         async with async_client.generations.with_streaming_response.delete(
             "id",
         ) as response:
@@ -283,21 +283,21 @@ class TestAsyncGenerations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncLumaai) -> None:
+    async def test_path_params_delete(self, async_client: AsyncLumaAI) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.generations.with_raw_response.delete(
                 "",
             )
 
     @parametrize
-    async def test_method_get(self, async_client: AsyncLumaai) -> None:
+    async def test_method_get(self, async_client: AsyncLumaAI) -> None:
         generation = await async_client.generations.get(
             "id",
         )
         assert_matches_type(Generation, generation, path=["response"])
 
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncLumaai) -> None:
+    async def test_raw_response_get(self, async_client: AsyncLumaAI) -> None:
         response = await async_client.generations.with_raw_response.get(
             "id",
         )
@@ -308,7 +308,7 @@ class TestAsyncGenerations:
         assert_matches_type(Generation, generation, path=["response"])
 
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncLumaai) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncLumaAI) -> None:
         async with async_client.generations.with_streaming_response.get(
             "id",
         ) as response:
@@ -321,7 +321,7 @@ class TestAsyncGenerations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_get(self, async_client: AsyncLumaai) -> None:
+    async def test_path_params_get(self, async_client: AsyncLumaAI) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.generations.with_raw_response.get(
                 "",
