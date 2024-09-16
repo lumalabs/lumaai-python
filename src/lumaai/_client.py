@@ -92,7 +92,7 @@ class Lumaai(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("LUMAAI_BASE_URL")
         if base_url is None:
-            base_url = f"https://api.lumalabs.ai/dream-machine/v1alpha"
+            base_url = f"https://api.lumalabs.ai/dream-machine/v1"
 
         super().__init__(
             version=__version__,
@@ -262,7 +262,7 @@ class AsyncLumaai(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("LUMAAI_BASE_URL")
         if base_url is None:
-            base_url = f"https://api.lumalabs.ai/dream-machine/v1alpha"
+            base_url = f"https://api.lumalabs.ai/dream-machine/v1"
 
         super().__init__(
             version=__version__,
