@@ -17,9 +17,10 @@ from respx import MockRouter
 from pydantic import ValidationError
 
 from lumaai import Lumaai, AsyncLumaai, APIResponseValidationError
+from lumaai._types import Omit
 from lumaai._models import BaseModel, FinalRequestOptions
 from lumaai._constants import RAW_RESPONSE_HEADER
-from lumaai._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
+from lumaai._exceptions import LumaaiError, APIStatusError, APITimeoutError, APIResponseValidationError
 from lumaai._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
 
 from .utils import update_env
@@ -327,6 +328,11 @@ class TestLumaai:
         client = Lumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {auth_token}"
+
+        with pytest.raises(LumaaiError):
+            with update_env(**{"LUMAAI_API_KEY": Omit()}):
+                client2 = Lumaai(base_url=base_url, auth_token=None, _strict_response_validation=True)
+            _ = client2
 
     def test_default_query_option(self) -> None:
         client = Lumaai(
@@ -1054,6 +1060,11 @@ class TestAsyncLumaai:
         client = AsyncLumaai(base_url=base_url, auth_token=auth_token, _strict_response_validation=True)
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {auth_token}"
+
+        with pytest.raises(LumaaiError):
+            with update_env(**{"LUMAAI_API_KEY": Omit()}):
+                client2 = AsyncLumaai(base_url=base_url, auth_token=None, _strict_response_validation=True)
+            _ = client2
 
     def test_default_query_option(self) -> None:
         client = AsyncLumaai(
