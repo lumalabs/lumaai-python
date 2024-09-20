@@ -1,6 +1,7 @@
 # LumaAI Python API library
 
 [![PyPI version](https://img.shields.io/pypi/v/lumaai.svg)](https://pypi.org/project/lumaai/)
+[![Gradio demo](https://camo.githubusercontent.com/60fc1c9c73cb3a503171cbf9f981dab8e938f052261dd173111f304ffbf3f014/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f25463025394625413425393725323044656d6f2d2532333039374546463f7374796c653d666c6174266c6f676f436f6c6f723d626c61636b)](https://huggingface.co/spaces/lumaai/dream-machine)
 
 The LumaAI Python library provides convenient access to the LumaAI REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
