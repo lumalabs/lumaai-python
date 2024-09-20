@@ -73,10 +73,6 @@ asyncio.run(main())
 
 Functionality between the synchronous and asynchronous clients is otherwise identical.
 
-### Gradio sample
-
-For a simple (thanks to AK [@akhaliq](https://x.com/_akhaliq)) to call the API with text or image input, please see [this link](https://huggingface.co/spaces/lumaai/dream-machine/blob/main/app.py)
-
 ## Using types
 
 Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typing.html#typing.TypedDict). Responses are [Pydantic models](https://docs.pydantic.dev) which also provide helper methods for things like:
@@ -186,6 +182,10 @@ client.with_options(timeout=5.0).generations.create(
 On timeout, an `APITimeoutError` is thrown.
 
 Note that requests that time out are [retried twice by default](#retries).
+
+## Gradio sample
+
+For a simple (thanks to AK [@akhaliq](https://x.com/_akhaliq)) to call the API with text or image input, please see [this link](https://huggingface.co/spaces/lumaai/dream-machine/blob/main/app.py)
 
 ## Advanced
 
