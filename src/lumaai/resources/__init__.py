@@ -8,6 +8,14 @@ from .ping import (
     PingResourceWithStreamingResponse,
     AsyncPingResourceWithStreamingResponse,
 )
+from .credits import (
+    CreditsResource,
+    AsyncCreditsResource,
+    CreditsResourceWithRawResponse,
+    AsyncCreditsResourceWithRawResponse,
+    CreditsResourceWithStreamingResponse,
+    AsyncCreditsResourceWithStreamingResponse,
+)
 from .generations import (
     GenerationsResource,
     AsyncGenerationsResource,
@@ -30,4 +38,10 @@ __all__ = [
     "AsyncPingResourceWithRawResponse",
     "PingResourceWithStreamingResponse",
     "AsyncPingResourceWithStreamingResponse",
+    "CreditsResource",
+    "AsyncCreditsResource",
+    "CreditsResourceWithRawResponse",
+    "AsyncCreditsResourceWithRawResponse",
+    "CreditsResourceWithStreamingResponse",
+    "AsyncCreditsResourceWithStreamingResponse",
 ]
