@@ -36,3 +36,15 @@ from lumaai.types import PingCheckResponse
 Methods:
 
 - <code title="get /ping">client.ping.<a href="./src/lumaai/resources/ping.py">check</a>() -> <a href="./src/lumaai/types/ping_check_response.py">PingCheckResponse</a></code>
+
+# Credits
+
+Types:
+
+```python
+from lumaai.types import CreditGetResponse
+```
+
+Methods:
+
+- <code title="get /credits">client.credits.<a href="./src/lumaai/resources/credits.py">get</a>() -> <a href="./src/lumaai/types/credit_get_response.py">CreditGetResponse</a></code>
