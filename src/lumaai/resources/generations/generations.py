@@ -63,6 +63,7 @@ class GenerationsResource(SyncAPIResource):
         self,
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
+        callback_url: str | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
@@ -78,6 +79,10 @@ class GenerationsResource(SyncAPIResource):
 
         Args:
           aspect_ratio: The aspect ratio of the generation
+
+          callback_url: The callback URL of the generation, a POST request with Generation object will
+              be sent to the callback URL when the generation is dreaming, completed, or
+              failed
 
           keyframes: The keyframes of the generation
 
@@ -98,6 +103,7 @@ class GenerationsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "aspect_ratio": aspect_ratio,
+                    "callback_url": callback_url,
                     "keyframes": keyframes,
                     "loop": loop,
                     "prompt": prompt,
@@ -248,6 +254,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
         self,
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
+        callback_url: str | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
@@ -263,6 +270,10 @@ class AsyncGenerationsResource(AsyncAPIResource):
 
         Args:
           aspect_ratio: The aspect ratio of the generation
+
+          callback_url: The callback URL of the generation, a POST request with Generation object will
+              be sent to the callback URL when the generation is dreaming, completed, or
+              failed
 
           keyframes: The keyframes of the generation
 
@@ -283,6 +294,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "aspect_ratio": aspect_ratio,
+                    "callback_url": callback_url,
                     "keyframes": keyframes,
                     "loop": loop,
                     "prompt": prompt,

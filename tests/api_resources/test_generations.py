@@ -26,6 +26,7 @@ class TestGenerations:
     def test_method_create_with_all_params(self, client: LumaAI) -> None:
         generation = client.generations.create(
             aspect_ratio="1:1",
+            callback_url="https://example.com",
             keyframes={
                 "frame0": {
                     "type": "image",
@@ -183,6 +184,7 @@ class TestAsyncGenerations:
     async def test_method_create_with_all_params(self, async_client: AsyncLumaAI) -> None:
         generation = await async_client.generations.create(
             aspect_ratio="1:1",
+            callback_url="https://example.com",
             keyframes={
                 "frame0": {
                     "type": "image",
