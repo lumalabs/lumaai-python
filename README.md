@@ -26,8 +26,7 @@ import os
 from lumaai import LumaAI
 
 client = LumaAI(
-    # This is the default and can be omitted
-    auth_token=os.environ.get("LUMAAI_API_KEY"),
+    auth_token=os.environ.get("LUMAAI_API_KEY"),  # This is the default and can be omitted
 )
 
 generation = client.generations.create(
@@ -53,8 +52,7 @@ import asyncio
 from lumaai import AsyncLumaAI
 
 client = AsyncLumaAI(
-    # This is the default and can be omitted
-    auth_token=os.environ.get("LUMAAI_API_KEY"),
+    auth_token=os.environ.get("LUMAAI_API_KEY"),  # This is the default and can be omitted
 )
 
 
