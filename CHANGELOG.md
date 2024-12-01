@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.1.1 (2024-11-28)
+
+Full Changelog: [v1.1.0...v1.1.1](https://github.com/lumalabs/lumaai-python/compare/v1.1.0...v1.1.1)
+
+### Chores
+
+* **internal:** codegen related update ([#54](https://github.com/lumalabs/lumaai-python/issues/54)) ([e799eff](https://github.com/lumalabs/lumaai-python/commit/e799efff8b54359b6f065c704a283f336037c0b2))
+* **internal:** exclude mypy from running on tests ([#55](https://github.com/lumalabs/lumaai-python/issues/55)) ([1f82733](https://github.com/lumalabs/lumaai-python/commit/1f827331631f05ebefabf372398536a75291b658))
+* **internal:** fix compat model_dump method when warnings are passed ([#52](https://github.com/lumalabs/lumaai-python/issues/52)) ([38a854e](https://github.com/lumalabs/lumaai-python/commit/38a854ecee6fcf8373d0c024242b6949e5fb11b4))
+* rebuild project due to codegen change ([#47](https://github.com/lumalabs/lumaai-python/issues/47)) ([e59029a](https://github.com/lumalabs/lumaai-python/commit/e59029af7a089ae322f230365309b76579a4e336))
+* rebuild project due to codegen change ([#49](https://github.com/lumalabs/lumaai-python/issues/49)) ([9d05dc0](https://github.com/lumalabs/lumaai-python/commit/9d05dc05ba43a236d369c75926f199d31df17d46))
+* rebuild project due to codegen change ([#50](https://github.com/lumalabs/lumaai-python/issues/50)) ([1951e9d](https://github.com/lumalabs/lumaai-python/commit/1951e9d82921d41675d32e4e0406fae05e4c20eb))
+* rebuild project due to codegen change ([#51](https://github.com/lumalabs/lumaai-python/issues/51)) ([5b0dc70](https://github.com/lumalabs/lumaai-python/commit/5b0dc702a4394e9ae3d5d32c1c14066e091f1f28))
+
+
+### Documentation
+
+* add info log level to readme ([#53](https://github.com/lumalabs/lumaai-python/issues/53)) ([f7ba397](https://github.com/lumalabs/lumaai-python/commit/f7ba397b039b460ee377b6eddd5c5c6f2fa7487f))
+
 ## 1.1.0 (2024-10-08)
 
 Full Changelog: [v1.0.2...v1.1.0](https://github.com/lumalabs/lumaai-python/compare/v1.0.2...v1.1.0)

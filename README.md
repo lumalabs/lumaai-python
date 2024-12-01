@@ -2,7 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/lumaai.svg)](https://pypi.org/project/lumaai/)
 
-The LumaAI Python library provides convenient access to the LumaAI REST API from any Python 3.7+
+The LumaAI Python library provides convenient access to the LumaAI REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -26,8 +26,7 @@ import os
 from lumaai import LumaAI
 
 client = LumaAI(
-    # This is the default and can be omitted
-    auth_token=os.environ.get("LUMAAI_API_KEY"),
+    auth_token=os.environ.get("LUMAAI_API_KEY"),  # This is the default and can be omitted
 )
 
 generation = client.generations.create(
@@ -53,8 +52,7 @@ import asyncio
 from lumaai import AsyncLumaAI
 
 client = AsyncLumaAI(
-    # This is the default and can be omitted
-    auth_token=os.environ.get("LUMAAI_API_KEY"),
+    auth_token=os.environ.get("LUMAAI_API_KEY"),  # This is the default and can be omitted
 )
 
 
@@ -188,11 +186,13 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `LUMAAI_LOG` to `debug`.
+You can enable logging by setting the environment variable `LUMAAI_LOG` to `info`.
 
 ```shell
-$ export LUMAAI_LOG=debug
+$ export LUMAAI_LOG=info
 ```
+
+Or to `debug` for more verbose logging.
 
 ### How to tell whether `None` means `null` or missing
 
@@ -340,7 +340,7 @@ print(lumaai.__version__)
 
 ## Requirements
 
-Python 3.7 or higher.
+Python 3.8 or higher.
 
 ## Contributing
 
