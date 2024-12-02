@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0 (2024-12-02)
+
+Full Changelog: [v1.1.2...v1.2.0](https://github.com/lumalabs/lumaai-python/compare/v1.1.2...v1.2.0)
+
+### Features
+
+* **api:** api update ([#60](https://github.com/lumalabs/lumaai-python/issues/60)) ([fab600d](https://github.com/lumalabs/lumaai-python/commit/fab600d43fbacd8d1bdeef6b1a657fcbb5ffed82))
+
 ## 1.1.2 (2024-12-01)
 
 Full Changelog: [v1.1.1...v1.1.2](https://github.com/lumalabs/lumaai-python/compare/v1.1.1...v1.1.2)
