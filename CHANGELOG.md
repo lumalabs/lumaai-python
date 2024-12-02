@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.2 (2024-12-01)
+
+Full Changelog: [v1.1.1...v1.1.2](https://github.com/lumalabs/lumaai-python/compare/v1.1.1...v1.1.2)
+
+### Bug Fixes
+
+* **client:** compat with new httpx 0.28.0 release ([#57](https://github.com/lumalabs/lumaai-python/issues/57)) ([0665416](https://github.com/lumalabs/lumaai-python/commit/06654167cd1dfcaf6f759ef10a2a4806f207f2bb))
+
 ## 1.1.1 (2024-11-28)
 
 Full Changelog: [v1.1.0...v1.1.1](https://github.com/lumalabs/lumaai-python/compare/v1.1.0...v1.1.1)
