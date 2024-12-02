@@ -6,7 +6,7 @@ from typing import Union
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = [
-    "GenerationCreateParams",
+    "VideoCreateParams",
     "Keyframes",
     "KeyframesFrame0",
     "KeyframesFrame0GenerationReference",
@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 
-class GenerationCreateParams(TypedDict, total=False):
+class VideoCreateParams(TypedDict, total=False):
     aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]
     """The aspect ratio of the generation"""
 
