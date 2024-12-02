@@ -25,6 +25,18 @@ Methods:
 
 - <code title="get /generations/camera_motion/list">client.generations.camera_motion.<a href="./src/lumaai/resources/generations/camera_motion.py">list</a>() -> <a href="./src/lumaai/types/generations/camera_motion_list_response.py">CameraMotionListResponse</a></code>
 
+## Image
+
+Methods:
+
+- <code title="post /generations/image">client.generations.image.<a href="./src/lumaai/resources/generations/image.py">create</a>(\*\*<a href="src/lumaai/types/generations/image_create_params.py">params</a>) -> <a href="./src/lumaai/types/generation.py">Generation</a></code>
+
+## Video
+
+Methods:
+
+- <code title="post /generations">client.generations.video.<a href="./src/lumaai/resources/generations/video.py">create</a>(\*\*<a href="src/lumaai/types/generations/video_create_params.py">params</a>) -> <a href="./src/lumaai/types/generation.py">Generation</a></code>
+
 # Ping
 
 Types:

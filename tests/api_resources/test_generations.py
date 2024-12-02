@@ -27,6 +27,7 @@ class TestGenerations:
         generation = client.generations.create(
             aspect_ratio="1:1",
             callback_url="https://example.com",
+            generation_type="video",
             keyframes={
                 "frame0": {
                     "type": "image",
@@ -185,6 +186,7 @@ class TestAsyncGenerations:
         generation = await async_client.generations.create(
             aspect_ratio="1:1",
             callback_url="https://example.com",
+            generation_type="video",
             keyframes={
                 "frame0": {
                     "type": "image",

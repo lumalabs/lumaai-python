@@ -6,6 +6,22 @@ from typing_extensions import Literal
 
 import httpx
 
+from .image import (
+    ImageResource,
+    AsyncImageResource,
+    ImageResourceWithRawResponse,
+    AsyncImageResourceWithRawResponse,
+    ImageResourceWithStreamingResponse,
+    AsyncImageResourceWithStreamingResponse,
+)
+from .video import (
+    VideoResource,
+    AsyncVideoResource,
+    VideoResourceWithRawResponse,
+    AsyncVideoResourceWithRawResponse,
+    VideoResourceWithStreamingResponse,
+    AsyncVideoResourceWithStreamingResponse,
+)
 from ...types import generation_list_params, generation_create_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import (
@@ -41,6 +57,14 @@ class GenerationsResource(SyncAPIResource):
         return CameraMotionResource(self._client)
 
     @cached_property
+    def image(self) -> ImageResource:
+        return ImageResource(self._client)
+
+    @cached_property
+    def video(self) -> VideoResource:
+        return VideoResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> GenerationsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
@@ -64,6 +88,7 @@ class GenerationsResource(SyncAPIResource):
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
         callback_url: str | NotGiven = NOT_GIVEN,
+        generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
@@ -104,6 +129,7 @@ class GenerationsResource(SyncAPIResource):
                 {
                     "aspect_ratio": aspect_ratio,
                     "callback_url": callback_url,
+                    "generation_type": generation_type,
                     "keyframes": keyframes,
                     "loop": loop,
                     "prompt": prompt,
@@ -232,6 +258,14 @@ class AsyncGenerationsResource(AsyncAPIResource):
         return AsyncCameraMotionResource(self._client)
 
     @cached_property
+    def image(self) -> AsyncImageResource:
+        return AsyncImageResource(self._client)
+
+    @cached_property
+    def video(self) -> AsyncVideoResource:
+        return AsyncVideoResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> AsyncGenerationsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
@@ -255,6 +289,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
         callback_url: str | NotGiven = NOT_GIVEN,
+        generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
@@ -295,6 +330,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
                 {
                     "aspect_ratio": aspect_ratio,
                     "callback_url": callback_url,
+                    "generation_type": generation_type,
                     "keyframes": keyframes,
                     "loop": loop,
                     "prompt": prompt,
@@ -438,6 +474,14 @@ class GenerationsResourceWithRawResponse:
     def camera_motion(self) -> CameraMotionResourceWithRawResponse:
         return CameraMotionResourceWithRawResponse(self._generations.camera_motion)
 
+    @cached_property
+    def image(self) -> ImageResourceWithRawResponse:
+        return ImageResourceWithRawResponse(self._generations.image)
+
+    @cached_property
+    def video(self) -> VideoResourceWithRawResponse:
+        return VideoResourceWithRawResponse(self._generations.video)
+
 
 class AsyncGenerationsResourceWithRawResponse:
     def __init__(self, generations: AsyncGenerationsResource) -> None:
@@ -459,6 +503,14 @@ class AsyncGenerationsResourceWithRawResponse:
     @cached_property
     def camera_motion(self) -> AsyncCameraMotionResourceWithRawResponse:
         return AsyncCameraMotionResourceWithRawResponse(self._generations.camera_motion)
+
+    @cached_property
+    def image(self) -> AsyncImageResourceWithRawResponse:
+        return AsyncImageResourceWithRawResponse(self._generations.image)
+
+    @cached_property
+    def video(self) -> AsyncVideoResourceWithRawResponse:
+        return AsyncVideoResourceWithRawResponse(self._generations.video)
 
 
 class GenerationsResourceWithStreamingResponse:
@@ -482,6 +534,14 @@ class GenerationsResourceWithStreamingResponse:
     def camera_motion(self) -> CameraMotionResourceWithStreamingResponse:
         return CameraMotionResourceWithStreamingResponse(self._generations.camera_motion)
 
+    @cached_property
+    def image(self) -> ImageResourceWithStreamingResponse:
+        return ImageResourceWithStreamingResponse(self._generations.image)
+
+    @cached_property
+    def video(self) -> VideoResourceWithStreamingResponse:
+        return VideoResourceWithStreamingResponse(self._generations.video)
+
 
 class AsyncGenerationsResourceWithStreamingResponse:
     def __init__(self, generations: AsyncGenerationsResource) -> None:
@@ -503,3 +563,11 @@ class AsyncGenerationsResourceWithStreamingResponse:
     @cached_property
     def camera_motion(self) -> AsyncCameraMotionResourceWithStreamingResponse:
         return AsyncCameraMotionResourceWithStreamingResponse(self._generations.camera_motion)
+
+    @cached_property
+    def image(self) -> AsyncImageResourceWithStreamingResponse:
+        return AsyncImageResourceWithStreamingResponse(self._generations.image)
+
+    @cached_property
+    def video(self) -> AsyncVideoResourceWithStreamingResponse:
+        return AsyncVideoResourceWithStreamingResponse(self._generations.video)
