@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Union, Optional
+from typing import List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal, Annotated, TypeAlias
 
@@ -11,70 +11,86 @@ __all__ = [
     "Generation",
     "Assets",
     "Request",
-    "RequestKeyframes",
-    "RequestKeyframesFrame0",
-    "RequestKeyframesFrame0GenerationReference",
-    "RequestKeyframesFrame0ImageReference",
-    "RequestKeyframesFrame1",
-    "RequestKeyframesFrame1GenerationReference",
-    "RequestKeyframesFrame1ImageReference",
+    "RequestGenerationRequest",
+    "RequestGenerationRequestKeyframes",
+    "RequestGenerationRequestKeyframesFrame0",
+    "RequestGenerationRequestKeyframesFrame0GenerationReference",
+    "RequestGenerationRequestKeyframesFrame0ImageReference",
+    "RequestGenerationRequestKeyframesFrame1",
+    "RequestGenerationRequestKeyframesFrame1GenerationReference",
+    "RequestGenerationRequestKeyframesFrame1ImageReference",
+    "RequestImageGenerationRequest",
+    "RequestImageGenerationRequestCharacterRef",
+    "RequestImageGenerationRequestCharacterRefIdentity0",
+    "RequestImageGenerationRequestImageRef",
+    "RequestImageGenerationRequestModifyImageRef",
+    "RequestImageGenerationRequestStyleRef",
 ]
 
 
 class Assets(BaseModel):
+    image: Optional[str] = None
+    """The URL of the image"""
+
     video: Optional[str] = None
     """The URL of the video"""
 
 
-class RequestKeyframesFrame0GenerationReference(BaseModel):
+class RequestGenerationRequestKeyframesFrame0GenerationReference(BaseModel):
     id: str
     """The ID of the generation"""
 
     type: Literal["generation"]
 
 
-class RequestKeyframesFrame0ImageReference(BaseModel):
+class RequestGenerationRequestKeyframesFrame0ImageReference(BaseModel):
     type: Literal["image"]
 
     url: str
     """The URL of the image"""
 
 
-RequestKeyframesFrame0: TypeAlias = Annotated[
-    Union[RequestKeyframesFrame0GenerationReference, RequestKeyframesFrame0ImageReference],
+RequestGenerationRequestKeyframesFrame0: TypeAlias = Annotated[
+    Union[
+        RequestGenerationRequestKeyframesFrame0GenerationReference,
+        RequestGenerationRequestKeyframesFrame0ImageReference,
+    ],
     PropertyInfo(discriminator="type"),
 ]
 
 
-class RequestKeyframesFrame1GenerationReference(BaseModel):
+class RequestGenerationRequestKeyframesFrame1GenerationReference(BaseModel):
     id: str
     """The ID of the generation"""
 
     type: Literal["generation"]
 
 
-class RequestKeyframesFrame1ImageReference(BaseModel):
+class RequestGenerationRequestKeyframesFrame1ImageReference(BaseModel):
     type: Literal["image"]
 
     url: str
     """The URL of the image"""
 
 
-RequestKeyframesFrame1: TypeAlias = Annotated[
-    Union[RequestKeyframesFrame1GenerationReference, RequestKeyframesFrame1ImageReference],
+RequestGenerationRequestKeyframesFrame1: TypeAlias = Annotated[
+    Union[
+        RequestGenerationRequestKeyframesFrame1GenerationReference,
+        RequestGenerationRequestKeyframesFrame1ImageReference,
+    ],
     PropertyInfo(discriminator="type"),
 ]
 
 
-class RequestKeyframes(BaseModel):
-    frame0: Optional[RequestKeyframesFrame0] = None
+class RequestGenerationRequestKeyframes(BaseModel):
+    frame0: Optional[RequestGenerationRequestKeyframesFrame0] = None
     """The frame 0 of the generation"""
 
-    frame1: Optional[RequestKeyframesFrame1] = None
+    frame1: Optional[RequestGenerationRequestKeyframesFrame1] = None
     """The frame 1 of the generation"""
 
 
-class Request(BaseModel):
+class RequestGenerationRequest(BaseModel):
     aspect_ratio: Optional[Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]] = None
     """The aspect ratio of the generation"""
 
@@ -85,7 +101,9 @@ class Request(BaseModel):
     failed
     """
 
-    keyframes: Optional[RequestKeyframes] = None
+    generation_type: Optional[Literal["video"]] = None
+
+    keyframes: Optional[RequestGenerationRequestKeyframes] = None
     """The keyframes of the generation"""
 
     loop: Optional[bool] = None
@@ -93,6 +111,68 @@ class Request(BaseModel):
 
     prompt: Optional[str] = None
     """The prompt of the generation"""
+
+
+class RequestImageGenerationRequestCharacterRefIdentity0(BaseModel):
+    images: Optional[List[str]] = None
+    """The URLs of the image identity"""
+
+
+class RequestImageGenerationRequestCharacterRef(BaseModel):
+    identity0: Optional[RequestImageGenerationRequestCharacterRefIdentity0] = None
+    """The image identity object"""
+
+
+class RequestImageGenerationRequestImageRef(BaseModel):
+    url: Optional[str] = None
+    """The URL of the image reference"""
+
+    weight: Optional[float] = None
+    """The weight of the image reference"""
+
+
+class RequestImageGenerationRequestModifyImageRef(BaseModel):
+    url: Optional[str] = None
+    """The URL of the image reference"""
+
+    weight: Optional[float] = None
+    """The weight of the modify image reference"""
+
+
+class RequestImageGenerationRequestStyleRef(BaseModel):
+    url: Optional[str] = None
+    """The URL of the image reference"""
+
+    weight: Optional[float] = None
+    """The weight of the image reference"""
+
+
+class RequestImageGenerationRequest(BaseModel):
+    aspect_ratio: Optional[Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]] = None
+    """The aspect ratio of the generation"""
+
+    callback_url: Optional[str] = None
+    """The callback URL for the generation"""
+
+    character_ref: Optional[RequestImageGenerationRequestCharacterRef] = None
+
+    generation_type: Optional[Literal["image"]] = None
+
+    image_ref: Optional[List[RequestImageGenerationRequestImageRef]] = None
+
+    model: Optional[Literal["photon-1", "photon-flash-1"]] = None
+    """The model used for the generation"""
+
+    modify_image_ref: Optional[RequestImageGenerationRequestModifyImageRef] = None
+    """The modify image reference object"""
+
+    prompt: Optional[str] = None
+    """The prompt of the generation"""
+
+    style_ref: Optional[List[RequestImageGenerationRequestStyleRef]] = None
+
+
+Request: TypeAlias = Union[RequestGenerationRequest, RequestImageGenerationRequest]
 
 
 class Generation(BaseModel):
@@ -108,11 +188,14 @@ class Generation(BaseModel):
     failure_reason: Optional[str] = None
     """The reason for the state of the generation"""
 
+    generation_type: Optional[Literal["video", "image"]] = None
+    """The type of the generation"""
+
+    model: Optional[str] = None
+    """The model used for the generation"""
+
     request: Optional[Request] = None
-    """The generation request object"""
+    """The request of the generation"""
 
     state: Optional[Literal["queued", "dreaming", "completed", "failed"]] = None
     """The state of the generation"""
-
-    version: Optional[str] = None
-    """The model version used for the generation eg. v1.6"""
