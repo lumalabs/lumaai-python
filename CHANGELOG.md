@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.1 (2024-12-04)
+
+Full Changelog: [v1.2.0...v1.2.1](https://github.com/lumalabs/lumaai-python/compare/v1.2.0...v1.2.1)
+
+### Chores
+
+* **internal:** bump pyright ([#67](https://github.com/lumalabs/lumaai-python/issues/67)) ([a31f5ad](https://github.com/lumalabs/lumaai-python/commit/a31f5ad57c6c44f794c68b7eb946a35a8195961d))
+* make the `Omit` type public ([#69](https://github.com/lumalabs/lumaai-python/issues/69)) ([59ff5b0](https://github.com/lumalabs/lumaai-python/commit/59ff5b0d9d6aef5a8f79034f86454f498803ef6c))
+
 ## 1.2.0 (2024-12-02)
 
 Full Changelog: [v1.1.2...v1.2.0](https://github.com/lumalabs/lumaai-python/compare/v1.1.2...v1.2.0)
