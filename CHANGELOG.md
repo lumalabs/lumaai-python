@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.2 (2024-12-10)
+
+Full Changelog: [v1.2.1...v1.2.2](https://github.com/lumalabs/lumaai-python/compare/v1.2.1...v1.2.2)
+
+### Chores
+
+* **internal:** codegen related update ([#72](https://github.com/lumalabs/lumaai-python/issues/72)) ([2b28fc6](https://github.com/lumalabs/lumaai-python/commit/2b28fc615f654f7b87efc24f712390be53775141))
+
 ## 1.2.1 (2024-12-04)
 
 Full Changelog: [v1.2.0...v1.2.1](https://github.com/lumalabs/lumaai-python/compare/v1.2.0...v1.2.1)
