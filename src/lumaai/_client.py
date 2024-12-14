@@ -8,7 +8,7 @@ from typing_extensions import Self, override
 
 import httpx
 
-from . import resources, _exceptions
+from . import _exceptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
@@ -24,6 +24,7 @@ from ._utils import (
     get_async_library,
 )
 from ._version import __version__
+from .resources import ping, credits
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import LumaAIError, APIStatusError
 from ._base_client import (
@@ -31,24 +32,15 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
+from .resources.generations import generations
 
-__all__ = [
-    "Timeout",
-    "Transport",
-    "ProxiesTypes",
-    "RequestOptions",
-    "resources",
-    "LumaAI",
-    "AsyncLumaAI",
-    "Client",
-    "AsyncClient",
-]
+__all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "LumaAI", "AsyncLumaAI", "Client", "AsyncClient"]
 
 
 class LumaAI(SyncAPIClient):
-    generations: resources.GenerationsResource
-    ping: resources.PingResource
-    credits: resources.CreditsResource
+    generations: generations.GenerationsResource
+    ping: ping.PingResource
+    credits: credits.CreditsResource
     with_raw_response: LumaAIWithRawResponse
     with_streaming_response: LumaAIWithStreamedResponse
 
@@ -106,9 +98,9 @@ class LumaAI(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.generations = resources.GenerationsResource(self)
-        self.ping = resources.PingResource(self)
-        self.credits = resources.CreditsResource(self)
+        self.generations = generations.GenerationsResource(self)
+        self.ping = ping.PingResource(self)
+        self.credits = credits.CreditsResource(self)
         self.with_raw_response = LumaAIWithRawResponse(self)
         self.with_streaming_response = LumaAIWithStreamedResponse(self)
 
@@ -218,9 +210,9 @@ class LumaAI(SyncAPIClient):
 
 
 class AsyncLumaAI(AsyncAPIClient):
-    generations: resources.AsyncGenerationsResource
-    ping: resources.AsyncPingResource
-    credits: resources.AsyncCreditsResource
+    generations: generations.AsyncGenerationsResource
+    ping: ping.AsyncPingResource
+    credits: credits.AsyncCreditsResource
     with_raw_response: AsyncLumaAIWithRawResponse
     with_streaming_response: AsyncLumaAIWithStreamedResponse
 
@@ -278,9 +270,9 @@ class AsyncLumaAI(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.generations = resources.AsyncGenerationsResource(self)
-        self.ping = resources.AsyncPingResource(self)
-        self.credits = resources.AsyncCreditsResource(self)
+        self.generations = generations.AsyncGenerationsResource(self)
+        self.ping = ping.AsyncPingResource(self)
+        self.credits = credits.AsyncCreditsResource(self)
         self.with_raw_response = AsyncLumaAIWithRawResponse(self)
         self.with_streaming_response = AsyncLumaAIWithStreamedResponse(self)
 
@@ -391,30 +383,30 @@ class AsyncLumaAI(AsyncAPIClient):
 
 class LumaAIWithRawResponse:
     def __init__(self, client: LumaAI) -> None:
-        self.generations = resources.GenerationsResourceWithRawResponse(client.generations)
-        self.ping = resources.PingResourceWithRawResponse(client.ping)
-        self.credits = resources.CreditsResourceWithRawResponse(client.credits)
+        self.generations = generations.GenerationsResourceWithRawResponse(client.generations)
+        self.ping = ping.PingResourceWithRawResponse(client.ping)
+        self.credits = credits.CreditsResourceWithRawResponse(client.credits)
 
 
 class AsyncLumaAIWithRawResponse:
     def __init__(self, client: AsyncLumaAI) -> None:
-        self.generations = resources.AsyncGenerationsResourceWithRawResponse(client.generations)
-        self.ping = resources.AsyncPingResourceWithRawResponse(client.ping)
-        self.credits = resources.AsyncCreditsResourceWithRawResponse(client.credits)
+        self.generations = generations.AsyncGenerationsResourceWithRawResponse(client.generations)
+        self.ping = ping.AsyncPingResourceWithRawResponse(client.ping)
+        self.credits = credits.AsyncCreditsResourceWithRawResponse(client.credits)
 
 
 class LumaAIWithStreamedResponse:
     def __init__(self, client: LumaAI) -> None:
-        self.generations = resources.GenerationsResourceWithStreamingResponse(client.generations)
-        self.ping = resources.PingResourceWithStreamingResponse(client.ping)
-        self.credits = resources.CreditsResourceWithStreamingResponse(client.credits)
+        self.generations = generations.GenerationsResourceWithStreamingResponse(client.generations)
+        self.ping = ping.PingResourceWithStreamingResponse(client.ping)
+        self.credits = credits.CreditsResourceWithStreamingResponse(client.credits)
 
 
 class AsyncLumaAIWithStreamedResponse:
     def __init__(self, client: AsyncLumaAI) -> None:
-        self.generations = resources.AsyncGenerationsResourceWithStreamingResponse(client.generations)
-        self.ping = resources.AsyncPingResourceWithStreamingResponse(client.ping)
-        self.credits = resources.AsyncCreditsResourceWithStreamingResponse(client.credits)
+        self.generations = generations.AsyncGenerationsResourceWithStreamingResponse(client.generations)
+        self.ping = ping.AsyncPingResourceWithStreamingResponse(client.ping)
+        self.credits = credits.AsyncCreditsResourceWithStreamingResponse(client.credits)
 
 
 Client = LumaAI
