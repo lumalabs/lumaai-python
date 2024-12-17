@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.2.2 (2024-12-17)
+
+Full Changelog: [v1.2.1...v1.2.2](https://github.com/lumalabs/lumaai-python/compare/v1.2.1...v1.2.2)
+
+### Chores
+
+* **internal:** add support for TypeAliasType ([#75](https://github.com/lumalabs/lumaai-python/issues/75)) ([487ea05](https://github.com/lumalabs/lumaai-python/commit/487ea05a5a5a1e25d311049b58c43e0b781fcb11))
+* **internal:** bump pyright ([#74](https://github.com/lumalabs/lumaai-python/issues/74)) ([684e61b](https://github.com/lumalabs/lumaai-python/commit/684e61b45dd704c13b38585a307a1fbc39796fe5))
+* **internal:** codegen related update ([#72](https://github.com/lumalabs/lumaai-python/issues/72)) ([2b28fc6](https://github.com/lumalabs/lumaai-python/commit/2b28fc615f654f7b87efc24f712390be53775141))
+* **internal:** codegen related update ([#76](https://github.com/lumalabs/lumaai-python/issues/76)) ([d16f720](https://github.com/lumalabs/lumaai-python/commit/d16f720b4c14d5de970808840e1621924a7bd1fa))
+* **internal:** codegen related update ([#77](https://github.com/lumalabs/lumaai-python/issues/77)) ([9bf4a43](https://github.com/lumalabs/lumaai-python/commit/9bf4a435ac0be28c6db5fb2950ff650e1584332a))
+* **internal:** updated imports ([#78](https://github.com/lumalabs/lumaai-python/issues/78)) ([3f247e8](https://github.com/lumalabs/lumaai-python/commit/3f247e8c1f1be4927bbc85d51f12de6ab7308496))
+
+
+### Documentation
+
+* **readme:** example snippet for client context manager ([#79](https://github.com/lumalabs/lumaai-python/issues/79)) ([ddf9360](https://github.com/lumalabs/lumaai-python/commit/ddf9360a133c06f5ff1271cea46ec202c2b989cb))
+
 ## 1.2.1 (2024-12-04)
 
 Full Changelog: [v1.2.0...v1.2.1](https://github.com/lumalabs/lumaai-python/compare/v1.2.0...v1.2.1)
