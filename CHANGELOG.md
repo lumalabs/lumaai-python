@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.2.3 (2025-01-25)
+
+Full Changelog: [v1.2.2...v1.2.3](https://github.com/lumalabs/lumaai-python/compare/v1.2.2...v1.2.3)
+
+### Bug Fixes
+
+* **client:** only call .close() when needed ([#86](https://github.com/lumalabs/lumaai-python/issues/86)) ([edfe052](https://github.com/lumalabs/lumaai-python/commit/edfe052f365e25084dc5fc3fcd6536e8ca7caad8))
+* correctly handle deserialising `cls` fields ([#88](https://github.com/lumalabs/lumaai-python/issues/88)) ([05474de](https://github.com/lumalabs/lumaai-python/commit/05474de956b6fbf237a5024fe1bf52c43619ab49))
+
+
+### Chores
+
+* add missing isclass check ([#84](https://github.com/lumalabs/lumaai-python/issues/84)) ([0f25a20](https://github.com/lumalabs/lumaai-python/commit/0f25a2007de69c2c86fdf6ce3cd354a68371d06f))
+* **internal:** bump httpx dependency ([#85](https://github.com/lumalabs/lumaai-python/issues/85)) ([7fc347f](https://github.com/lumalabs/lumaai-python/commit/7fc347ff9d25901b1066feeddcf7992db392486d))
+* **internal:** codegen related update ([#81](https://github.com/lumalabs/lumaai-python/issues/81)) ([4b141ed](https://github.com/lumalabs/lumaai-python/commit/4b141ed4e9dc448a5f5a4365d90d251ecd3f4534))
+* **internal:** codegen related update ([#83](https://github.com/lumalabs/lumaai-python/issues/83)) ([f2eb603](https://github.com/lumalabs/lumaai-python/commit/f2eb603e6f936ee987d1dcdcee7126d0fdb16111))
+* **internal:** codegen related update ([#87](https://github.com/lumalabs/lumaai-python/issues/87)) ([e8d60ba](https://github.com/lumalabs/lumaai-python/commit/e8d60ba7d411d640610462fc792612e9ecc22365))
+* **internal:** codegen related update ([#89](https://github.com/lumalabs/lumaai-python/issues/89)) ([6bf0844](https://github.com/lumalabs/lumaai-python/commit/6bf0844b8601e49697e7ac0552333e1a271a4be3))
+* **internal:** codegen related update ([#90](https://github.com/lumalabs/lumaai-python/issues/90)) ([1b4f8a8](https://github.com/lumalabs/lumaai-python/commit/1b4f8a88c251437472e41a4ed44c827ceb5cbcf8))
+* **internal:** codegen related update ([#92](https://github.com/lumalabs/lumaai-python/issues/92)) ([9aca177](https://github.com/lumalabs/lumaai-python/commit/9aca177ee2028c96b47ec79c660ff6c1de335470))
+* **internal:** minor style changes ([#91](https://github.com/lumalabs/lumaai-python/issues/91)) ([afb1e46](https://github.com/lumalabs/lumaai-python/commit/afb1e468f2f65ed5a8ab6e9ba2654a801ac813a4))
+
 ## 1.2.2 (2024-12-17)
 
 Full Changelog: [v1.2.1...v1.2.2](https://github.com/lumalabs/lumaai-python/compare/v1.2.1...v1.2.2)
