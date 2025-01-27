@@ -27,6 +27,7 @@ class TestGenerations:
         generation = client.generations.create(
             aspect_ratio="1:1",
             callback_url="https://example.com",
+            duration="5s",
             generation_type="video",
             keyframes={
                 "frame0": {
@@ -39,7 +40,9 @@ class TestGenerations:
                 },
             },
             loop=True,
+            model="ray-1-6",
             prompt="A serene lake surrounded by mountains at sunset",
+            resolution="540p",
         )
         assert_matches_type(Generation, generation, path=["response"])
 
@@ -186,6 +189,7 @@ class TestAsyncGenerations:
         generation = await async_client.generations.create(
             aspect_ratio="1:1",
             callback_url="https://example.com",
+            duration="5s",
             generation_type="video",
             keyframes={
                 "frame0": {
@@ -198,7 +202,9 @@ class TestAsyncGenerations:
                 },
             },
             loop=True,
+            model="ray-1-6",
             prompt="A serene lake surrounded by mountains at sunset",
+            resolution="540p",
         )
         assert_matches_type(Generation, generation, path=["response"])
 

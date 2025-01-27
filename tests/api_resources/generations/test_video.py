@@ -27,6 +27,7 @@ class TestVideo:
         video = client.generations.video.create(
             aspect_ratio="1:1",
             callback_url="https://example.com",
+            duration="5s",
             generation_type="video",
             keyframes={
                 "frame0": {
@@ -39,7 +40,9 @@ class TestVideo:
                 },
             },
             loop=True,
+            model="ray-1-6",
             prompt="A serene lake surrounded by mountains at sunset",
+            resolution="540p",
         )
         assert_matches_type(Generation, video, path=["response"])
 
@@ -77,6 +80,7 @@ class TestAsyncVideo:
         video = await async_client.generations.video.create(
             aspect_ratio="1:1",
             callback_url="https://example.com",
+            duration="5s",
             generation_type="video",
             keyframes={
                 "frame0": {
@@ -89,7 +93,9 @@ class TestAsyncVideo:
                 },
             },
             loop=True,
+            model="ray-1-6",
             prompt="A serene lake surrounded by mountains at sunset",
+            resolution="540p",
         )
         assert_matches_type(Generation, video, path=["response"])
 
