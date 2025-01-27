@@ -1,6 +1,6 @@
 [project]
 name = "lumaai"
-version = "1.2.2"
+version = "1.2.3"
 description = "The official Python library for the lumaai API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -54,7 +54,7 @@ dev-dependencies = [
     "dirty-equals>=0.6.0",
     "importlib-metadata>=6.7.0",
     "rich>=13.7.1",
-    "nest_asyncio==1.6.0"
+    "nest_asyncio==1.6.0",
 ]
 
 [tool.rye.scripts]
@@ -129,6 +129,7 @@ testpaths = ["tests"]
 addopts = "--tb=short"
 xfail_strict = true
 asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
 filterwarnings = [
   "error"
 ]
