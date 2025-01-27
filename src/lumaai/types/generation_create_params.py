@@ -28,6 +28,9 @@ class GenerationCreateParams(TypedDict, total=False):
     failed
     """
 
+    duration: Union[Literal["5s", "9s"], str]
+    """The duration of the generation"""
+
     generation_type: Literal["video"]
 
     keyframes: Keyframes
@@ -36,8 +39,14 @@ class GenerationCreateParams(TypedDict, total=False):
     loop: bool
     """Whether to loop the video"""
 
+    model: Literal["ray-1-6", "ray-2"]
+    """The model used for the generation"""
+
     prompt: str
     """The prompt of the generation"""
+
+    resolution: Union[Literal["540p", "720p"], str]
+    """The resolution of the generation"""
 
 
 class KeyframesFrame0GenerationReference(TypedDict, total=False):

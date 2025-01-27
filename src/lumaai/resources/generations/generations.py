@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import Literal
 
 import httpx
@@ -88,10 +89,13 @@ class GenerationsResource(SyncAPIResource):
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
         callback_url: str | NotGiven = NOT_GIVEN,
+        duration: Union[Literal["5s", "9s"], str] | NotGiven = NOT_GIVEN,
         generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
+        model: Literal["ray-1-6", "ray-2"] | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
+        resolution: Union[Literal["540p", "720p"], str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -109,11 +113,17 @@ class GenerationsResource(SyncAPIResource):
               be sent to the callback URL when the generation is dreaming, completed, or
               failed
 
+          duration: The duration of the generation
+
           keyframes: The keyframes of the generation
 
           loop: Whether to loop the video
 
+          model: The model used for the generation
+
           prompt: The prompt of the generation
+
+          resolution: The resolution of the generation
 
           extra_headers: Send extra headers
 
@@ -129,10 +139,13 @@ class GenerationsResource(SyncAPIResource):
                 {
                     "aspect_ratio": aspect_ratio,
                     "callback_url": callback_url,
+                    "duration": duration,
                     "generation_type": generation_type,
                     "keyframes": keyframes,
                     "loop": loop,
+                    "model": model,
                     "prompt": prompt,
+                    "resolution": resolution,
                 },
                 generation_create_params.GenerationCreateParams,
             ),
@@ -289,10 +302,13 @@ class AsyncGenerationsResource(AsyncAPIResource):
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
         callback_url: str | NotGiven = NOT_GIVEN,
+        duration: Union[Literal["5s", "9s"], str] | NotGiven = NOT_GIVEN,
         generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
+        model: Literal["ray-1-6", "ray-2"] | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
+        resolution: Union[Literal["540p", "720p"], str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -310,11 +326,17 @@ class AsyncGenerationsResource(AsyncAPIResource):
               be sent to the callback URL when the generation is dreaming, completed, or
               failed
 
+          duration: The duration of the generation
+
           keyframes: The keyframes of the generation
 
           loop: Whether to loop the video
 
+          model: The model used for the generation
+
           prompt: The prompt of the generation
+
+          resolution: The resolution of the generation
 
           extra_headers: Send extra headers
 
@@ -330,10 +352,13 @@ class AsyncGenerationsResource(AsyncAPIResource):
                 {
                     "aspect_ratio": aspect_ratio,
                     "callback_url": callback_url,
+                    "duration": duration,
                     "generation_type": generation_type,
                     "keyframes": keyframes,
                     "loop": loop,
+                    "model": model,
                     "prompt": prompt,
+                    "resolution": resolution,
                 },
                 generation_create_params.GenerationCreateParams,
             ),

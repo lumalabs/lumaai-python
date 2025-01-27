@@ -101,6 +101,9 @@ class RequestGenerationRequest(BaseModel):
     failed
     """
 
+    duration: Union[Literal["5s", "9s"], str, None] = None
+    """The duration of the generation"""
+
     generation_type: Optional[Literal["video"]] = None
 
     keyframes: Optional[RequestGenerationRequestKeyframes] = None
@@ -109,8 +112,14 @@ class RequestGenerationRequest(BaseModel):
     loop: Optional[bool] = None
     """Whether to loop the video"""
 
+    model: Optional[Literal["ray-1-6", "ray-2"]] = None
+    """The model used for the generation"""
+
     prompt: Optional[str] = None
     """The prompt of the generation"""
+
+    resolution: Union[Literal["540p", "720p"], str, None] = None
+    """The resolution of the generation"""
 
 
 class RequestImageGenerationRequestCharacterRefIdentity0(BaseModel):
