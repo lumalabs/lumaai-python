@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.1 (2025-02-04)
+
+Full Changelog: [v1.3.0...v1.3.1](https://github.com/lumalabs/lumaai-python/compare/v1.3.0...v1.3.1)
+
+### Chores
+
+* **internal:** bummp ruff dependency ([#98](https://github.com/lumalabs/lumaai-python/issues/98)) ([41e619b](https://github.com/lumalabs/lumaai-python/commit/41e619b49f434efe1ab2ab1043d63ccf4e304bc7))
+* **internal:** change default timeout to an int ([#97](https://github.com/lumalabs/lumaai-python/issues/97)) ([5fe41dc](https://github.com/lumalabs/lumaai-python/commit/5fe41dc009c55c3ae8d19317c7ab85fcce26f8e0))
+
 ## 1.3.0 (2025-01-27)
 
 Full Changelog: [v1.2.3...v1.3.0](https://github.com/lumalabs/lumaai-python/compare/v1.2.3...v1.3.0)
