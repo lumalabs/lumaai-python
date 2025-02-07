@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.4.0 (2025-02-07)
+
+Full Changelog: [v1.3.0...v1.4.0](https://github.com/lumalabs/lumaai-python/compare/v1.3.0...v1.4.0)
+
+### Features
+
+* **client:** send `X-Stainless-Read-Timeout` header ([#100](https://github.com/lumalabs/lumaai-python/issues/100)) ([7480f79](https://github.com/lumalabs/lumaai-python/commit/7480f79ca503c4ee5005eec52db090c29cd61547))
+
+
+### Chores
+
+* **internal:** bummp ruff dependency ([#98](https://github.com/lumalabs/lumaai-python/issues/98)) ([41e619b](https://github.com/lumalabs/lumaai-python/commit/41e619b49f434efe1ab2ab1043d63ccf4e304bc7))
+* **internal:** change default timeout to an int ([#97](https://github.com/lumalabs/lumaai-python/issues/97)) ([5fe41dc](https://github.com/lumalabs/lumaai-python/commit/5fe41dc009c55c3ae8d19317c7ab85fcce26f8e0))
+* **internal:** fix type traversing dictionary params ([#101](https://github.com/lumalabs/lumaai-python/issues/101)) ([941c012](https://github.com/lumalabs/lumaai-python/commit/941c0125bb9d081ee3491d5b010ec0aa93f65cc7))
+* **internal:** minor type handling changes ([#102](https://github.com/lumalabs/lumaai-python/issues/102)) ([2913923](https://github.com/lumalabs/lumaai-python/commit/2913923d103c17f1e117bf96c35a940cafd43f8d))
+
 ## 1.3.0 (2025-01-27)
 
 Full Changelog: [v1.2.3...v1.3.0](https://github.com/lumalabs/lumaai-python/compare/v1.2.3...v1.3.0)
