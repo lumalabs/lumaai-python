@@ -23,10 +23,12 @@ from pydantic import ValidationError
 
 from lumaai import LumaAI, AsyncLumaAI, APIResponseValidationError
 from lumaai._types import Omit
+from lumaai._utils import maybe_transform
 from lumaai._models import BaseModel, FinalRequestOptions
 from lumaai._constants import RAW_RESPONSE_HEADER
 from lumaai._exceptions import LumaAIError, APIStatusError, APITimeoutError, APIResponseValidationError
 from lumaai._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
+from lumaai.types.generation_create_params import GenerationCreateParams
 
 from .utils import update_env
 
@@ -727,10 +729,13 @@ class TestLumaAI:
                 "/generations",
                 body=cast(
                     object,
-                    dict(
-                        aspect_ratio="16:9",
-                        loop=False,
-                        prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                    maybe_transform(
+                        dict(
+                            aspect_ratio="16:9",
+                            loop=False,
+                            prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                        ),
+                        GenerationCreateParams,
                     ),
                 ),
                 cast_to=httpx.Response,
@@ -749,10 +754,13 @@ class TestLumaAI:
                 "/generations",
                 body=cast(
                     object,
-                    dict(
-                        aspect_ratio="16:9",
-                        loop=False,
-                        prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                    maybe_transform(
+                        dict(
+                            aspect_ratio="16:9",
+                            loop=False,
+                            prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                        ),
+                        GenerationCreateParams,
                     ),
                 ),
                 cast_to=httpx.Response,
@@ -1520,10 +1528,13 @@ class TestAsyncLumaAI:
                 "/generations",
                 body=cast(
                     object,
-                    dict(
-                        aspect_ratio="16:9",
-                        loop=False,
-                        prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                    maybe_transform(
+                        dict(
+                            aspect_ratio="16:9",
+                            loop=False,
+                            prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                        ),
+                        GenerationCreateParams,
                     ),
                 ),
                 cast_to=httpx.Response,
@@ -1542,10 +1553,13 @@ class TestAsyncLumaAI:
                 "/generations",
                 body=cast(
                     object,
-                    dict(
-                        aspect_ratio="16:9",
-                        loop=False,
-                        prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                    maybe_transform(
+                        dict(
+                            aspect_ratio="16:9",
+                            loop=False,
+                            prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                        ),
+                        GenerationCreateParams,
                     ),
                 ),
                 cast_to=httpx.Response,
