@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.4.1 (2025-02-14)
+
+Full Changelog: [v1.4.0...v1.4.1](https://github.com/lumalabs/lumaai-python/compare/v1.4.0...v1.4.1)
+
+### Bug Fixes
+
+* asyncify on non-asyncio runtimes ([#106](https://github.com/lumalabs/lumaai-python/issues/106)) ([709fa16](https://github.com/lumalabs/lumaai-python/commit/709fa16f75e180f6e5e6e7b293411bbd05018046))
+
+
+### Chores
+
+* **internal:** update client tests ([#104](https://github.com/lumalabs/lumaai-python/issues/104)) ([729ec4c](https://github.com/lumalabs/lumaai-python/commit/729ec4c52a5b4d2dd4e8a99af7b28e9cd2c7de6f))
+
 ## 1.4.0 (2025-02-07)
 
 Full Changelog: [v1.3.0...v1.4.0](https://github.com/lumalabs/lumaai-python/compare/v1.3.0...v1.4.0)
