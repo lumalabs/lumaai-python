@@ -9,7 +9,10 @@ import pytest
 
 from lumaai import LumaAI, AsyncLumaAI
 from tests.utils import assert_matches_type
-from lumaai.types import Generation, GenerationListResponse
+from lumaai.types import (
+    Generation,
+    GenerationListResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -175,6 +178,54 @@ class TestGenerations:
                 "",
             )
 
+    @parametrize
+    def test_method_upscale(self, client: LumaAI) -> None:
+        generation = client.generations.upscale(
+            id="id",
+        )
+        assert_matches_type(Generation, generation, path=["response"])
+
+    @parametrize
+    def test_method_upscale_with_all_params(self, client: LumaAI) -> None:
+        generation = client.generations.upscale(
+            id="id",
+            callback_url="https://example.com",
+            generation_type="upscale_video",
+            resolution="540p",
+        )
+        assert_matches_type(Generation, generation, path=["response"])
+
+    @parametrize
+    def test_raw_response_upscale(self, client: LumaAI) -> None:
+        response = client.generations.with_raw_response.upscale(
+            id="id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        generation = response.parse()
+        assert_matches_type(Generation, generation, path=["response"])
+
+    @parametrize
+    def test_streaming_response_upscale(self, client: LumaAI) -> None:
+        with client.generations.with_streaming_response.upscale(
+            id="id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            generation = response.parse()
+            assert_matches_type(Generation, generation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_upscale(self, client: LumaAI) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.generations.with_raw_response.upscale(
+                id="",
+            )
+
 
 class TestAsyncGenerations:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -335,4 +386,52 @@ class TestAsyncGenerations:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.generations.with_raw_response.get(
                 "",
+            )
+
+    @parametrize
+    async def test_method_upscale(self, async_client: AsyncLumaAI) -> None:
+        generation = await async_client.generations.upscale(
+            id="id",
+        )
+        assert_matches_type(Generation, generation, path=["response"])
+
+    @parametrize
+    async def test_method_upscale_with_all_params(self, async_client: AsyncLumaAI) -> None:
+        generation = await async_client.generations.upscale(
+            id="id",
+            callback_url="https://example.com",
+            generation_type="upscale_video",
+            resolution="540p",
+        )
+        assert_matches_type(Generation, generation, path=["response"])
+
+    @parametrize
+    async def test_raw_response_upscale(self, async_client: AsyncLumaAI) -> None:
+        response = await async_client.generations.with_raw_response.upscale(
+            id="id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        generation = await response.parse()
+        assert_matches_type(Generation, generation, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_upscale(self, async_client: AsyncLumaAI) -> None:
+        async with async_client.generations.with_streaming_response.upscale(
+            id="id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            generation = await response.parse()
+            assert_matches_type(Generation, generation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_upscale(self, async_client: AsyncLumaAI) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.generations.with_raw_response.upscale(
+                id="",
             )

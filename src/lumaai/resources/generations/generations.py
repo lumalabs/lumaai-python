@@ -23,7 +23,7 @@ from .video import (
     VideoResourceWithStreamingResponse,
     AsyncVideoResourceWithStreamingResponse,
 )
-from ...types import generation_list_params, generation_create_params
+from ...types import generation_list_params, generation_create_params, generation_upscale_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -95,7 +95,7 @@ class GenerationsResource(SyncAPIResource):
         loop: bool | NotGiven = NOT_GIVEN,
         model: Literal["ray-1-6", "ray-2"] | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
-        resolution: Union[Literal["540p", "720p"], str] | NotGiven = NOT_GIVEN,
+        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -264,6 +264,54 @@ class GenerationsResource(SyncAPIResource):
             cast_to=Generation,
         )
 
+    def upscale(
+        self,
+        id: str,
+        *,
+        callback_url: str | NotGiven = NOT_GIVEN,
+        generation_type: Literal["upscale_video"] | NotGiven = NOT_GIVEN,
+        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Generation:
+        """
+        Upscale a generation by its ID
+
+        Args:
+          callback_url: The callback URL for the upscale
+
+          resolution: The resolution of the upscale
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._post(
+            f"/generations/{id}/upscale",
+            body=maybe_transform(
+                {
+                    "callback_url": callback_url,
+                    "generation_type": generation_type,
+                    "resolution": resolution,
+                },
+                generation_upscale_params.GenerationUpscaleParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Generation,
+        )
+
 
 class AsyncGenerationsResource(AsyncAPIResource):
     @cached_property
@@ -308,7 +356,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
         loop: bool | NotGiven = NOT_GIVEN,
         model: Literal["ray-1-6", "ray-2"] | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
-        resolution: Union[Literal["540p", "720p"], str] | NotGiven = NOT_GIVEN,
+        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -477,6 +525,54 @@ class AsyncGenerationsResource(AsyncAPIResource):
             cast_to=Generation,
         )
 
+    async def upscale(
+        self,
+        id: str,
+        *,
+        callback_url: str | NotGiven = NOT_GIVEN,
+        generation_type: Literal["upscale_video"] | NotGiven = NOT_GIVEN,
+        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Generation:
+        """
+        Upscale a generation by its ID
+
+        Args:
+          callback_url: The callback URL for the upscale
+
+          resolution: The resolution of the upscale
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._post(
+            f"/generations/{id}/upscale",
+            body=await async_maybe_transform(
+                {
+                    "callback_url": callback_url,
+                    "generation_type": generation_type,
+                    "resolution": resolution,
+                },
+                generation_upscale_params.GenerationUpscaleParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Generation,
+        )
+
 
 class GenerationsResourceWithRawResponse:
     def __init__(self, generations: GenerationsResource) -> None:
@@ -493,6 +589,9 @@ class GenerationsResourceWithRawResponse:
         )
         self.get = to_raw_response_wrapper(
             generations.get,
+        )
+        self.upscale = to_raw_response_wrapper(
+            generations.upscale,
         )
 
     @cached_property
@@ -524,6 +623,9 @@ class AsyncGenerationsResourceWithRawResponse:
         self.get = async_to_raw_response_wrapper(
             generations.get,
         )
+        self.upscale = async_to_raw_response_wrapper(
+            generations.upscale,
+        )
 
     @cached_property
     def camera_motion(self) -> AsyncCameraMotionResourceWithRawResponse:
@@ -554,6 +656,9 @@ class GenerationsResourceWithStreamingResponse:
         self.get = to_streamed_response_wrapper(
             generations.get,
         )
+        self.upscale = to_streamed_response_wrapper(
+            generations.upscale,
+        )
 
     @cached_property
     def camera_motion(self) -> CameraMotionResourceWithStreamingResponse:
@@ -583,6 +688,9 @@ class AsyncGenerationsResourceWithStreamingResponse:
         )
         self.get = async_to_streamed_response_wrapper(
             generations.get,
+        )
+        self.upscale = async_to_streamed_response_wrapper(
+            generations.upscale,
         )
 
     @cached_property
