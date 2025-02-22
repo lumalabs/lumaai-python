@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.5.0 (2025-02-22)
+
+Full Changelog: [v1.4.1...v1.5.0](https://github.com/lumalabs/lumaai-python/compare/v1.4.1...v1.5.0)
+
+### Features
+
+* **api:** api update ([#111](https://github.com/lumalabs/lumaai-python/issues/111)) ([4db81fc](https://github.com/lumalabs/lumaai-python/commit/4db81fc9a3a4c4440e509e601e618c808de8145f))
+* **client:** allow passing `NotGiven` for body ([#109](https://github.com/lumalabs/lumaai-python/issues/109)) ([75d1543](https://github.com/lumalabs/lumaai-python/commit/75d15435597671ccf955f685428b9873c26bae9d))
+
+
+### Bug Fixes
+
+* **client:** mark some request bodies as optional ([75d1543](https://github.com/lumalabs/lumaai-python/commit/75d15435597671ccf955f685428b9873c26bae9d))
+
 ## 1.4.1 (2025-02-14)
 
 Full Changelog: [v1.4.0...v1.4.1](https://github.com/lumalabs/lumaai-python/compare/v1.4.0...v1.4.1)
