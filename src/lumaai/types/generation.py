@@ -25,12 +25,16 @@ __all__ = [
     "RequestImageGenerationRequestImageRef",
     "RequestImageGenerationRequestModifyImageRef",
     "RequestImageGenerationRequestStyleRef",
+    "RequestUpscaleVideoGenerationRequest",
 ]
 
 
 class Assets(BaseModel):
     image: Optional[str] = None
     """The URL of the image"""
+
+    progress_video: Optional[str] = None
+    """The URL of the progress video"""
 
     video: Optional[str] = None
     """The URL of the video"""
@@ -118,7 +122,7 @@ class RequestGenerationRequest(BaseModel):
     prompt: Optional[str] = None
     """The prompt of the generation"""
 
-    resolution: Union[Literal["540p", "720p"], str, None] = None
+    resolution: Union[Literal["540p", "720p", "1080p", "4k"], str, None] = None
     """The resolution of the generation"""
 
 
@@ -181,7 +185,19 @@ class RequestImageGenerationRequest(BaseModel):
     style_ref: Optional[List[RequestImageGenerationRequestStyleRef]] = None
 
 
-Request: TypeAlias = Union[RequestGenerationRequest, RequestImageGenerationRequest]
+class RequestUpscaleVideoGenerationRequest(BaseModel):
+    callback_url: Optional[str] = None
+    """The callback URL for the upscale"""
+
+    generation_type: Optional[Literal["upscale_video"]] = None
+
+    resolution: Union[Literal["540p", "720p", "1080p", "4k"], str, None] = None
+    """The resolution of the upscale"""
+
+
+Request: TypeAlias = Union[
+    RequestGenerationRequest, RequestImageGenerationRequest, RequestUpscaleVideoGenerationRequest
+]
 
 
 class Generation(BaseModel):

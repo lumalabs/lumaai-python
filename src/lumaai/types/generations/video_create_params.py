@@ -45,7 +45,7 @@ class VideoCreateParams(TypedDict, total=False):
     prompt: str
     """The prompt of the generation"""
 
-    resolution: Union[Literal["540p", "720p"], str]
+    resolution: Union[Literal["540p", "720p", "1080p", "4k"], str]
     """The resolution of the generation"""
 
 
