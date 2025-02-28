@@ -70,7 +70,7 @@ class LumaAI(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous lumaai client instance.
+        """Construct a new synchronous LumaAI client instance.
 
         This automatically infers the `auth_token` argument from the `LUMAAI_API_KEY` environment variable if it is not provided.
         """
@@ -242,7 +242,7 @@ class AsyncLumaAI(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async lumaai client instance.
+        """Construct a new async AsyncLumaAI client instance.
 
         This automatically infers the `auth_token` argument from the `LUMAAI_API_KEY` environment variable if it is not provided.
         """
