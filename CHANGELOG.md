@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.5.1 (2025-03-04)
+
+Full Changelog: [v1.5.0...v1.5.1](https://github.com/lumalabs/lumaai-python/compare/v1.5.0...v1.5.1)
+
+### Chores
+
+* **docs:** update client docstring ([#117](https://github.com/lumalabs/lumaai-python/issues/117)) ([33e4b1c](https://github.com/lumalabs/lumaai-python/commit/33e4b1caa0856141fddf96c1f0f11eded04b37b8))
+* **internal:** fix devcontainers setup ([#113](https://github.com/lumalabs/lumaai-python/issues/113)) ([51d77c4](https://github.com/lumalabs/lumaai-python/commit/51d77c41886232b0fa1e3e82ed9fec3a08204b56))
+* **internal:** properly set __pydantic_private__ ([#115](https://github.com/lumalabs/lumaai-python/issues/115)) ([b9c7a3f](https://github.com/lumalabs/lumaai-python/commit/b9c7a3ff7f20f3bf06aeb85452235a6a6176e778))
+* **internal:** remove unused http client options forwarding ([#118](https://github.com/lumalabs/lumaai-python/issues/118)) ([b68b130](https://github.com/lumalabs/lumaai-python/commit/b68b130141096a575f893136721bf62cb792b4fe))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#116](https://github.com/lumalabs/lumaai-python/issues/116)) ([b7ee94c](https://github.com/lumalabs/lumaai-python/commit/b7ee94c17aa885c4b7f8d01d6c0b172cbf205a07))
+
 ## 1.5.0 (2025-02-22)
 
 Full Changelog: [v1.4.1...v1.5.0](https://github.com/lumalabs/lumaai-python/compare/v1.4.1...v1.5.0)
