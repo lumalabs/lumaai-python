@@ -79,6 +79,30 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
 
+## Nested params
+
+Nested parameters are dictionaries, typed using `TypedDict`, for example:
+
+```python
+from lumaai import LumaAI
+
+client = LumaAI()
+
+generation = client.generations.create(
+    keyframes={
+        "frame0": {
+            "type": "image",
+            "url": "https://example.com/image.jpg",
+        },
+        "frame1": {
+            "id": "123e4567-e89b-12d3-a456-426614174000",
+            "type": "generation",
+        },
+    },
+)
+print(generation.keyframes)
+```
+
 ## Handling errors
 
 When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `lumaai.APIConnectionError` is raised.
