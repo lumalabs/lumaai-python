@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.5.2 (2025-03-15)
+
+Full Changelog: [v1.5.1...v1.5.2](https://github.com/lumalabs/lumaai-python/compare/v1.5.1...v1.5.2)
+
+### Bug Fixes
+
+* **types:** handle more discriminated union shapes ([#126](https://github.com/lumalabs/lumaai-python/issues/126)) ([71a98c0](https://github.com/lumalabs/lumaai-python/commit/71a98c0718c44688074031d45df765cc5e5dae8b))
+
+
+### Chores
+
+* **internal:** bump rye to 0.44.0 ([#125](https://github.com/lumalabs/lumaai-python/issues/125)) ([20a924b](https://github.com/lumalabs/lumaai-python/commit/20a924bcae62c24e9990c3418c03d62fbefbff3a))
+* **internal:** codegen related update ([#124](https://github.com/lumalabs/lumaai-python/issues/124)) ([658c121](https://github.com/lumalabs/lumaai-python/commit/658c121252e128962caaf382f9748da8f30e46c0))
+* **internal:** remove extra empty newlines ([#123](https://github.com/lumalabs/lumaai-python/issues/123)) ([82d0867](https://github.com/lumalabs/lumaai-python/commit/82d0867956d52dec920f3693ec8bc89a0b7fd6a6))
+
+
+### Documentation
+
+* revise readme docs about nested params ([#120](https://github.com/lumalabs/lumaai-python/issues/120)) ([424187b](https://github.com/lumalabs/lumaai-python/commit/424187bd35b540d56aef9fec0eaae13346d3abd0))
+
 ## 1.5.1 (2025-03-04)
 
 Full Changelog: [v1.5.0...v1.5.1](https://github.com/lumalabs/lumaai-python/compare/v1.5.0...v1.5.1)
