@@ -116,7 +116,7 @@ class RequestGenerationRequest(BaseModel):
     loop: Optional[bool] = None
     """Whether to loop the video"""
 
-    model: Optional[Literal["ray-1-6", "ray-2"]] = None
+    model: Optional[Literal["ray-1-6", "ray-2", "ray-flash-2"]] = None
     """The model used for the generation"""
 
     prompt: Optional[str] = None
