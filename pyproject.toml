@@ -1,6 +1,6 @@
 [project]
 name = "lumaai"
-version = "1.5.1"
+version = "1.5.2"
 description = "The official Python library for the lumaai API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -36,7 +36,6 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/lumalabs/lumaai-python"
 Repository = "https://github.com/lumalabs/lumaai-python"
-
 
 
 [tool.rye]
@@ -151,7 +150,6 @@ reportImplicitOverride = true
 
 reportImportCycles = false
 reportPrivateUsage = false
-
 
 [tool.ruff]
 line-length = 120
