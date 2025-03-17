@@ -5,7 +5,7 @@ description = "The official Python library for the lumaai API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "LumaAI", email = "support@lumalabs.ai" },
+{ name = "LumaAI", email = "support+api@lumalabs.ai" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",

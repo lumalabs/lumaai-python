@@ -20,7 +20,7 @@ or products provided by LumaAI please follow the respective company's security r
 
 ### LumaAI Terms and Policies
 
-Please contact support@lumalabs.ai for any questions or concerns regarding security of our services.
+Please contact support+api@lumalabs.ai for any questions or concerns regarding security of our services.
 
 ---
 
