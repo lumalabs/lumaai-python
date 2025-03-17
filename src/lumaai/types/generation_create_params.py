@@ -39,7 +39,7 @@ class GenerationCreateParams(TypedDict, total=False):
     loop: bool
     """Whether to loop the video"""
 
-    model: Literal["ray-1-6", "ray-2"]
+    model: Literal["ray-1-6", "ray-2", "ray-flash-2"]
     """The model used for the generation"""
 
     prompt: str

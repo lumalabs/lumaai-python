@@ -93,7 +93,7 @@ class GenerationsResource(SyncAPIResource):
         generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
-        model: Literal["ray-1-6", "ray-2"] | NotGiven = NOT_GIVEN,
+        model: Literal["ray-1-6", "ray-2", "ray-flash-2"] | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
         resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -354,7 +354,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
         generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
-        model: Literal["ray-1-6", "ray-2"] | NotGiven = NOT_GIVEN,
+        model: Literal["ray-1-6", "ray-2", "ray-flash-2"] | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
         resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
