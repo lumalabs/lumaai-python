@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.1 (2025-03-17)
+
+Full Changelog: [v1.6.0...v1.6.1](https://github.com/lumalabs/lumaai-python/compare/v1.6.0...v1.6.1)
+
+### Bug Fixes
+
+* **ci:** ensure pip is always available ([#131](https://github.com/lumalabs/lumaai-python/issues/131)) ([975fb6f](https://github.com/lumalabs/lumaai-python/commit/975fb6f2650a6beb8e30d4a758d0d96bd9b7d8bd))
+
 ## 1.6.0 (2025-03-17)
 
 Full Changelog: [v1.5.2...v1.6.0](https://github.com/lumalabs/lumaai-python/compare/v1.5.2...v1.6.0)
