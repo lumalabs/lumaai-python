@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.2 (2025-03-17)
+
+Full Changelog: [v1.6.1...v1.6.2](https://github.com/lumalabs/lumaai-python/compare/v1.6.1...v1.6.2)
+
+### Bug Fixes
+
+* **ci:** revert rye version change ([9e4f00c](https://github.com/lumalabs/lumaai-python/commit/9e4f00ca379aba7aed502f12ccedac8edbfd9bf8))
+
 ## 1.6.1 (2025-03-17)
 
 Full Changelog: [v1.6.0...v1.6.1](https://github.com/lumalabs/lumaai-python/compare/v1.6.0...v1.6.1)
