@@ -23,7 +23,12 @@ from .video import (
     VideoResourceWithStreamingResponse,
     AsyncVideoResourceWithStreamingResponse,
 )
-from ...types import generation_list_params, generation_create_params, generation_upscale_params
+from ...types import (
+    generation_list_params,
+    generation_audio_params,
+    generation_create_params,
+    generation_upscale_params,
+)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -229,6 +234,58 @@ class GenerationsResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
+        )
+
+    def audio(
+        self,
+        id: str,
+        *,
+        callback_url: str | NotGiven = NOT_GIVEN,
+        generation_type: Literal["add_audio"] | NotGiven = NOT_GIVEN,
+        negative_prompt: str | NotGiven = NOT_GIVEN,
+        prompt: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Generation:
+        """
+        Add audio to a generation by its ID
+
+        Args:
+          callback_url: The callback URL for the audio
+
+          negative_prompt: The negative prompt of the audio
+
+          prompt: The prompt of the audio
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._post(
+            f"/generations/{id}/audio",
+            body=maybe_transform(
+                {
+                    "callback_url": callback_url,
+                    "generation_type": generation_type,
+                    "negative_prompt": negative_prompt,
+                    "prompt": prompt,
+                },
+                generation_audio_params.GenerationAudioParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Generation,
         )
 
     def get(
@@ -492,6 +549,58 @@ class AsyncGenerationsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def audio(
+        self,
+        id: str,
+        *,
+        callback_url: str | NotGiven = NOT_GIVEN,
+        generation_type: Literal["add_audio"] | NotGiven = NOT_GIVEN,
+        negative_prompt: str | NotGiven = NOT_GIVEN,
+        prompt: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Generation:
+        """
+        Add audio to a generation by its ID
+
+        Args:
+          callback_url: The callback URL for the audio
+
+          negative_prompt: The negative prompt of the audio
+
+          prompt: The prompt of the audio
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._post(
+            f"/generations/{id}/audio",
+            body=await async_maybe_transform(
+                {
+                    "callback_url": callback_url,
+                    "generation_type": generation_type,
+                    "negative_prompt": negative_prompt,
+                    "prompt": prompt,
+                },
+                generation_audio_params.GenerationAudioParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Generation,
+        )
+
     async def get(
         self,
         id: str,
@@ -587,6 +696,9 @@ class GenerationsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             generations.delete,
         )
+        self.audio = to_raw_response_wrapper(
+            generations.audio,
+        )
         self.get = to_raw_response_wrapper(
             generations.get,
         )
@@ -619,6 +731,9 @@ class AsyncGenerationsResourceWithRawResponse:
         )
         self.delete = async_to_raw_response_wrapper(
             generations.delete,
+        )
+        self.audio = async_to_raw_response_wrapper(
+            generations.audio,
         )
         self.get = async_to_raw_response_wrapper(
             generations.get,
@@ -653,6 +768,9 @@ class GenerationsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             generations.delete,
         )
+        self.audio = to_streamed_response_wrapper(
+            generations.audio,
+        )
         self.get = to_streamed_response_wrapper(
             generations.get,
         )
@@ -685,6 +803,9 @@ class AsyncGenerationsResourceWithStreamingResponse:
         )
         self.delete = async_to_streamed_response_wrapper(
             generations.delete,
+        )
+        self.audio = async_to_streamed_response_wrapper(
+            generations.audio,
         )
         self.get = async_to_streamed_response_wrapper(
             generations.get,
