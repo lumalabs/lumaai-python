@@ -141,6 +141,55 @@ class TestGenerations:
             )
 
     @parametrize
+    def test_method_audio(self, client: LumaAI) -> None:
+        generation = client.generations.audio(
+            id="id",
+        )
+        assert_matches_type(Generation, generation, path=["response"])
+
+    @parametrize
+    def test_method_audio_with_all_params(self, client: LumaAI) -> None:
+        generation = client.generations.audio(
+            id="id",
+            callback_url="https://example.com",
+            generation_type="add_audio",
+            negative_prompt="negative_prompt",
+            prompt="prompt",
+        )
+        assert_matches_type(Generation, generation, path=["response"])
+
+    @parametrize
+    def test_raw_response_audio(self, client: LumaAI) -> None:
+        response = client.generations.with_raw_response.audio(
+            id="id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        generation = response.parse()
+        assert_matches_type(Generation, generation, path=["response"])
+
+    @parametrize
+    def test_streaming_response_audio(self, client: LumaAI) -> None:
+        with client.generations.with_streaming_response.audio(
+            id="id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            generation = response.parse()
+            assert_matches_type(Generation, generation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_audio(self, client: LumaAI) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.generations.with_raw_response.audio(
+                id="",
+            )
+
+    @parametrize
     def test_method_get(self, client: LumaAI) -> None:
         generation = client.generations.get(
             "id",
@@ -348,6 +397,55 @@ class TestAsyncGenerations:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.generations.with_raw_response.delete(
                 "",
+            )
+
+    @parametrize
+    async def test_method_audio(self, async_client: AsyncLumaAI) -> None:
+        generation = await async_client.generations.audio(
+            id="id",
+        )
+        assert_matches_type(Generation, generation, path=["response"])
+
+    @parametrize
+    async def test_method_audio_with_all_params(self, async_client: AsyncLumaAI) -> None:
+        generation = await async_client.generations.audio(
+            id="id",
+            callback_url="https://example.com",
+            generation_type="add_audio",
+            negative_prompt="negative_prompt",
+            prompt="prompt",
+        )
+        assert_matches_type(Generation, generation, path=["response"])
+
+    @parametrize
+    async def test_raw_response_audio(self, async_client: AsyncLumaAI) -> None:
+        response = await async_client.generations.with_raw_response.audio(
+            id="id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        generation = await response.parse()
+        assert_matches_type(Generation, generation, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_audio(self, async_client: AsyncLumaAI) -> None:
+        async with async_client.generations.with_streaming_response.audio(
+            id="id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            generation = await response.parse()
+            assert_matches_type(Generation, generation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_audio(self, async_client: AsyncLumaAI) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.generations.with_raw_response.audio(
+                id="",
             )
 
     @parametrize
