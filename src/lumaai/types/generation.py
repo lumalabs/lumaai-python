@@ -26,6 +26,7 @@ __all__ = [
     "RequestImageGenerationRequestModifyImageRef",
     "RequestImageGenerationRequestStyleRef",
     "RequestUpscaleVideoGenerationRequest",
+    "RequestAudioGenerationRequest",
 ]
 
 
@@ -195,8 +196,24 @@ class RequestUpscaleVideoGenerationRequest(BaseModel):
     """The resolution of the upscale"""
 
 
+class RequestAudioGenerationRequest(BaseModel):
+    callback_url: Optional[str] = None
+    """The callback URL for the audio"""
+
+    generation_type: Optional[Literal["add_audio"]] = None
+
+    negative_prompt: Optional[str] = None
+    """The negative prompt of the audio"""
+
+    prompt: Optional[str] = None
+    """The prompt of the audio"""
+
+
 Request: TypeAlias = Union[
-    RequestGenerationRequest, RequestImageGenerationRequest, RequestUpscaleVideoGenerationRequest
+    RequestGenerationRequest,
+    RequestImageGenerationRequest,
+    RequestUpscaleVideoGenerationRequest,
+    RequestAudioGenerationRequest,
 ]
 
 
