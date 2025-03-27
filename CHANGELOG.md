@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.1 (2025-03-27)
+
+Full Changelog: [v1.7.0...v1.7.1](https://github.com/lumalabs/lumaai-python/compare/v1.7.0...v1.7.1)
+
+### Chores
+
+* fix typos ([#143](https://github.com/lumalabs/lumaai-python/issues/143)) ([2b47cdc](https://github.com/lumalabs/lumaai-python/commit/2b47cdc2b25ed98263f7fd97c2b2a09e8bb3b984))
+
 ## 1.7.0 (2025-03-19)
 
 Full Changelog: [v1.6.3...v1.7.0](https://github.com/lumalabs/lumaai-python/compare/v1.6.3...v1.7.0)
