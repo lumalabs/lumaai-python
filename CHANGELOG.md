@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.2 (2025-04-04)
+
+Full Changelog: [v1.7.1...v1.7.2](https://github.com/lumalabs/lumaai-python/compare/v1.7.1...v1.7.2)
+
+### Chores
+
+* **internal:** remove trailing character ([#146](https://github.com/lumalabs/lumaai-python/issues/146)) ([e5d38ff](https://github.com/lumalabs/lumaai-python/commit/e5d38ffecf56e7c1bc70724545ad24a34700dc97))
+
 ## 1.7.1 (2025-03-27)
 
 Full Changelog: [v1.7.0...v1.7.1](https://github.com/lumalabs/lumaai-python/compare/v1.7.0...v1.7.1)
