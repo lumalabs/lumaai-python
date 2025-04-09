@@ -25,7 +25,7 @@ class TestImage:
     @parametrize
     def test_method_create_with_all_params(self, client: LumaAI) -> None:
         image = client.generations.image.create(
-            aspect_ratio="1:1",
+            aspect_ratio="16:9",
             callback_url="https://example.com",
             character_ref={"identity0": {"images": ["https://example.com"]}},
             generation_type="image",
@@ -82,7 +82,7 @@ class TestAsyncImage:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncLumaAI) -> None:
         image = await async_client.generations.image.create(
-            aspect_ratio="1:1",
+            aspect_ratio="16:9",
             callback_url="https://example.com",
             character_ref={"identity0": {"images": ["https://example.com"]}},
             generation_type="image",
