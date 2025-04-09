@@ -25,7 +25,7 @@ class TestVideo:
     @parametrize
     def test_method_create_with_all_params(self, client: LumaAI) -> None:
         video = client.generations.video.create(
-            aspect_ratio="1:1",
+            aspect_ratio="16:9",
             callback_url="https://example.com",
             duration="5s",
             generation_type="video",
@@ -78,7 +78,7 @@ class TestAsyncVideo:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncLumaAI) -> None:
         video = await async_client.generations.video.create(
-            aspect_ratio="1:1",
+            aspect_ratio="16:9",
             callback_url="https://example.com",
             duration="5s",
             generation_type="video",
