@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.7.3 (2025-04-12)
+
+Full Changelog: [v1.7.2...v1.7.3](https://github.com/lumalabs/lumaai-python/compare/v1.7.2...v1.7.3)
+
+### Bug Fixes
+
+* **perf:** optimize some hot paths ([ae01192](https://github.com/lumalabs/lumaai-python/commit/ae01192924c54d4a2a7d9a70d0df88e209163989))
+* **perf:** skip traversing types for NotGiven values ([43ac98d](https://github.com/lumalabs/lumaai-python/commit/43ac98d293f3e373ac986a4cabd036a54b1e8213))
+
+
+### Chores
+
+* **internal:** expand CI branch coverage ([a006432](https://github.com/lumalabs/lumaai-python/commit/a00643219c4eebcfe34eca5046e5380a96945257))
+* **internal:** reduce CI branch coverage ([7c6570e](https://github.com/lumalabs/lumaai-python/commit/7c6570e1e1a9cd62d67017d62af8375b8eb6a145))
+* **internal:** slight transform perf improvement ([#149](https://github.com/lumalabs/lumaai-python/issues/149)) ([b95d415](https://github.com/lumalabs/lumaai-python/commit/b95d415fb6f3a92b90e78044c3756b84611a9179))
+* **tests:** improve enum examples ([#151](https://github.com/lumalabs/lumaai-python/issues/151)) ([dc358d1](https://github.com/lumalabs/lumaai-python/commit/dc358d17dc810dc8e1de849679a618c61a626cd5))
+
 ## 1.7.2 (2025-04-04)
 
 Full Changelog: [v1.7.1...v1.7.2](https://github.com/lumalabs/lumaai-python/compare/v1.7.1...v1.7.2)
