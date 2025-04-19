@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.7.4 (2025-04-19)
+
+Full Changelog: [v1.7.3...v1.7.4](https://github.com/lumalabs/lumaai-python/compare/v1.7.3...v1.7.4)
+
+### Chores
+
+* **client:** minor internal fixes ([68e1d2f](https://github.com/lumalabs/lumaai-python/commit/68e1d2f9af6bf09abfdfa371866708e18fa302f5))
+* **internal:** base client updates ([67b1b18](https://github.com/lumalabs/lumaai-python/commit/67b1b18ca71382adc68a018203b18fd08b7e1be2))
+* **internal:** bump pyright version ([56afae7](https://github.com/lumalabs/lumaai-python/commit/56afae7fdfc5b3b2677e4504f13b7ea2e10c90a3))
+* **internal:** update models test ([f1d8b96](https://github.com/lumalabs/lumaai-python/commit/f1d8b96680fcf539a937f9a0e9cbf5854dbc4b53))
+* **internal:** update pyright settings ([f8da796](https://github.com/lumalabs/lumaai-python/commit/f8da796eede330a39599f66771dc74bb3a68aeb7))
+
 ## 1.7.3 (2025-04-12)
 
 Full Changelog: [v1.7.2...v1.7.3](https://github.com/lumalabs/lumaai-python/compare/v1.7.2...v1.7.3)
