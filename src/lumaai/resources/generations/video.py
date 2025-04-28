@@ -2,16 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Iterable
 from typing_extensions import Literal
 
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -52,6 +49,7 @@ class VideoResource(SyncAPIResource):
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
         callback_url: str | NotGiven = NOT_GIVEN,
+        concepts: Iterable[video_create_params.Concept] | NotGiven = NOT_GIVEN,
         duration: Union[Literal["5s", "9s"], str] | NotGiven = NOT_GIVEN,
         generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
         keyframes: video_create_params.Keyframes | NotGiven = NOT_GIVEN,
@@ -75,6 +73,8 @@ class VideoResource(SyncAPIResource):
           callback_url: The callback URL of the generation, a POST request with Generation object will
               be sent to the callback URL when the generation is dreaming, completed, or
               failed
+
+          concepts: The concepts of the generation
 
           duration: The duration of the generation
 
@@ -102,6 +102,7 @@ class VideoResource(SyncAPIResource):
                 {
                     "aspect_ratio": aspect_ratio,
                     "callback_url": callback_url,
+                    "concepts": concepts,
                     "duration": duration,
                     "generation_type": generation_type,
                     "keyframes": keyframes,
@@ -144,6 +145,7 @@ class AsyncVideoResource(AsyncAPIResource):
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
         callback_url: str | NotGiven = NOT_GIVEN,
+        concepts: Iterable[video_create_params.Concept] | NotGiven = NOT_GIVEN,
         duration: Union[Literal["5s", "9s"], str] | NotGiven = NOT_GIVEN,
         generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
         keyframes: video_create_params.Keyframes | NotGiven = NOT_GIVEN,
@@ -167,6 +169,8 @@ class AsyncVideoResource(AsyncAPIResource):
           callback_url: The callback URL of the generation, a POST request with Generation object will
               be sent to the callback URL when the generation is dreaming, completed, or
               failed
+
+          concepts: The concepts of the generation
 
           duration: The duration of the generation
 
@@ -194,6 +198,7 @@ class AsyncVideoResource(AsyncAPIResource):
                 {
                     "aspect_ratio": aspect_ratio,
                     "callback_url": callback_url,
+                    "concepts": concepts,
                     "duration": duration,
                     "generation_type": generation_type,
                     "keyframes": keyframes,

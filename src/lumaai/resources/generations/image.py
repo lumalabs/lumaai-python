@@ -8,10 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -59,6 +56,8 @@ class ImageResource(SyncAPIResource):
         modify_image_ref: image_create_params.ModifyImageRef | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
         style_ref: Iterable[image_create_params.StyleRef] | NotGiven = NOT_GIVEN,
+        sync: bool | NotGiven = NOT_GIVEN,
+        sync_timeout: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -79,6 +78,10 @@ class ImageResource(SyncAPIResource):
           modify_image_ref: The modify image reference object
 
           prompt: The prompt of the generation
+
+          sync: Create image in synchronous mode and return complated image
+
+          sync_timeout: The timeout for the synchronous image generation
 
           extra_headers: Send extra headers
 
@@ -101,6 +104,8 @@ class ImageResource(SyncAPIResource):
                     "modify_image_ref": modify_image_ref,
                     "prompt": prompt,
                     "style_ref": style_ref,
+                    "sync": sync,
+                    "sync_timeout": sync_timeout,
                 },
                 image_create_params.ImageCreateParams,
             ),
@@ -143,6 +148,8 @@ class AsyncImageResource(AsyncAPIResource):
         modify_image_ref: image_create_params.ModifyImageRef | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
         style_ref: Iterable[image_create_params.StyleRef] | NotGiven = NOT_GIVEN,
+        sync: bool | NotGiven = NOT_GIVEN,
+        sync_timeout: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -163,6 +170,10 @@ class AsyncImageResource(AsyncAPIResource):
           modify_image_ref: The modify image reference object
 
           prompt: The prompt of the generation
+
+          sync: Create image in synchronous mode and return complated image
+
+          sync_timeout: The timeout for the synchronous image generation
 
           extra_headers: Send extra headers
 
@@ -185,6 +196,8 @@ class AsyncImageResource(AsyncAPIResource):
                     "modify_image_ref": modify_image_ref,
                     "prompt": prompt,
                     "style_ref": style_ref,
+                    "sync": sync,
+                    "sync_timeout": sync_timeout,
                 },
                 image_create_params.ImageCreateParams,
             ),

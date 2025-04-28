@@ -12,6 +12,7 @@ __all__ = [
     "Assets",
     "Request",
     "RequestGenerationRequest",
+    "RequestGenerationRequestConcept",
     "RequestGenerationRequestKeyframes",
     "RequestGenerationRequestKeyframesFrame0",
     "RequestGenerationRequestKeyframesFrame0GenerationReference",
@@ -39,6 +40,11 @@ class Assets(BaseModel):
 
     video: Optional[str] = None
     """The URL of the video"""
+
+
+class RequestGenerationRequestConcept(BaseModel):
+    key: str
+    """The key of the concept"""
 
 
 class RequestGenerationRequestKeyframesFrame0GenerationReference(BaseModel):
@@ -105,6 +111,9 @@ class RequestGenerationRequest(BaseModel):
     be sent to the callback URL when the generation is dreaming, completed, or
     failed
     """
+
+    concepts: Optional[List[RequestGenerationRequestConcept]] = None
+    """The concepts of the generation"""
 
     duration: Union[Literal["5s", "9s"], str, None] = None
     """The duration of the generation"""
@@ -184,6 +193,12 @@ class RequestImageGenerationRequest(BaseModel):
     """The prompt of the generation"""
 
     style_ref: Optional[List[RequestImageGenerationRequestStyleRef]] = None
+
+    sync: Optional[bool] = None
+    """Create image in synchronous mode and return complated image"""
+
+    sync_timeout: Optional[float] = None
+    """The timeout for the synchronous image generation"""
 
 
 class RequestUpscaleVideoGenerationRequest(BaseModel):

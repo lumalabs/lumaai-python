@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Iterable
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = [
     "GenerationCreateParams",
+    "Concept",
     "Keyframes",
     "KeyframesFrame0",
     "KeyframesFrame0GenerationReference",
@@ -28,6 +29,9 @@ class GenerationCreateParams(TypedDict, total=False):
     failed
     """
 
+    concepts: Iterable[Concept]
+    """The concepts of the generation"""
+
     duration: Union[Literal["5s", "9s"], str]
     """The duration of the generation"""
 
@@ -47,6 +51,11 @@ class GenerationCreateParams(TypedDict, total=False):
 
     resolution: Union[Literal["540p", "720p", "1080p", "4k"], str]
     """The resolution of the generation"""
+
+
+class Concept(TypedDict, total=False):
+    key: Required[str]
+    """The key of the concept"""
 
 
 class KeyframesFrame0GenerationReference(TypedDict, total=False):

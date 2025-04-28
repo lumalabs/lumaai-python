@@ -24,22 +24,8 @@ from .generations import (
     GenerationsResourceWithStreamingResponse,
     AsyncGenerationsResourceWithStreamingResponse,
 )
-from .camera_motion import (
-    CameraMotionResource,
-    AsyncCameraMotionResource,
-    CameraMotionResourceWithRawResponse,
-    AsyncCameraMotionResourceWithRawResponse,
-    CameraMotionResourceWithStreamingResponse,
-    AsyncCameraMotionResourceWithStreamingResponse,
-)
 
 __all__ = [
-    "CameraMotionResource",
-    "AsyncCameraMotionResource",
-    "CameraMotionResourceWithRawResponse",
-    "AsyncCameraMotionResourceWithRawResponse",
-    "CameraMotionResourceWithStreamingResponse",
-    "AsyncCameraMotionResourceWithStreamingResponse",
     "ImageResource",
     "AsyncImageResource",
     "ImageResourceWithRawResponse",
