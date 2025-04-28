@@ -31,6 +31,14 @@ from ...types import (
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import maybe_transform, async_maybe_transform
+from .concepts import (
+    ConceptsResource,
+    AsyncConceptsResource,
+    ConceptsResourceWithRawResponse,
+    AsyncConceptsResourceWithRawResponse,
+    ConceptsResourceWithStreamingResponse,
+    AsyncConceptsResourceWithStreamingResponse,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -47,6 +55,10 @@ __all__ = ["GenerationsResource", "AsyncGenerationsResource"]
 
 
 class GenerationsResource(SyncAPIResource):
+    @cached_property
+    def concepts(self) -> ConceptsResource:
+        return ConceptsResource(self._client)
+
     @cached_property
     def image(self) -> ImageResource:
         return ImageResource(self._client)
@@ -360,6 +372,10 @@ class GenerationsResource(SyncAPIResource):
 
 
 class AsyncGenerationsResource(AsyncAPIResource):
+    @cached_property
+    def concepts(self) -> AsyncConceptsResource:
+        return AsyncConceptsResource(self._client)
+
     @cached_property
     def image(self) -> AsyncImageResource:
         return AsyncImageResource(self._client)
@@ -696,6 +712,10 @@ class GenerationsResourceWithRawResponse:
         )
 
     @cached_property
+    def concepts(self) -> ConceptsResourceWithRawResponse:
+        return ConceptsResourceWithRawResponse(self._generations.concepts)
+
+    @cached_property
     def image(self) -> ImageResourceWithRawResponse:
         return ImageResourceWithRawResponse(self._generations.image)
 
@@ -726,6 +746,10 @@ class AsyncGenerationsResourceWithRawResponse:
         self.upscale = async_to_raw_response_wrapper(
             generations.upscale,
         )
+
+    @cached_property
+    def concepts(self) -> AsyncConceptsResourceWithRawResponse:
+        return AsyncConceptsResourceWithRawResponse(self._generations.concepts)
 
     @cached_property
     def image(self) -> AsyncImageResourceWithRawResponse:
@@ -760,6 +784,10 @@ class GenerationsResourceWithStreamingResponse:
         )
 
     @cached_property
+    def concepts(self) -> ConceptsResourceWithStreamingResponse:
+        return ConceptsResourceWithStreamingResponse(self._generations.concepts)
+
+    @cached_property
     def image(self) -> ImageResourceWithStreamingResponse:
         return ImageResourceWithStreamingResponse(self._generations.image)
 
@@ -790,6 +818,10 @@ class AsyncGenerationsResourceWithStreamingResponse:
         self.upscale = async_to_streamed_response_wrapper(
             generations.upscale,
         )
+
+    @cached_property
+    def concepts(self) -> AsyncConceptsResourceWithStreamingResponse:
+        return AsyncConceptsResourceWithStreamingResponse(self._generations.concepts)
 
     @cached_property
     def image(self) -> AsyncImageResourceWithStreamingResponse:
