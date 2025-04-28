@@ -1,5 +1,30 @@
 # Changelog
 
+## 1.8.0 (2025-04-28)
+
+Full Changelog: [v1.7.4...v1.8.0](https://github.com/lumalabs/lumaai-python/compare/v1.7.4...v1.8.0)
+
+### Features
+
+* **api:** api update ([db3cff7](https://github.com/lumalabs/lumaai-python/commit/db3cff7b86830e8cc65b42c06450eb5f4447d757))
+
+
+### Bug Fixes
+
+* **pydantic v1:** more robust ModelField.annotation check ([fcdce1c](https://github.com/lumalabs/lumaai-python/commit/fcdce1c362df7d9d0a6d7174e29076836de5c5d3))
+
+
+### Chores
+
+* broadly detect json family of content-type headers ([de64b0d](https://github.com/lumalabs/lumaai-python/commit/de64b0d6aaea7867bf9a24b81c6428dea4db2e2a))
+* **ci:** add timeout thresholds for CI jobs ([0e37d88](https://github.com/lumalabs/lumaai-python/commit/0e37d8830294e79625e4f4cf8463300cbab6c6a6))
+* **ci:** only use depot for staging repos ([2bd7be2](https://github.com/lumalabs/lumaai-python/commit/2bd7be2af79eb3bad3acbef7750891120997057e))
+* **internal:** codegen related update ([c6529eb](https://github.com/lumalabs/lumaai-python/commit/c6529eb59316a4158387edb7f929a644c2905c71))
+* **internal:** fix list file params ([26dfbdf](https://github.com/lumalabs/lumaai-python/commit/26dfbdf659a0ebc85426fd4b2f6045b2ebf858e1))
+* **internal:** import reformatting ([ce53b89](https://github.com/lumalabs/lumaai-python/commit/ce53b89c0b333092e549d3d1a64b0e627675c957))
+* **internal:** minor formatting changes ([178d389](https://github.com/lumalabs/lumaai-python/commit/178d389745b360462cc91a4a6e37603e8c9a4118))
+* **internal:** refactor retries to not use recursion ([14d2209](https://github.com/lumalabs/lumaai-python/commit/14d22095115b943b94e59f6e8cae7cbab9db251f))
+
 ## 1.7.4 (2025-04-19)
 
 Full Changelog: [v1.7.3...v1.7.4](https://github.com/lumalabs/lumaai-python/compare/v1.7.3...v1.7.4)
