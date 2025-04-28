@@ -16,6 +16,14 @@ from .video import (
     VideoResourceWithStreamingResponse,
     AsyncVideoResourceWithStreamingResponse,
 )
+from .concepts import (
+    ConceptsResource,
+    AsyncConceptsResource,
+    ConceptsResourceWithRawResponse,
+    AsyncConceptsResourceWithRawResponse,
+    ConceptsResourceWithStreamingResponse,
+    AsyncConceptsResourceWithStreamingResponse,
+)
 from .generations import (
     GenerationsResource,
     AsyncGenerationsResource,
@@ -26,6 +34,12 @@ from .generations import (
 )
 
 __all__ = [
+    "ConceptsResource",
+    "AsyncConceptsResource",
+    "ConceptsResourceWithRawResponse",
+    "AsyncConceptsResourceWithRawResponse",
+    "ConceptsResourceWithStreamingResponse",
+    "AsyncConceptsResourceWithStreamingResponse",
     "ImageResource",
     "AsyncImageResource",
     "ImageResourceWithRawResponse",

@@ -15,6 +15,18 @@ Methods:
 - <code title="get /generations/{id}">client.generations.<a href="./src/lumaai/resources/generations/generations.py">get</a>(id) -> <a href="./src/lumaai/types/generation.py">Generation</a></code>
 - <code title="post /generations/{id}/upscale">client.generations.<a href="./src/lumaai/resources/generations/generations.py">upscale</a>(id, \*\*<a href="src/lumaai/types/generation_upscale_params.py">params</a>) -> <a href="./src/lumaai/types/generation.py">Generation</a></code>
 
+## Concepts
+
+Types:
+
+```python
+from lumaai.types.generations import ConceptListResponse
+```
+
+Methods:
+
+- <code title="get /generations/concepts/list">client.generations.concepts.<a href="./src/lumaai/resources/generations/concepts.py">list</a>() -> <a href="./src/lumaai/types/generations/concept_list_response.py">ConceptListResponse</a></code>
+
 ## Image
 
 Methods:
