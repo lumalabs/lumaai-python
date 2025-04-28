@@ -27,6 +27,7 @@ class TestVideo:
         video = client.generations.video.create(
             aspect_ratio="16:9",
             callback_url="https://example.com",
+            concepts=[{"key": "key"}],
             duration="5s",
             generation_type="video",
             keyframes={
@@ -80,6 +81,7 @@ class TestAsyncVideo:
         video = await async_client.generations.video.create(
             aspect_ratio="16:9",
             callback_url="https://example.com",
+            concepts=[{"key": "key"}],
             duration="5s",
             generation_type="video",
             keyframes={

@@ -47,6 +47,8 @@ class TestImage:
                     "weight": 0,
                 }
             ],
+            sync=True,
+            sync_timeout=0,
         )
         assert_matches_type(Generation, image, path=["response"])
 
@@ -104,6 +106,8 @@ class TestAsyncImage:
                     "weight": 0,
                 }
             ],
+            sync=True,
+            sync_timeout=0,
         )
         assert_matches_type(Generation, image, path=["response"])
 

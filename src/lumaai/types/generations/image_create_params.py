@@ -32,6 +32,12 @@ class ImageCreateParams(TypedDict, total=False):
 
     style_ref: Iterable[StyleRef]
 
+    sync: bool
+    """Create image in synchronous mode and return complated image"""
+
+    sync_timeout: float
+    """The timeout for the synchronous image generation"""
+
 
 class CharacterRefIdentity0(TypedDict, total=False):
     images: List[str]
