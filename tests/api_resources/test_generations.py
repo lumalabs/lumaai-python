@@ -30,6 +30,7 @@ class TestGenerations:
         generation = client.generations.create(
             aspect_ratio="16:9",
             callback_url="https://example.com",
+            concepts=[{"key": "key"}],
             duration="5s",
             generation_type="video",
             keyframes={
@@ -289,6 +290,7 @@ class TestAsyncGenerations:
         generation = await async_client.generations.create(
             aspect_ratio="16:9",
             callback_url="https://example.com",
+            concepts=[{"key": "key"}],
             duration="5s",
             generation_type="video",
             keyframes={

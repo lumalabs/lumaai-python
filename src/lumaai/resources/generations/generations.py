@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Iterable
 from typing_extensions import Literal
 
 import httpx
@@ -39,14 +39,6 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .camera_motion import (
-    CameraMotionResource,
-    AsyncCameraMotionResource,
-    CameraMotionResourceWithRawResponse,
-    AsyncCameraMotionResourceWithRawResponse,
-    CameraMotionResourceWithStreamingResponse,
-    AsyncCameraMotionResourceWithStreamingResponse,
-)
 from ..._base_client import make_request_options
 from ...types.generation import Generation
 from ...types.generation_list_response import GenerationListResponse
@@ -55,10 +47,6 @@ __all__ = ["GenerationsResource", "AsyncGenerationsResource"]
 
 
 class GenerationsResource(SyncAPIResource):
-    @cached_property
-    def camera_motion(self) -> CameraMotionResource:
-        return CameraMotionResource(self._client)
-
     @cached_property
     def image(self) -> ImageResource:
         return ImageResource(self._client)
@@ -91,6 +79,7 @@ class GenerationsResource(SyncAPIResource):
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
         callback_url: str | NotGiven = NOT_GIVEN,
+        concepts: Iterable[generation_create_params.Concept] | NotGiven = NOT_GIVEN,
         duration: Union[Literal["5s", "9s"], str] | NotGiven = NOT_GIVEN,
         generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
@@ -114,6 +103,8 @@ class GenerationsResource(SyncAPIResource):
           callback_url: The callback URL of the generation, a POST request with Generation object will
               be sent to the callback URL when the generation is dreaming, completed, or
               failed
+
+          concepts: The concepts of the generation
 
           duration: The duration of the generation
 
@@ -141,6 +132,7 @@ class GenerationsResource(SyncAPIResource):
                 {
                     "aspect_ratio": aspect_ratio,
                     "callback_url": callback_url,
+                    "concepts": concepts,
                     "duration": duration,
                     "generation_type": generation_type,
                     "keyframes": keyframes,
@@ -369,10 +361,6 @@ class GenerationsResource(SyncAPIResource):
 
 class AsyncGenerationsResource(AsyncAPIResource):
     @cached_property
-    def camera_motion(self) -> AsyncCameraMotionResource:
-        return AsyncCameraMotionResource(self._client)
-
-    @cached_property
     def image(self) -> AsyncImageResource:
         return AsyncImageResource(self._client)
 
@@ -404,6 +392,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
         *,
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
         callback_url: str | NotGiven = NOT_GIVEN,
+        concepts: Iterable[generation_create_params.Concept] | NotGiven = NOT_GIVEN,
         duration: Union[Literal["5s", "9s"], str] | NotGiven = NOT_GIVEN,
         generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
         keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
@@ -427,6 +416,8 @@ class AsyncGenerationsResource(AsyncAPIResource):
           callback_url: The callback URL of the generation, a POST request with Generation object will
               be sent to the callback URL when the generation is dreaming, completed, or
               failed
+
+          concepts: The concepts of the generation
 
           duration: The duration of the generation
 
@@ -454,6 +445,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
                 {
                     "aspect_ratio": aspect_ratio,
                     "callback_url": callback_url,
+                    "concepts": concepts,
                     "duration": duration,
                     "generation_type": generation_type,
                     "keyframes": keyframes,
@@ -704,10 +696,6 @@ class GenerationsResourceWithRawResponse:
         )
 
     @cached_property
-    def camera_motion(self) -> CameraMotionResourceWithRawResponse:
-        return CameraMotionResourceWithRawResponse(self._generations.camera_motion)
-
-    @cached_property
     def image(self) -> ImageResourceWithRawResponse:
         return ImageResourceWithRawResponse(self._generations.image)
 
@@ -738,10 +726,6 @@ class AsyncGenerationsResourceWithRawResponse:
         self.upscale = async_to_raw_response_wrapper(
             generations.upscale,
         )
-
-    @cached_property
-    def camera_motion(self) -> AsyncCameraMotionResourceWithRawResponse:
-        return AsyncCameraMotionResourceWithRawResponse(self._generations.camera_motion)
 
     @cached_property
     def image(self) -> AsyncImageResourceWithRawResponse:
@@ -776,10 +760,6 @@ class GenerationsResourceWithStreamingResponse:
         )
 
     @cached_property
-    def camera_motion(self) -> CameraMotionResourceWithStreamingResponse:
-        return CameraMotionResourceWithStreamingResponse(self._generations.camera_motion)
-
-    @cached_property
     def image(self) -> ImageResourceWithStreamingResponse:
         return ImageResourceWithStreamingResponse(self._generations.image)
 
@@ -810,10 +790,6 @@ class AsyncGenerationsResourceWithStreamingResponse:
         self.upscale = async_to_streamed_response_wrapper(
             generations.upscale,
         )
-
-    @cached_property
-    def camera_motion(self) -> AsyncCameraMotionResourceWithStreamingResponse:
-        return AsyncCameraMotionResourceWithStreamingResponse(self._generations.camera_motion)
 
     @cached_property
     def image(self) -> AsyncImageResourceWithStreamingResponse:
