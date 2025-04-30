@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.2 (2025-04-30)
+
+Full Changelog: [v1.8.1...v1.8.2](https://github.com/lumalabs/lumaai-python/compare/v1.8.1...v1.8.2)
+
+### Features
+
+* **api:** api update ([55aa631](https://github.com/lumalabs/lumaai-python/commit/55aa63162f75def3c96e3e7389c0488efda1fcde))
+
 ## 1.8.1 (2025-04-28)
 
 Full Changelog: [v1.8.0...v1.8.1](https://github.com/lumalabs/lumaai-python/compare/v1.8.0...v1.8.1)
