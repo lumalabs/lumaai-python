@@ -179,6 +179,9 @@ class RequestImageGenerationRequest(BaseModel):
 
     character_ref: Optional[RequestImageGenerationRequestCharacterRef] = None
 
+    format: Optional[Literal["jpg", "png"]] = None
+    """The format of the image"""
+
     generation_type: Optional[Literal["image"]] = None
 
     image_ref: Optional[List[RequestImageGenerationRequestImageRef]] = None

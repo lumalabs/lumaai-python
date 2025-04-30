@@ -1,4 +1,4 @@
 configured_endpoints: 10
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/luma-ai-karanganesan%2Fluma_ai-ab7a0e79cde55b79693fcafeb72a5f691be8fe87b60909f8fabf4823107ec2b7.yml
-openapi_spec_hash: 5e861f2431bafd7b34733b013e89a917
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/luma-ai-karanganesan%2Fluma_ai-5c94a45e1507a63d577c463ae180dc2dc199b986ceb23bf60a33cc9d7e7c1f0d.yml
+openapi_spec_hash: d67513010cef7bc78f23ef2f667fd714
 config_hash: 340ab81846cdf3a6dd774f425fd612aa
