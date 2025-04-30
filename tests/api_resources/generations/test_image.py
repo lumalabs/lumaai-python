@@ -28,6 +28,7 @@ class TestImage:
             aspect_ratio="16:9",
             callback_url="https://example.com",
             character_ref={"identity0": {"images": ["https://example.com"]}},
+            format="jpg",
             generation_type="image",
             image_ref=[
                 {
@@ -87,6 +88,7 @@ class TestAsyncImage:
             aspect_ratio="16:9",
             callback_url="https://example.com",
             character_ref={"identity0": {"images": ["https://example.com"]}},
+            format="jpg",
             generation_type="image",
             image_ref=[
                 {
