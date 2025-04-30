@@ -17,6 +17,9 @@ class ImageCreateParams(TypedDict, total=False):
 
     character_ref: CharacterRef
 
+    format: Literal["jpg", "png"]
+    """The format of the image"""
+
     generation_type: Literal["image"]
 
     image_ref: Iterable[ImageRef]
