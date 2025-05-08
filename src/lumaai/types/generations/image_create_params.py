@@ -3,12 +3,15 @@
 from __future__ import annotations
 
 from typing import List, Iterable
-from typing_extensions import Literal, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["ImageCreateParams", "CharacterRef", "CharacterRefIdentity0", "ImageRef", "ModifyImageRef", "StyleRef"]
 
 
 class ImageCreateParams(TypedDict, total=False):
+    model: Required[Literal["photon-1", "photon-flash-1"]]
+    """The model used for the generation"""
+
     aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]
     """The aspect ratio of the generation"""
 
@@ -23,9 +26,6 @@ class ImageCreateParams(TypedDict, total=False):
     generation_type: Literal["image"]
 
     image_ref: Iterable[ImageRef]
-
-    model: Literal["photon-1", "photon-flash-1"]
-    """The model used for the generation"""
 
     modify_image_ref: ModifyImageRef
     """The modify image reference object"""

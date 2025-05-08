@@ -731,6 +731,7 @@ class TestLumaAI:
                     object,
                     maybe_transform(
                         dict(
+                            model="ray-1-6",
                             aspect_ratio="16:9",
                             loop=False,
                             prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
@@ -756,6 +757,7 @@ class TestLumaAI:
                     object,
                     maybe_transform(
                         dict(
+                            model="ray-1-6",
                             aspect_ratio="16:9",
                             loop=False,
                             prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
@@ -795,7 +797,7 @@ class TestLumaAI:
 
         respx_mock.post("/generations").mock(side_effect=retry_handler)
 
-        response = client.generations.with_raw_response.create()
+        response = client.generations.with_raw_response.create(model="ray-1-6")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -819,7 +821,9 @@ class TestLumaAI:
 
         respx_mock.post("/generations").mock(side_effect=retry_handler)
 
-        response = client.generations.with_raw_response.create(extra_headers={"x-stainless-retry-count": Omit()})
+        response = client.generations.with_raw_response.create(
+            model="ray-1-6", extra_headers={"x-stainless-retry-count": Omit()}
+        )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -842,7 +846,9 @@ class TestLumaAI:
 
         respx_mock.post("/generations").mock(side_effect=retry_handler)
 
-        response = client.generations.with_raw_response.create(extra_headers={"x-stainless-retry-count": "42"})
+        response = client.generations.with_raw_response.create(
+            model="ray-1-6", extra_headers={"x-stainless-retry-count": "42"}
+        )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
@@ -1530,6 +1536,7 @@ class TestAsyncLumaAI:
                     object,
                     maybe_transform(
                         dict(
+                            model="ray-1-6",
                             aspect_ratio="16:9",
                             loop=False,
                             prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
@@ -1555,6 +1562,7 @@ class TestAsyncLumaAI:
                     object,
                     maybe_transform(
                         dict(
+                            model="ray-1-6",
                             aspect_ratio="16:9",
                             loop=False,
                             prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
@@ -1595,7 +1603,7 @@ class TestAsyncLumaAI:
 
         respx_mock.post("/generations").mock(side_effect=retry_handler)
 
-        response = await client.generations.with_raw_response.create()
+        response = await client.generations.with_raw_response.create(model="ray-1-6")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1620,7 +1628,9 @@ class TestAsyncLumaAI:
 
         respx_mock.post("/generations").mock(side_effect=retry_handler)
 
-        response = await client.generations.with_raw_response.create(extra_headers={"x-stainless-retry-count": Omit()})
+        response = await client.generations.with_raw_response.create(
+            model="ray-1-6", extra_headers={"x-stainless-retry-count": Omit()}
+        )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -1644,7 +1654,9 @@ class TestAsyncLumaAI:
 
         respx_mock.post("/generations").mock(side_effect=retry_handler)
 
-        response = await client.generations.with_raw_response.create(extra_headers={"x-stainless-retry-count": "42"})
+        response = await client.generations.with_raw_response.create(
+            model="ray-1-6", extra_headers={"x-stainless-retry-count": "42"}
+        )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 

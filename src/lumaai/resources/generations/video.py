@@ -47,6 +47,7 @@ class VideoResource(SyncAPIResource):
     def create(
         self,
         *,
+        model: Literal["ray-1-6", "ray-2", "ray-flash-2"],
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
         callback_url: str | NotGiven = NOT_GIVEN,
         concepts: Iterable[video_create_params.Concept] | NotGiven = NOT_GIVEN,
@@ -54,7 +55,6 @@ class VideoResource(SyncAPIResource):
         generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
         keyframes: video_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
-        model: Literal["ray-1-6", "ray-2", "ray-flash-2"] | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
         resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -68,6 +68,8 @@ class VideoResource(SyncAPIResource):
         Initiate a new generation with the provided prompt
 
         Args:
+          model: The model used for the generation
+
           aspect_ratio: The aspect ratio of the generation
 
           callback_url: The callback URL of the generation, a POST request with Generation object will
@@ -81,8 +83,6 @@ class VideoResource(SyncAPIResource):
           keyframes: The keyframes of the generation
 
           loop: Whether to loop the video
-
-          model: The model used for the generation
 
           prompt: The prompt of the generation
 
@@ -100,6 +100,7 @@ class VideoResource(SyncAPIResource):
             "/generations",
             body=maybe_transform(
                 {
+                    "model": model,
                     "aspect_ratio": aspect_ratio,
                     "callback_url": callback_url,
                     "concepts": concepts,
@@ -107,7 +108,6 @@ class VideoResource(SyncAPIResource):
                     "generation_type": generation_type,
                     "keyframes": keyframes,
                     "loop": loop,
-                    "model": model,
                     "prompt": prompt,
                     "resolution": resolution,
                 },
@@ -143,6 +143,7 @@ class AsyncVideoResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        model: Literal["ray-1-6", "ray-2", "ray-flash-2"],
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
         callback_url: str | NotGiven = NOT_GIVEN,
         concepts: Iterable[video_create_params.Concept] | NotGiven = NOT_GIVEN,
@@ -150,7 +151,6 @@ class AsyncVideoResource(AsyncAPIResource):
         generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
         keyframes: video_create_params.Keyframes | NotGiven = NOT_GIVEN,
         loop: bool | NotGiven = NOT_GIVEN,
-        model: Literal["ray-1-6", "ray-2", "ray-flash-2"] | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
         resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -164,6 +164,8 @@ class AsyncVideoResource(AsyncAPIResource):
         Initiate a new generation with the provided prompt
 
         Args:
+          model: The model used for the generation
+
           aspect_ratio: The aspect ratio of the generation
 
           callback_url: The callback URL of the generation, a POST request with Generation object will
@@ -177,8 +179,6 @@ class AsyncVideoResource(AsyncAPIResource):
           keyframes: The keyframes of the generation
 
           loop: Whether to loop the video
-
-          model: The model used for the generation
 
           prompt: The prompt of the generation
 
@@ -196,6 +196,7 @@ class AsyncVideoResource(AsyncAPIResource):
             "/generations",
             body=await async_maybe_transform(
                 {
+                    "model": model,
                     "aspect_ratio": aspect_ratio,
                     "callback_url": callback_url,
                     "concepts": concepts,
@@ -203,7 +204,6 @@ class AsyncVideoResource(AsyncAPIResource):
                     "generation_type": generation_type,
                     "keyframes": keyframes,
                     "loop": loop,
-                    "model": model,
                     "prompt": prompt,
                     "resolution": resolution,
                 },
