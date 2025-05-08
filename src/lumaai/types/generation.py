@@ -102,6 +102,9 @@ class RequestGenerationRequestKeyframes(BaseModel):
 
 
 class RequestGenerationRequest(BaseModel):
+    model: Literal["ray-1-6", "ray-2", "ray-flash-2"]
+    """The model used for the generation"""
+
     aspect_ratio: Optional[Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]] = None
     """The aspect ratio of the generation"""
 
@@ -125,9 +128,6 @@ class RequestGenerationRequest(BaseModel):
 
     loop: Optional[bool] = None
     """Whether to loop the video"""
-
-    model: Optional[Literal["ray-1-6", "ray-2", "ray-flash-2"]] = None
-    """The model used for the generation"""
 
     prompt: Optional[str] = None
     """The prompt of the generation"""
@@ -171,6 +171,9 @@ class RequestImageGenerationRequestStyleRef(BaseModel):
 
 
 class RequestImageGenerationRequest(BaseModel):
+    model: Literal["photon-1", "photon-flash-1"]
+    """The model used for the generation"""
+
     aspect_ratio: Optional[Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]] = None
     """The aspect ratio of the generation"""
 
@@ -185,9 +188,6 @@ class RequestImageGenerationRequest(BaseModel):
     generation_type: Optional[Literal["image"]] = None
 
     image_ref: Optional[List[RequestImageGenerationRequestImageRef]] = None
-
-    model: Optional[Literal["photon-1", "photon-flash-1"]] = None
-    """The model used for the generation"""
 
     modify_image_ref: Optional[RequestImageGenerationRequestModifyImageRef] = None
     """The modify image reference object"""

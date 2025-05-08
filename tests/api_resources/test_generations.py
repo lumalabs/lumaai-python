@@ -22,12 +22,15 @@ class TestGenerations:
 
     @parametrize
     def test_method_create(self, client: LumaAI) -> None:
-        generation = client.generations.create()
+        generation = client.generations.create(
+            model="ray-1-6",
+        )
         assert_matches_type(Generation, generation, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: LumaAI) -> None:
         generation = client.generations.create(
+            model="ray-1-6",
             aspect_ratio="16:9",
             callback_url="https://example.com",
             concepts=[{"key": "key"}],
@@ -44,7 +47,6 @@ class TestGenerations:
                 },
             },
             loop=True,
-            model="ray-1-6",
             prompt="A serene lake surrounded by mountains at sunset",
             resolution="540p",
         )
@@ -52,7 +54,9 @@ class TestGenerations:
 
     @parametrize
     def test_raw_response_create(self, client: LumaAI) -> None:
-        response = client.generations.with_raw_response.create()
+        response = client.generations.with_raw_response.create(
+            model="ray-1-6",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -61,7 +65,9 @@ class TestGenerations:
 
     @parametrize
     def test_streaming_response_create(self, client: LumaAI) -> None:
-        with client.generations.with_streaming_response.create() as response:
+        with client.generations.with_streaming_response.create(
+            model="ray-1-6",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -282,12 +288,15 @@ class TestAsyncGenerations:
 
     @parametrize
     async def test_method_create(self, async_client: AsyncLumaAI) -> None:
-        generation = await async_client.generations.create()
+        generation = await async_client.generations.create(
+            model="ray-1-6",
+        )
         assert_matches_type(Generation, generation, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncLumaAI) -> None:
         generation = await async_client.generations.create(
+            model="ray-1-6",
             aspect_ratio="16:9",
             callback_url="https://example.com",
             concepts=[{"key": "key"}],
@@ -304,7 +313,6 @@ class TestAsyncGenerations:
                 },
             },
             loop=True,
-            model="ray-1-6",
             prompt="A serene lake surrounded by mountains at sunset",
             resolution="540p",
         )
@@ -312,7 +320,9 @@ class TestAsyncGenerations:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncLumaAI) -> None:
-        response = await async_client.generations.with_raw_response.create()
+        response = await async_client.generations.with_raw_response.create(
+            model="ray-1-6",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -321,7 +331,9 @@ class TestAsyncGenerations:
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncLumaAI) -> None:
-        async with async_client.generations.with_streaming_response.create() as response:
+        async with async_client.generations.with_streaming_response.create(
+            model="ray-1-6",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
