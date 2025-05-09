@@ -47,13 +47,13 @@ class ImageResource(SyncAPIResource):
     def create(
         self,
         *,
+        model: Literal["photon-1", "photon-flash-1"],
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
         callback_url: str | NotGiven = NOT_GIVEN,
         character_ref: image_create_params.CharacterRef | NotGiven = NOT_GIVEN,
         format: Literal["jpg", "png"] | NotGiven = NOT_GIVEN,
         generation_type: Literal["image"] | NotGiven = NOT_GIVEN,
         image_ref: Iterable[image_create_params.ImageRef] | NotGiven = NOT_GIVEN,
-        model: Literal["photon-1", "photon-flash-1"] | NotGiven = NOT_GIVEN,
         modify_image_ref: image_create_params.ModifyImageRef | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
         style_ref: Iterable[image_create_params.StyleRef] | NotGiven = NOT_GIVEN,
@@ -70,13 +70,13 @@ class ImageResource(SyncAPIResource):
         Generate an image with the provided prompt
 
         Args:
+          model: The model used for the generation
+
           aspect_ratio: The aspect ratio of the generation
 
           callback_url: The callback URL for the generation
 
           format: The format of the image
-
-          model: The model used for the generation
 
           modify_image_ref: The modify image reference object
 
@@ -98,13 +98,13 @@ class ImageResource(SyncAPIResource):
             "/generations/image",
             body=maybe_transform(
                 {
+                    "model": model,
                     "aspect_ratio": aspect_ratio,
                     "callback_url": callback_url,
                     "character_ref": character_ref,
                     "format": format,
                     "generation_type": generation_type,
                     "image_ref": image_ref,
-                    "model": model,
                     "modify_image_ref": modify_image_ref,
                     "prompt": prompt,
                     "style_ref": style_ref,
@@ -143,13 +143,13 @@ class AsyncImageResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        model: Literal["photon-1", "photon-flash-1"],
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
         callback_url: str | NotGiven = NOT_GIVEN,
         character_ref: image_create_params.CharacterRef | NotGiven = NOT_GIVEN,
         format: Literal["jpg", "png"] | NotGiven = NOT_GIVEN,
         generation_type: Literal["image"] | NotGiven = NOT_GIVEN,
         image_ref: Iterable[image_create_params.ImageRef] | NotGiven = NOT_GIVEN,
-        model: Literal["photon-1", "photon-flash-1"] | NotGiven = NOT_GIVEN,
         modify_image_ref: image_create_params.ModifyImageRef | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
         style_ref: Iterable[image_create_params.StyleRef] | NotGiven = NOT_GIVEN,
@@ -166,13 +166,13 @@ class AsyncImageResource(AsyncAPIResource):
         Generate an image with the provided prompt
 
         Args:
+          model: The model used for the generation
+
           aspect_ratio: The aspect ratio of the generation
 
           callback_url: The callback URL for the generation
 
           format: The format of the image
-
-          model: The model used for the generation
 
           modify_image_ref: The modify image reference object
 
@@ -194,13 +194,13 @@ class AsyncImageResource(AsyncAPIResource):
             "/generations/image",
             body=await async_maybe_transform(
                 {
+                    "model": model,
                     "aspect_ratio": aspect_ratio,
                     "callback_url": callback_url,
                     "character_ref": character_ref,
                     "format": format,
                     "generation_type": generation_type,
                     "image_ref": image_ref,
-                    "model": model,
                     "modify_image_ref": modify_image_ref,
                     "prompt": prompt,
                     "style_ref": style_ref,

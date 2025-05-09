@@ -30,6 +30,7 @@ client = LumaAI(
 )
 
 generation = client.generations.create(
+    model="ray-1-6",
     aspect_ratio="16:9",
     loop=False,
     prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
@@ -58,6 +59,7 @@ client = AsyncLumaAI(
 
 async def main() -> None:
     generation = await client.generations.create(
+        model="ray-1-6",
         aspect_ratio="16:9",
         loop=False,
         prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
@@ -89,6 +91,7 @@ from lumaai import LumaAI
 client = LumaAI()
 
 generation = client.generations.create(
+    model="ray-1-6",
     keyframes={
         "frame0": {
             "type": "image",
@@ -120,6 +123,7 @@ client = LumaAI()
 
 try:
     client.generations.create(
+        model="ray-1-6",
         aspect_ratio="16:9",
         loop=False,
         prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
@@ -167,6 +171,7 @@ client = LumaAI(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).generations.create(
+    model="ray-1-6",
     aspect_ratio="16:9",
     loop=False,
     prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
@@ -194,6 +199,7 @@ client = LumaAI(
 
 # Override per-request:
 client.with_options(timeout=5.0).generations.create(
+    model="ray-1-6",
     aspect_ratio="16:9",
     loop=False,
     prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
@@ -239,6 +245,7 @@ from lumaai import LumaAI
 
 client = LumaAI()
 response = client.generations.with_raw_response.create(
+    model="ray-1-6",
     aspect_ratio="16:9",
     loop=False,
     prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
@@ -261,6 +268,7 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.generations.with_streaming_response.create(
+    model="ray-1-6",
     aspect_ratio="16:9",
     loop=False,
     prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",

@@ -19,12 +19,15 @@ class TestImage:
 
     @parametrize
     def test_method_create(self, client: LumaAI) -> None:
-        image = client.generations.image.create()
+        image = client.generations.image.create(
+            model="photon-1",
+        )
         assert_matches_type(Generation, image, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: LumaAI) -> None:
         image = client.generations.image.create(
+            model="photon-1",
             aspect_ratio="16:9",
             callback_url="https://example.com",
             character_ref={"identity0": {"images": ["https://example.com"]}},
@@ -36,7 +39,6 @@ class TestImage:
                     "weight": 0,
                 }
             ],
-            model="photon-1",
             modify_image_ref={
                 "url": "https://example.com",
                 "weight": 0,
@@ -55,7 +57,9 @@ class TestImage:
 
     @parametrize
     def test_raw_response_create(self, client: LumaAI) -> None:
-        response = client.generations.image.with_raw_response.create()
+        response = client.generations.image.with_raw_response.create(
+            model="photon-1",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -64,7 +68,9 @@ class TestImage:
 
     @parametrize
     def test_streaming_response_create(self, client: LumaAI) -> None:
-        with client.generations.image.with_streaming_response.create() as response:
+        with client.generations.image.with_streaming_response.create(
+            model="photon-1",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -79,12 +85,15 @@ class TestAsyncImage:
 
     @parametrize
     async def test_method_create(self, async_client: AsyncLumaAI) -> None:
-        image = await async_client.generations.image.create()
+        image = await async_client.generations.image.create(
+            model="photon-1",
+        )
         assert_matches_type(Generation, image, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncLumaAI) -> None:
         image = await async_client.generations.image.create(
+            model="photon-1",
             aspect_ratio="16:9",
             callback_url="https://example.com",
             character_ref={"identity0": {"images": ["https://example.com"]}},
@@ -96,7 +105,6 @@ class TestAsyncImage:
                     "weight": 0,
                 }
             ],
-            model="photon-1",
             modify_image_ref={
                 "url": "https://example.com",
                 "weight": 0,
@@ -115,7 +123,9 @@ class TestAsyncImage:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncLumaAI) -> None:
-        response = await async_client.generations.image.with_raw_response.create()
+        response = await async_client.generations.image.with_raw_response.create(
+            model="photon-1",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -124,7 +134,9 @@ class TestAsyncImage:
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncLumaAI) -> None:
-        async with async_client.generations.image.with_streaming_response.create() as response:
+        async with async_client.generations.image.with_streaming_response.create(
+            model="photon-1",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

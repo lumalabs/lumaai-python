@@ -19,6 +19,9 @@ __all__ = [
 
 
 class VideoCreateParams(TypedDict, total=False):
+    model: Required[Literal["ray-1-6", "ray-2", "ray-flash-2"]]
+    """The model used for the generation"""
+
     aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]
     """The aspect ratio of the generation"""
 
@@ -42,9 +45,6 @@ class VideoCreateParams(TypedDict, total=False):
 
     loop: bool
     """Whether to loop the video"""
-
-    model: Literal["ray-1-6", "ray-2", "ray-flash-2"]
-    """The model used for the generation"""
 
     prompt: str
     """The prompt of the generation"""
