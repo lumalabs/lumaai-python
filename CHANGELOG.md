@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.1 (2025-05-09)
+
+Full Changelog: [v1.9.0...v1.9.1](https://github.com/lumalabs/lumaai-python/compare/v1.9.0...v1.9.1)
+
+### Chores
+
+* **internal:** avoid errors for isinstance checks on proxies ([1947fc7](https://github.com/lumalabs/lumaai-python/commit/1947fc7379daad3d3652b98eb194f9815834b411))
+
 ## 1.9.0 (2025-05-08)
 
 Full Changelog: [v1.8.2...v1.9.0](https://github.com/lumalabs/lumaai-python/compare/v1.8.2...v1.9.0)
