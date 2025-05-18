@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.9.2 (2025-05-16)
+
+Full Changelog: [v1.9.1...v1.9.2](https://github.com/lumalabs/lumaai-python/compare/v1.9.1...v1.9.2)
+
+### Bug Fixes
+
+* **package:** support direct resource imports ([55e8fae](https://github.com/lumalabs/lumaai-python/commit/55e8fae586d878a5644e5094c00828aa41726d8b))
+
+
+### Chores
+
+* **ci:** fix installation instructions ([5b4d1d0](https://github.com/lumalabs/lumaai-python/commit/5b4d1d02e00aaeb37c49831601363db447ec5ded))
+* **ci:** upload sdks to package manager ([06ea25f](https://github.com/lumalabs/lumaai-python/commit/06ea25f3cee5ae3817e1eb24db972166362fd589))
+
 ## 1.9.1 (2025-05-09)
 
 Full Changelog: [v1.9.0...v1.9.1](https://github.com/lumalabs/lumaai-python/compare/v1.9.0...v1.9.1)
