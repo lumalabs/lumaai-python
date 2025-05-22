@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.3 (2025-05-22)
+
+Full Changelog: [v1.9.2...v1.9.3](https://github.com/lumalabs/lumaai-python/compare/v1.9.2...v1.9.3)
+
+### Chores
+
+* **docs:** grammar improvements ([eb54b7e](https://github.com/lumalabs/lumaai-python/commit/eb54b7eaa65e1285b3883dffb04add9606867af5))
+
 ## 1.9.2 (2025-05-16)
 
 Full Changelog: [v1.9.1...v1.9.2](https://github.com/lumalabs/lumaai-python/compare/v1.9.1...v1.9.2)
