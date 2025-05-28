@@ -3,5 +3,6 @@
 from __future__ import annotations
 
 from .image_create_params import ImageCreateParams as ImageCreateParams
-from .video_create_params import VideoCreateParams as VideoCreateParams
+from .image_reframe_params import ImageReframeParams as ImageReframeParams
+from .video_reframe_params import VideoReframeParams as VideoReframeParams
 from .concept_list_response import ConceptListResponse as ConceptListResponse

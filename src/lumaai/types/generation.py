@@ -28,6 +28,11 @@ __all__ = [
     "RequestImageGenerationRequestStyleRef",
     "RequestUpscaleVideoGenerationRequest",
     "RequestAudioGenerationRequest",
+    "RequestReframeImageRequest",
+    "RequestReframeImageRequestMedia",
+    "RequestReframeVideoRequest",
+    "RequestReframeVideoRequestMedia",
+    "RequestReframeVideoRequestFirstFrame",
 ]
 
 
@@ -227,11 +232,116 @@ class RequestAudioGenerationRequest(BaseModel):
     """The prompt of the audio"""
 
 
+class RequestReframeImageRequestMedia(BaseModel):
+    url: str
+    """The URL of the image"""
+
+
+class RequestReframeImageRequest(BaseModel):
+    aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]
+    """The aspect ratio of the generation"""
+
+    generation_type: Literal["reframe_image"]
+
+    media: RequestReframeImageRequestMedia
+    """The image entity object"""
+
+    model: Literal["photon-1", "photon-flash-1"]
+    """The model used for the reframe image"""
+
+    callback_url: Optional[str] = None
+    """
+    The callback URL of the generation, a POST request with Generation object will
+    be sent to the callback URL when the generation is dreaming, completed, or
+    failed
+    """
+
+    format: Optional[Literal["jpg", "png"]] = None
+    """The format of the image"""
+
+    grid_position_x: Optional[int] = None
+    """The x position of the image in the grid"""
+
+    grid_position_y: Optional[int] = None
+    """The y position of the image in the grid"""
+
+    prompt: Optional[str] = None
+    """The prompt of the generation"""
+
+    x_end: Optional[int] = None
+    """The x end of the crop bounds"""
+
+    x_start: Optional[int] = None
+    """The x start of the crop bounds"""
+
+    y_end: Optional[int] = None
+    """The y end of the crop bounds"""
+
+    y_start: Optional[int] = None
+    """The y start of the crop bounds"""
+
+
+class RequestReframeVideoRequestMedia(BaseModel):
+    url: str
+    """The URL of the image"""
+
+
+class RequestReframeVideoRequestFirstFrame(BaseModel):
+    url: str
+    """The URL of the image"""
+
+
+class RequestReframeVideoRequest(BaseModel):
+    aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]
+    """The aspect ratio of the generation"""
+
+    generation_type: Literal["reframe_video"]
+
+    media: RequestReframeVideoRequestMedia
+    """The image entity object"""
+
+    model: Literal["ray-2", "ray-flash-2"]
+    """The model used for the reframe video"""
+
+    callback_url: Optional[str] = None
+    """
+    The callback URL of the generation, a POST request with Generation object will
+    be sent to the callback URL when the generation is dreaming, completed, or
+    failed
+    """
+
+    first_frame: Optional[RequestReframeVideoRequestFirstFrame] = None
+    """The image entity object"""
+
+    grid_position_x: Optional[int] = None
+    """The x position of the image in the grid"""
+
+    grid_position_y: Optional[int] = None
+    """The y position of the image in the grid"""
+
+    prompt: Optional[str] = None
+    """The prompt of the generation"""
+
+    x_end: Optional[int] = None
+    """The x end of the crop bounds"""
+
+    x_start: Optional[int] = None
+    """The x start of the crop bounds"""
+
+    y_end: Optional[int] = None
+    """The y end of the crop bounds"""
+
+    y_start: Optional[int] = None
+    """The y start of the crop bounds"""
+
+
 Request: TypeAlias = Union[
     RequestGenerationRequest,
     RequestImageGenerationRequest,
     RequestUpscaleVideoGenerationRequest,
     RequestAudioGenerationRequest,
+    RequestReframeImageRequest,
+    RequestReframeVideoRequest,
 ]
 
 
