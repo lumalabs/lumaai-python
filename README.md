@@ -29,8 +29,13 @@ client = LumaAI(
     auth_token=os.environ.get("LUMAAI_API_KEY"),  # This is the default and can be omitted
 )
 
-generations = client.generations.list()
-print(generations.generations)
+generation = client.generations.create(
+    model="ray-2",
+    aspect_ratio="16:9",
+    loop=False,
+    prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+)
+print(generation.id)
 ```
 
 While you can provide a `auth_token` keyword argument,
@@ -53,8 +58,13 @@ client = AsyncLumaAI(
 
 
 async def main() -> None:
-    generations = await client.generations.list()
-    print(generations.generations)
+    generation = await client.generations.create(
+        model="ray-2",
+        aspect_ratio="16:9",
+        loop=False,
+        prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+    )
+    print(generation.id)
 
 
 asyncio.run(main())
@@ -80,11 +90,20 @@ from lumaai import LumaAI
 
 client = LumaAI()
 
-generation = client.generations.image.create(
-    model="photon-1",
-    character_ref={"identity0": {"images": ["https://example.com"]}},
+generation = client.generations.create(
+    model="ray-1-6",
+    keyframes={
+        "frame0": {
+            "type": "image",
+            "url": "https://example.com/image.jpg",
+        },
+        "frame1": {
+            "id": "123e4567-e89b-12d3-a456-426614174000",
+            "type": "generation",
+        },
+    },
 )
-print(generation.character_ref)
+print(generation.keyframes)
 ```
 
 ## Handling errors
@@ -103,7 +122,12 @@ from lumaai import LumaAI
 client = LumaAI()
 
 try:
-    client.generations.list()
+    client.generations.create(
+        model="ray-2",
+        aspect_ratio="16:9",
+        loop=False,
+        prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+    )
 except lumaai.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -146,7 +170,12 @@ client = LumaAI(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).generations.list()
+client.with_options(max_retries=5).generations.create(
+    model="ray-2",
+    aspect_ratio="16:9",
+    loop=False,
+    prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+)
 ```
 
 ### Timeouts
@@ -169,7 +198,12 @@ client = LumaAI(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).generations.list()
+client.with_options(timeout=5.0).generations.create(
+    model="ray-2",
+    aspect_ratio="16:9",
+    loop=False,
+    prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+)
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -210,11 +244,16 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from lumaai import LumaAI
 
 client = LumaAI()
-response = client.generations.with_raw_response.list()
+response = client.generations.with_raw_response.create(
+    model="ray-2",
+    aspect_ratio="16:9",
+    loop=False,
+    prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+)
 print(response.headers.get('X-My-Header'))
 
-generation = response.parse()  # get the object that `generations.list()` would have returned
-print(generation.generations)
+generation = response.parse()  # get the object that `generations.create()` would have returned
+print(generation.id)
 ```
 
 These methods return an [`APIResponse`](https://github.com/lumalabs/lumaai-python/tree/main/src/lumaai/_response.py) object.
@@ -228,7 +267,12 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.generations.with_streaming_response.list() as response:
+with client.generations.with_streaming_response.create(
+    model="ray-2",
+    aspect_ratio="16:9",
+    loop=False,
+    prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+) as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
