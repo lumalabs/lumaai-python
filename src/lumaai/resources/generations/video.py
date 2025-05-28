@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable
 from typing_extensions import Literal
 
 import httpx
@@ -19,7 +18,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.generation import Generation
-from ...types.generations import video_create_params
+from ...types.generations import video_reframe_params
 
 __all__ = ["VideoResource", "AsyncVideoResource"]
 
@@ -44,19 +43,22 @@ class VideoResource(SyncAPIResource):
         """
         return VideoResourceWithStreamingResponse(self)
 
-    def create(
+    def reframe(
         self,
         *,
-        model: Literal["ray-1-6", "ray-2", "ray-flash-2"],
-        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
+        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"],
+        generation_type: Literal["reframe_video"],
+        media: video_reframe_params.Media,
+        model: Literal["ray-2", "ray-flash-2"],
         callback_url: str | NotGiven = NOT_GIVEN,
-        concepts: Iterable[video_create_params.Concept] | NotGiven = NOT_GIVEN,
-        duration: Union[Literal["5s", "9s"], str] | NotGiven = NOT_GIVEN,
-        generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
-        keyframes: video_create_params.Keyframes | NotGiven = NOT_GIVEN,
-        loop: bool | NotGiven = NOT_GIVEN,
+        first_frame: video_reframe_params.FirstFrame | NotGiven = NOT_GIVEN,
+        grid_position_x: int | NotGiven = NOT_GIVEN,
+        grid_position_y: int | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
-        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
+        x_end: int | NotGiven = NOT_GIVEN,
+        x_start: int | NotGiven = NOT_GIVEN,
+        y_end: int | NotGiven = NOT_GIVEN,
+        y_start: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -65,28 +67,34 @@ class VideoResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Generation:
         """
-        Initiate a new generation with the provided prompt
+        Reframe a video by its ID
 
         Args:
-          model: The model used for the generation
-
           aspect_ratio: The aspect ratio of the generation
+
+          media: The image entity object
+
+          model: The model used for the reframe video
 
           callback_url: The callback URL of the generation, a POST request with Generation object will
               be sent to the callback URL when the generation is dreaming, completed, or
               failed
 
-          concepts: The concepts of the generation
+          first_frame: The image entity object
 
-          duration: The duration of the generation
+          grid_position_x: The x position of the image in the grid
 
-          keyframes: The keyframes of the generation
-
-          loop: Whether to loop the video
+          grid_position_y: The y position of the image in the grid
 
           prompt: The prompt of the generation
 
-          resolution: The resolution of the generation
+          x_end: The x end of the crop bounds
+
+          x_start: The x start of the crop bounds
+
+          y_end: The y end of the crop bounds
+
+          y_start: The y start of the crop bounds
 
           extra_headers: Send extra headers
 
@@ -97,21 +105,24 @@ class VideoResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/generations",
+            "/generations/video/reframe",
             body=maybe_transform(
                 {
-                    "model": model,
                     "aspect_ratio": aspect_ratio,
-                    "callback_url": callback_url,
-                    "concepts": concepts,
-                    "duration": duration,
                     "generation_type": generation_type,
-                    "keyframes": keyframes,
-                    "loop": loop,
+                    "media": media,
+                    "model": model,
+                    "callback_url": callback_url,
+                    "first_frame": first_frame,
+                    "grid_position_x": grid_position_x,
+                    "grid_position_y": grid_position_y,
                     "prompt": prompt,
-                    "resolution": resolution,
+                    "x_end": x_end,
+                    "x_start": x_start,
+                    "y_end": y_end,
+                    "y_start": y_start,
                 },
-                video_create_params.VideoCreateParams,
+                video_reframe_params.VideoReframeParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -140,19 +151,22 @@ class AsyncVideoResource(AsyncAPIResource):
         """
         return AsyncVideoResourceWithStreamingResponse(self)
 
-    async def create(
+    async def reframe(
         self,
         *,
-        model: Literal["ray-1-6", "ray-2", "ray-flash-2"],
-        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
+        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"],
+        generation_type: Literal["reframe_video"],
+        media: video_reframe_params.Media,
+        model: Literal["ray-2", "ray-flash-2"],
         callback_url: str | NotGiven = NOT_GIVEN,
-        concepts: Iterable[video_create_params.Concept] | NotGiven = NOT_GIVEN,
-        duration: Union[Literal["5s", "9s"], str] | NotGiven = NOT_GIVEN,
-        generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
-        keyframes: video_create_params.Keyframes | NotGiven = NOT_GIVEN,
-        loop: bool | NotGiven = NOT_GIVEN,
+        first_frame: video_reframe_params.FirstFrame | NotGiven = NOT_GIVEN,
+        grid_position_x: int | NotGiven = NOT_GIVEN,
+        grid_position_y: int | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
-        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
+        x_end: int | NotGiven = NOT_GIVEN,
+        x_start: int | NotGiven = NOT_GIVEN,
+        y_end: int | NotGiven = NOT_GIVEN,
+        y_start: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -161,28 +175,34 @@ class AsyncVideoResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Generation:
         """
-        Initiate a new generation with the provided prompt
+        Reframe a video by its ID
 
         Args:
-          model: The model used for the generation
-
           aspect_ratio: The aspect ratio of the generation
+
+          media: The image entity object
+
+          model: The model used for the reframe video
 
           callback_url: The callback URL of the generation, a POST request with Generation object will
               be sent to the callback URL when the generation is dreaming, completed, or
               failed
 
-          concepts: The concepts of the generation
+          first_frame: The image entity object
 
-          duration: The duration of the generation
+          grid_position_x: The x position of the image in the grid
 
-          keyframes: The keyframes of the generation
-
-          loop: Whether to loop the video
+          grid_position_y: The y position of the image in the grid
 
           prompt: The prompt of the generation
 
-          resolution: The resolution of the generation
+          x_end: The x end of the crop bounds
+
+          x_start: The x start of the crop bounds
+
+          y_end: The y end of the crop bounds
+
+          y_start: The y start of the crop bounds
 
           extra_headers: Send extra headers
 
@@ -193,21 +213,24 @@ class AsyncVideoResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/generations",
+            "/generations/video/reframe",
             body=await async_maybe_transform(
                 {
-                    "model": model,
                     "aspect_ratio": aspect_ratio,
-                    "callback_url": callback_url,
-                    "concepts": concepts,
-                    "duration": duration,
                     "generation_type": generation_type,
-                    "keyframes": keyframes,
-                    "loop": loop,
+                    "media": media,
+                    "model": model,
+                    "callback_url": callback_url,
+                    "first_frame": first_frame,
+                    "grid_position_x": grid_position_x,
+                    "grid_position_y": grid_position_y,
                     "prompt": prompt,
-                    "resolution": resolution,
+                    "x_end": x_end,
+                    "x_start": x_start,
+                    "y_end": y_end,
+                    "y_start": y_start,
                 },
-                video_create_params.VideoCreateParams,
+                video_reframe_params.VideoReframeParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -220,8 +243,8 @@ class VideoResourceWithRawResponse:
     def __init__(self, video: VideoResource) -> None:
         self._video = video
 
-        self.create = to_raw_response_wrapper(
-            video.create,
+        self.reframe = to_raw_response_wrapper(
+            video.reframe,
         )
 
 
@@ -229,8 +252,8 @@ class AsyncVideoResourceWithRawResponse:
     def __init__(self, video: AsyncVideoResource) -> None:
         self._video = video
 
-        self.create = async_to_raw_response_wrapper(
-            video.create,
+        self.reframe = async_to_raw_response_wrapper(
+            video.reframe,
         )
 
 
@@ -238,8 +261,8 @@ class VideoResourceWithStreamingResponse:
     def __init__(self, video: VideoResource) -> None:
         self._video = video
 
-        self.create = to_streamed_response_wrapper(
-            video.create,
+        self.reframe = to_streamed_response_wrapper(
+            video.reframe,
         )
 
 
@@ -247,6 +270,6 @@ class AsyncVideoResourceWithStreamingResponse:
     def __init__(self, video: AsyncVideoResource) -> None:
         self._video = video
 
-        self.create = async_to_streamed_response_wrapper(
-            video.create,
+        self.reframe = async_to_streamed_response_wrapper(
+            video.reframe,
         )

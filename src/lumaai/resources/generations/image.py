@@ -19,7 +19,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.generation import Generation
-from ...types.generations import image_create_params
+from ...types.generations import image_create_params, image_reframe_params
 
 __all__ = ["ImageResource", "AsyncImageResource"]
 
@@ -112,6 +112,93 @@ class ImageResource(SyncAPIResource):
                     "sync_timeout": sync_timeout,
                 },
                 image_create_params.ImageCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Generation,
+        )
+
+    def reframe(
+        self,
+        *,
+        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"],
+        generation_type: Literal["reframe_image"],
+        media: image_reframe_params.Media,
+        model: Literal["photon-1", "photon-flash-1"],
+        callback_url: str | NotGiven = NOT_GIVEN,
+        format: Literal["jpg", "png"] | NotGiven = NOT_GIVEN,
+        grid_position_x: int | NotGiven = NOT_GIVEN,
+        grid_position_y: int | NotGiven = NOT_GIVEN,
+        prompt: str | NotGiven = NOT_GIVEN,
+        x_end: int | NotGiven = NOT_GIVEN,
+        x_start: int | NotGiven = NOT_GIVEN,
+        y_end: int | NotGiven = NOT_GIVEN,
+        y_start: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Generation:
+        """
+        Reframe an image by its ID
+
+        Args:
+          aspect_ratio: The aspect ratio of the generation
+
+          media: The image entity object
+
+          model: The model used for the reframe image
+
+          callback_url: The callback URL of the generation, a POST request with Generation object will
+              be sent to the callback URL when the generation is dreaming, completed, or
+              failed
+
+          format: The format of the image
+
+          grid_position_x: The x position of the image in the grid
+
+          grid_position_y: The y position of the image in the grid
+
+          prompt: The prompt of the generation
+
+          x_end: The x end of the crop bounds
+
+          x_start: The x start of the crop bounds
+
+          y_end: The y end of the crop bounds
+
+          y_start: The y start of the crop bounds
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/generations/image/reframe",
+            body=maybe_transform(
+                {
+                    "aspect_ratio": aspect_ratio,
+                    "generation_type": generation_type,
+                    "media": media,
+                    "model": model,
+                    "callback_url": callback_url,
+                    "format": format,
+                    "grid_position_x": grid_position_x,
+                    "grid_position_y": grid_position_y,
+                    "prompt": prompt,
+                    "x_end": x_end,
+                    "x_start": x_start,
+                    "y_end": y_end,
+                    "y_start": y_start,
+                },
+                image_reframe_params.ImageReframeParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -215,6 +302,93 @@ class AsyncImageResource(AsyncAPIResource):
             cast_to=Generation,
         )
 
+    async def reframe(
+        self,
+        *,
+        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"],
+        generation_type: Literal["reframe_image"],
+        media: image_reframe_params.Media,
+        model: Literal["photon-1", "photon-flash-1"],
+        callback_url: str | NotGiven = NOT_GIVEN,
+        format: Literal["jpg", "png"] | NotGiven = NOT_GIVEN,
+        grid_position_x: int | NotGiven = NOT_GIVEN,
+        grid_position_y: int | NotGiven = NOT_GIVEN,
+        prompt: str | NotGiven = NOT_GIVEN,
+        x_end: int | NotGiven = NOT_GIVEN,
+        x_start: int | NotGiven = NOT_GIVEN,
+        y_end: int | NotGiven = NOT_GIVEN,
+        y_start: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Generation:
+        """
+        Reframe an image by its ID
+
+        Args:
+          aspect_ratio: The aspect ratio of the generation
+
+          media: The image entity object
+
+          model: The model used for the reframe image
+
+          callback_url: The callback URL of the generation, a POST request with Generation object will
+              be sent to the callback URL when the generation is dreaming, completed, or
+              failed
+
+          format: The format of the image
+
+          grid_position_x: The x position of the image in the grid
+
+          grid_position_y: The y position of the image in the grid
+
+          prompt: The prompt of the generation
+
+          x_end: The x end of the crop bounds
+
+          x_start: The x start of the crop bounds
+
+          y_end: The y end of the crop bounds
+
+          y_start: The y start of the crop bounds
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/generations/image/reframe",
+            body=await async_maybe_transform(
+                {
+                    "aspect_ratio": aspect_ratio,
+                    "generation_type": generation_type,
+                    "media": media,
+                    "model": model,
+                    "callback_url": callback_url,
+                    "format": format,
+                    "grid_position_x": grid_position_x,
+                    "grid_position_y": grid_position_y,
+                    "prompt": prompt,
+                    "x_end": x_end,
+                    "x_start": x_start,
+                    "y_end": y_end,
+                    "y_start": y_start,
+                },
+                image_reframe_params.ImageReframeParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Generation,
+        )
+
 
 class ImageResourceWithRawResponse:
     def __init__(self, image: ImageResource) -> None:
@@ -222,6 +396,9 @@ class ImageResourceWithRawResponse:
 
         self.create = to_raw_response_wrapper(
             image.create,
+        )
+        self.reframe = to_raw_response_wrapper(
+            image.reframe,
         )
 
 
@@ -232,6 +409,9 @@ class AsyncImageResourceWithRawResponse:
         self.create = async_to_raw_response_wrapper(
             image.create,
         )
+        self.reframe = async_to_raw_response_wrapper(
+            image.reframe,
+        )
 
 
 class ImageResourceWithStreamingResponse:
@@ -241,6 +421,9 @@ class ImageResourceWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             image.create,
         )
+        self.reframe = to_streamed_response_wrapper(
+            image.reframe,
+        )
 
 
 class AsyncImageResourceWithStreamingResponse:
@@ -249,4 +432,7 @@ class AsyncImageResourceWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             image.create,
+        )
+        self.reframe = async_to_streamed_response_wrapper(
+            image.reframe,
         )
