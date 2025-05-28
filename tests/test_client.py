@@ -23,10 +23,12 @@ from pydantic import ValidationError
 
 from lumaai import LumaAI, AsyncLumaAI, APIResponseValidationError
 from lumaai._types import Omit
+from lumaai._utils import maybe_transform
 from lumaai._models import BaseModel, FinalRequestOptions
 from lumaai._constants import RAW_RESPONSE_HEADER
 from lumaai._exceptions import LumaAIError, APIStatusError, APITimeoutError, APIResponseValidationError
 from lumaai._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
+from lumaai.types.generation_create_params import GenerationCreateParams
 
 from .utils import update_env
 
@@ -720,11 +722,25 @@ class TestLumaAI:
     @mock.patch("lumaai._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/generations").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.post("/generations/video").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            self.client.get(
-                "/generations", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+            self.client.post(
+                "/generations/video",
+                body=cast(
+                    object,
+                    maybe_transform(
+                        dict(
+                            model="ray-2",
+                            aspect_ratio="16:9",
+                            loop=False,
+                            prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                        ),
+                        GenerationCreateParams,
+                    ),
+                ),
+                cast_to=httpx.Response,
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
@@ -732,11 +748,25 @@ class TestLumaAI:
     @mock.patch("lumaai._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/generations").mock(return_value=httpx.Response(500))
+        respx_mock.post("/generations/video").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            self.client.get(
-                "/generations", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+            self.client.post(
+                "/generations/video",
+                body=cast(
+                    object,
+                    maybe_transform(
+                        dict(
+                            model="ray-2",
+                            aspect_ratio="16:9",
+                            loop=False,
+                            prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                        ),
+                        GenerationCreateParams,
+                    ),
+                ),
+                cast_to=httpx.Response,
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
@@ -765,9 +795,9 @@ class TestLumaAI:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/generations").mock(side_effect=retry_handler)
+        respx_mock.post("/generations/video").mock(side_effect=retry_handler)
 
-        response = client.generations.with_raw_response.list()
+        response = client.generations.with_raw_response.create(model="ray-1-6")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -789,9 +819,11 @@ class TestLumaAI:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/generations").mock(side_effect=retry_handler)
+        respx_mock.post("/generations/video").mock(side_effect=retry_handler)
 
-        response = client.generations.with_raw_response.list(extra_headers={"x-stainless-retry-count": Omit()})
+        response = client.generations.with_raw_response.create(
+            model="ray-1-6", extra_headers={"x-stainless-retry-count": Omit()}
+        )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -812,9 +844,11 @@ class TestLumaAI:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/generations").mock(side_effect=retry_handler)
+        respx_mock.post("/generations/video").mock(side_effect=retry_handler)
 
-        response = client.generations.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
+        response = client.generations.with_raw_response.create(
+            model="ray-1-6", extra_headers={"x-stainless-retry-count": "42"}
+        )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
@@ -1493,11 +1527,25 @@ class TestAsyncLumaAI:
     @mock.patch("lumaai._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/generations").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.post("/generations/video").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            await self.client.get(
-                "/generations", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+            await self.client.post(
+                "/generations/video",
+                body=cast(
+                    object,
+                    maybe_transform(
+                        dict(
+                            model="ray-2",
+                            aspect_ratio="16:9",
+                            loop=False,
+                            prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                        ),
+                        GenerationCreateParams,
+                    ),
+                ),
+                cast_to=httpx.Response,
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
@@ -1505,11 +1553,25 @@ class TestAsyncLumaAI:
     @mock.patch("lumaai._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/generations").mock(return_value=httpx.Response(500))
+        respx_mock.post("/generations/video").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            await self.client.get(
-                "/generations", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+            await self.client.post(
+                "/generations/video",
+                body=cast(
+                    object,
+                    maybe_transform(
+                        dict(
+                            model="ray-2",
+                            aspect_ratio="16:9",
+                            loop=False,
+                            prompt="A teddy bear in sunglasses playing electric guitar, dancing and headbanging in the jungle in front of a large beautiful waterfall",
+                        ),
+                        GenerationCreateParams,
+                    ),
+                ),
+                cast_to=httpx.Response,
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
@@ -1539,9 +1601,9 @@ class TestAsyncLumaAI:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/generations").mock(side_effect=retry_handler)
+        respx_mock.post("/generations/video").mock(side_effect=retry_handler)
 
-        response = await client.generations.with_raw_response.list()
+        response = await client.generations.with_raw_response.create(model="ray-1-6")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1564,9 +1626,11 @@ class TestAsyncLumaAI:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/generations").mock(side_effect=retry_handler)
+        respx_mock.post("/generations/video").mock(side_effect=retry_handler)
 
-        response = await client.generations.with_raw_response.list(extra_headers={"x-stainless-retry-count": Omit()})
+        response = await client.generations.with_raw_response.create(
+            model="ray-1-6", extra_headers={"x-stainless-retry-count": Omit()}
+        )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -1588,9 +1652,11 @@ class TestAsyncLumaAI:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/generations").mock(side_effect=retry_handler)
+        respx_mock.post("/generations/video").mock(side_effect=retry_handler)
 
-        response = await client.generations.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
+        response = await client.generations.with_raw_response.create(
+            model="ray-1-6", extra_headers={"x-stainless-retry-count": "42"}
+        )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
