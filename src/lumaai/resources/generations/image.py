@@ -131,6 +131,8 @@ class ImageResource(SyncAPIResource):
         grid_position_x: int | NotGiven = NOT_GIVEN,
         grid_position_y: int | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
+        resized_height: int | NotGiven = NOT_GIVEN,
+        resized_width: int | NotGiven = NOT_GIVEN,
         x_end: int | NotGiven = NOT_GIVEN,
         x_start: int | NotGiven = NOT_GIVEN,
         y_end: int | NotGiven = NOT_GIVEN,
@@ -164,6 +166,10 @@ class ImageResource(SyncAPIResource):
 
           prompt: The prompt of the generation
 
+          resized_height: Resized height of source image
+
+          resized_width: Resized width of source image
+
           x_end: The x end of the crop bounds
 
           x_start: The x start of the crop bounds
@@ -193,6 +199,8 @@ class ImageResource(SyncAPIResource):
                     "grid_position_x": grid_position_x,
                     "grid_position_y": grid_position_y,
                     "prompt": prompt,
+                    "resized_height": resized_height,
+                    "resized_width": resized_width,
                     "x_end": x_end,
                     "x_start": x_start,
                     "y_end": y_end,
@@ -314,6 +322,8 @@ class AsyncImageResource(AsyncAPIResource):
         grid_position_x: int | NotGiven = NOT_GIVEN,
         grid_position_y: int | NotGiven = NOT_GIVEN,
         prompt: str | NotGiven = NOT_GIVEN,
+        resized_height: int | NotGiven = NOT_GIVEN,
+        resized_width: int | NotGiven = NOT_GIVEN,
         x_end: int | NotGiven = NOT_GIVEN,
         x_start: int | NotGiven = NOT_GIVEN,
         y_end: int | NotGiven = NOT_GIVEN,
@@ -347,6 +357,10 @@ class AsyncImageResource(AsyncAPIResource):
 
           prompt: The prompt of the generation
 
+          resized_height: Resized height of source image
+
+          resized_width: Resized width of source image
+
           x_end: The x end of the crop bounds
 
           x_start: The x start of the crop bounds
@@ -376,6 +390,8 @@ class AsyncImageResource(AsyncAPIResource):
                     "grid_position_x": grid_position_x,
                     "grid_position_y": grid_position_y,
                     "prompt": prompt,
+                    "resized_height": resized_height,
+                    "resized_width": resized_width,
                     "x_end": x_end,
                     "x_start": x_start,
                     "y_end": y_end,
