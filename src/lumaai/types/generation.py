@@ -268,6 +268,12 @@ class RequestReframeImageRequest(BaseModel):
     prompt: Optional[str] = None
     """The prompt of the generation"""
 
+    resized_height: Optional[int] = None
+    """Resized height of source image"""
+
+    resized_width: Optional[int] = None
+    """Resized width of source image"""
+
     x_end: Optional[int] = None
     """The x end of the crop bounds"""
 
@@ -321,6 +327,12 @@ class RequestReframeVideoRequest(BaseModel):
 
     prompt: Optional[str] = None
     """The prompt of the generation"""
+
+    resized_height: Optional[int] = None
+    """Resized height of source video"""
+
+    resized_width: Optional[int] = None
+    """Resized width of source video"""
 
     x_end: Optional[int] = None
     """The x end of the crop bounds"""

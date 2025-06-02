@@ -38,6 +38,12 @@ class VideoReframeParams(TypedDict, total=False):
     prompt: str
     """The prompt of the generation"""
 
+    resized_height: int
+    """Resized height of source video"""
+
+    resized_width: int
+    """Resized width of source video"""
+
     x_end: int
     """The x end of the crop bounds"""
 
