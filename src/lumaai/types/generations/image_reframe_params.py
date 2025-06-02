@@ -38,6 +38,12 @@ class ImageReframeParams(TypedDict, total=False):
     prompt: str
     """The prompt of the generation"""
 
+    resized_height: int
+    """Resized height of source image"""
+
+    resized_width: int
+    """Resized width of source image"""
+
     x_end: int
     """The x end of the crop bounds"""
 
