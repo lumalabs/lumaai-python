@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.13.0 (2025-06-03)
+
+Full Changelog: [v1.12.0...v1.13.0](https://github.com/lumalabs/lumaai-python/compare/v1.12.0...v1.13.0)
+
+### Features
+
+* **client:** add follow_redirects request option ([43ed202](https://github.com/lumalabs/lumaai-python/commit/43ed202c630e08ec6ac5522b5b7151ee7d1d1c47))
+
+
+### Chores
+
+* **docs:** remove reference to rye shell ([9285d7f](https://github.com/lumalabs/lumaai-python/commit/9285d7fefa3515a6c533513dfe5deef0d2beca20))
+
 ## 1.12.0 (2025-06-02)
 
 Full Changelog: [v1.11.0...v1.12.0](https://github.com/lumalabs/lumaai-python/compare/v1.11.0...v1.12.0)
