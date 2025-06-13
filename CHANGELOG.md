@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.13.1 (2025-06-13)
+
+Full Changelog: [v1.13.0...v1.13.1](https://github.com/lumalabs/lumaai-python/compare/v1.13.0...v1.13.1)
+
+### Bug Fixes
+
+* **client:** correctly parse binary response | stream ([fae6341](https://github.com/lumalabs/lumaai-python/commit/fae6341296fcbe31a09744d40f2864e59eb99ab8))
+
+
+### Chores
+
+* **tests:** run tests in parallel ([b7fca9f](https://github.com/lumalabs/lumaai-python/commit/b7fca9f8613bdac4d4a84642b5e21801d5a9003d))
+
 ## 1.13.0 (2025-06-03)
 
 Full Changelog: [v1.12.0...v1.13.0](https://github.com/lumalabs/lumaai-python/compare/v1.12.0...v1.13.0)
