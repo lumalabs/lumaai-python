@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.14.0 (2025-06-20)
+
+Full Changelog: [v1.13.0...v1.14.0](https://github.com/lumalabs/lumaai-python/compare/v1.13.0...v1.14.0)
+
+### Bug Fixes
+
+* **client:** correctly parse binary response | stream ([fae6341](https://github.com/lumalabs/lumaai-python/commit/fae6341296fcbe31a09744d40f2864e59eb99ab8))
+* **tests:** fix: tests which call HTTP endpoints directly with the example parameters ([d90e9be](https://github.com/lumalabs/lumaai-python/commit/d90e9bec0b8fea5f4e701faba952e481cfbc6c7b))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([d994fec](https://github.com/lumalabs/lumaai-python/commit/d994feca7a0f23001b71d2f7a36c9d863dec7643))
+* **internal:** update conftest.py ([9020c14](https://github.com/lumalabs/lumaai-python/commit/9020c1474becbac389c78ba0daa813798d9c0208))
+* **readme:** update badges ([5d50b56](https://github.com/lumalabs/lumaai-python/commit/5d50b56b3d5d4ebc81bdea4b3f1e9de552a6c082))
+* **tests:** add tests for httpx client instantiation & proxies ([5257ece](https://github.com/lumalabs/lumaai-python/commit/5257ece47e45ae5cc8d2a0ea590a7e52203b4834))
+* **tests:** run tests in parallel ([b7fca9f](https://github.com/lumalabs/lumaai-python/commit/b7fca9f8613bdac4d4a84642b5e21801d5a9003d))
+
+
+### Documentation
+
+* **client:** fix httpx.Timeout documentation reference ([39be672](https://github.com/lumalabs/lumaai-python/commit/39be6723f033b65fa4fcc86fb4069f785d077171))
+
 ## 1.13.0 (2025-06-03)
 
 Full Changelog: [v1.12.0...v1.13.0](https://github.com/lumalabs/lumaai-python/compare/v1.12.0...v1.13.0)
