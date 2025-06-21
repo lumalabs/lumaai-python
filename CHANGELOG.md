@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.15.0 (2025-06-21)
+
+Full Changelog: [v1.14.0...v1.15.0](https://github.com/lumalabs/lumaai-python/compare/v1.14.0...v1.15.0)
+
+### Features
+
+* **client:** add support for aiohttp ([dd16fb2](https://github.com/lumalabs/lumaai-python/commit/dd16fb287e518048a3d8f7783bc0d821fb9b8607))
+
 ## 1.14.0 (2025-06-20)
 
 Full Changelog: [v1.13.0...v1.14.0](https://github.com/lumalabs/lumaai-python/compare/v1.13.0...v1.14.0)
