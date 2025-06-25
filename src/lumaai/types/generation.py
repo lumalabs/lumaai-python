@@ -33,6 +33,9 @@ __all__ = [
     "RequestReframeVideoRequest",
     "RequestReframeVideoRequestMedia",
     "RequestReframeVideoRequestFirstFrame",
+    "RequestModifyVideoRequest",
+    "RequestModifyVideoRequestMedia",
+    "RequestModifyVideoRequestFirstFrame",
 ]
 
 
@@ -234,7 +237,7 @@ class RequestAudioGenerationRequest(BaseModel):
 
 class RequestReframeImageRequestMedia(BaseModel):
     url: str
-    """The URL of the image"""
+    """The URL of the media"""
 
 
 class RequestReframeImageRequest(BaseModel):
@@ -289,12 +292,12 @@ class RequestReframeImageRequest(BaseModel):
 
 class RequestReframeVideoRequestMedia(BaseModel):
     url: str
-    """The URL of the image"""
+    """The URL of the media"""
 
 
 class RequestReframeVideoRequestFirstFrame(BaseModel):
     url: str
-    """The URL of the image"""
+    """The URL of the media"""
 
 
 class RequestReframeVideoRequest(BaseModel):
@@ -347,6 +350,44 @@ class RequestReframeVideoRequest(BaseModel):
     """The y start of the crop bounds"""
 
 
+class RequestModifyVideoRequestMedia(BaseModel):
+    url: str
+    """The URL of the media"""
+
+
+class RequestModifyVideoRequestFirstFrame(BaseModel):
+    url: str
+    """The URL of the media"""
+
+
+class RequestModifyVideoRequest(BaseModel):
+    generation_type: Literal["modify_video"]
+
+    media: RequestModifyVideoRequestMedia
+    """The image entity object"""
+
+    mode: Literal[
+        "adhere_1", "adhere_2", "adhere_3", "flex_1", "flex_2", "flex_3", "reimagine_1", "reimagine_2", "reimagine_3"
+    ]
+    """The mode of the modify video"""
+
+    model: Literal["ray-2"]
+    """The model used for the modify video"""
+
+    callback_url: Optional[str] = None
+    """
+    The callback URL of the generation, a POST request with Generation object will
+    be sent to the callback URL when the generation is dreaming, completed, or
+    failed
+    """
+
+    first_frame: Optional[RequestModifyVideoRequestFirstFrame] = None
+    """The image entity object"""
+
+    prompt: Optional[str] = None
+    """The prompt of the generation"""
+
+
 Request: TypeAlias = Union[
     RequestGenerationRequest,
     RequestImageGenerationRequest,
@@ -354,6 +395,7 @@ Request: TypeAlias = Union[
     RequestAudioGenerationRequest,
     RequestReframeImageRequest,
     RequestReframeVideoRequest,
+    RequestModifyVideoRequest,
 ]
 
 
