@@ -39,6 +39,7 @@ Methods:
 Methods:
 
 - <code title="post /generations/video">client.generations.video.<a href="./src/lumaai/resources/generations/video.py">create</a>(\*\*<a href="src/lumaai/types/generations/video_create_params.py">params</a>) -> <a href="./src/lumaai/types/generation.py">Generation</a></code>
+- <code title="post /generations/video/modify">client.generations.video.<a href="./src/lumaai/resources/generations/video.py">modify</a>(\*\*<a href="src/lumaai/types/generations/video_modify_params.py">params</a>) -> <a href="./src/lumaai/types/generation.py">Generation</a></code>
 - <code title="post /generations/video/reframe">client.generations.video.<a href="./src/lumaai/resources/generations/video.py">reframe</a>(\*\*<a href="src/lumaai/types/generations/video_reframe_params.py">params</a>) -> <a href="./src/lumaai/types/generation.py">Generation</a></code>
 
 # Ping

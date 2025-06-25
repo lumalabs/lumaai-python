@@ -74,6 +74,59 @@ class TestVideo:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_modify(self, client: LumaAI) -> None:
+        video = client.generations.video.modify(
+            generation_type="modify_video",
+            media={"url": "https://example.com"},
+            mode="adhere_1",
+            model="ray-2",
+        )
+        assert_matches_type(Generation, video, path=["response"])
+
+    @parametrize
+    def test_method_modify_with_all_params(self, client: LumaAI) -> None:
+        video = client.generations.video.modify(
+            generation_type="modify_video",
+            media={"url": "https://example.com"},
+            mode="adhere_1",
+            model="ray-2",
+            callback_url="https://example.com",
+            first_frame={"url": "https://example.com"},
+            prompt="prompt",
+        )
+        assert_matches_type(Generation, video, path=["response"])
+
+    @parametrize
+    def test_raw_response_modify(self, client: LumaAI) -> None:
+        response = client.generations.video.with_raw_response.modify(
+            generation_type="modify_video",
+            media={"url": "https://example.com"},
+            mode="adhere_1",
+            model="ray-2",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        video = response.parse()
+        assert_matches_type(Generation, video, path=["response"])
+
+    @parametrize
+    def test_streaming_response_modify(self, client: LumaAI) -> None:
+        with client.generations.video.with_streaming_response.modify(
+            generation_type="modify_video",
+            media={"url": "https://example.com"},
+            mode="adhere_1",
+            model="ray-2",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            video = response.parse()
+            assert_matches_type(Generation, video, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_reframe(self, client: LumaAI) -> None:
         video = client.generations.video.reframe(
             aspect_ratio="16:9",
@@ -187,6 +240,59 @@ class TestAsyncVideo:
     async def test_streaming_response_create(self, async_client: AsyncLumaAI) -> None:
         async with async_client.generations.video.with_streaming_response.create(
             model="ray-1-6",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            video = await response.parse()
+            assert_matches_type(Generation, video, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_modify(self, async_client: AsyncLumaAI) -> None:
+        video = await async_client.generations.video.modify(
+            generation_type="modify_video",
+            media={"url": "https://example.com"},
+            mode="adhere_1",
+            model="ray-2",
+        )
+        assert_matches_type(Generation, video, path=["response"])
+
+    @parametrize
+    async def test_method_modify_with_all_params(self, async_client: AsyncLumaAI) -> None:
+        video = await async_client.generations.video.modify(
+            generation_type="modify_video",
+            media={"url": "https://example.com"},
+            mode="adhere_1",
+            model="ray-2",
+            callback_url="https://example.com",
+            first_frame={"url": "https://example.com"},
+            prompt="prompt",
+        )
+        assert_matches_type(Generation, video, path=["response"])
+
+    @parametrize
+    async def test_raw_response_modify(self, async_client: AsyncLumaAI) -> None:
+        response = await async_client.generations.video.with_raw_response.modify(
+            generation_type="modify_video",
+            media={"url": "https://example.com"},
+            mode="adhere_1",
+            model="ray-2",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        video = await response.parse()
+        assert_matches_type(Generation, video, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_modify(self, async_client: AsyncLumaAI) -> None:
+        async with async_client.generations.video.with_streaming_response.modify(
+            generation_type="modify_video",
+            media={"url": "https://example.com"},
+            mode="adhere_1",
+            model="ray-2",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
