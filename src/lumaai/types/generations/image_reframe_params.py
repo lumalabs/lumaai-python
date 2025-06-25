@@ -59,4 +59,4 @@ class ImageReframeParams(TypedDict, total=False):
 
 class Media(TypedDict, total=False):
     url: Required[str]
-    """The URL of the image"""
+    """The URL of the media"""
