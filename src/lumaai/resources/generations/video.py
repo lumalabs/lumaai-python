@@ -19,7 +19,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.generation import Generation
-from ...types.generations import video_create_params, video_reframe_params
+from ...types.generations import video_create_params, video_modify_params, video_reframe_params
 
 __all__ = ["VideoResource", "AsyncVideoResource"]
 
@@ -112,6 +112,79 @@ class VideoResource(SyncAPIResource):
                     "resolution": resolution,
                 },
                 video_create_params.VideoCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Generation,
+        )
+
+    def modify(
+        self,
+        *,
+        generation_type: Literal["modify_video"],
+        media: video_modify_params.Media,
+        mode: Literal[
+            "adhere_1",
+            "adhere_2",
+            "adhere_3",
+            "flex_1",
+            "flex_2",
+            "flex_3",
+            "reimagine_1",
+            "reimagine_2",
+            "reimagine_3",
+        ],
+        model: Literal["ray-2"],
+        callback_url: str | NotGiven = NOT_GIVEN,
+        first_frame: video_modify_params.FirstFrame | NotGiven = NOT_GIVEN,
+        prompt: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Generation:
+        """
+        Modify a video with style transfer and prompt-based editing
+
+        Args:
+          media: The image entity object
+
+          mode: The mode of the modify video
+
+          model: The model used for the modify video
+
+          callback_url: The callback URL of the generation, a POST request with Generation object will
+              be sent to the callback URL when the generation is dreaming, completed, or
+              failed
+
+          first_frame: The image entity object
+
+          prompt: The prompt of the generation
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/generations/video/modify",
+            body=maybe_transform(
+                {
+                    "generation_type": generation_type,
+                    "media": media,
+                    "mode": mode,
+                    "model": model,
+                    "callback_url": callback_url,
+                    "first_frame": first_frame,
+                    "prompt": prompt,
+                },
+                video_modify_params.VideoModifyParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -310,6 +383,79 @@ class AsyncVideoResource(AsyncAPIResource):
             cast_to=Generation,
         )
 
+    async def modify(
+        self,
+        *,
+        generation_type: Literal["modify_video"],
+        media: video_modify_params.Media,
+        mode: Literal[
+            "adhere_1",
+            "adhere_2",
+            "adhere_3",
+            "flex_1",
+            "flex_2",
+            "flex_3",
+            "reimagine_1",
+            "reimagine_2",
+            "reimagine_3",
+        ],
+        model: Literal["ray-2"],
+        callback_url: str | NotGiven = NOT_GIVEN,
+        first_frame: video_modify_params.FirstFrame | NotGiven = NOT_GIVEN,
+        prompt: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Generation:
+        """
+        Modify a video with style transfer and prompt-based editing
+
+        Args:
+          media: The image entity object
+
+          mode: The mode of the modify video
+
+          model: The model used for the modify video
+
+          callback_url: The callback URL of the generation, a POST request with Generation object will
+              be sent to the callback URL when the generation is dreaming, completed, or
+              failed
+
+          first_frame: The image entity object
+
+          prompt: The prompt of the generation
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/generations/video/modify",
+            body=await async_maybe_transform(
+                {
+                    "generation_type": generation_type,
+                    "media": media,
+                    "mode": mode,
+                    "model": model,
+                    "callback_url": callback_url,
+                    "first_frame": first_frame,
+                    "prompt": prompt,
+                },
+                video_modify_params.VideoModifyParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Generation,
+        )
+
     async def reframe(
         self,
         *,
@@ -413,6 +559,9 @@ class VideoResourceWithRawResponse:
         self.create = to_raw_response_wrapper(
             video.create,
         )
+        self.modify = to_raw_response_wrapper(
+            video.modify,
+        )
         self.reframe = to_raw_response_wrapper(
             video.reframe,
         )
@@ -424,6 +573,9 @@ class AsyncVideoResourceWithRawResponse:
 
         self.create = async_to_raw_response_wrapper(
             video.create,
+        )
+        self.modify = async_to_raw_response_wrapper(
+            video.modify,
         )
         self.reframe = async_to_raw_response_wrapper(
             video.reframe,
@@ -437,6 +589,9 @@ class VideoResourceWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             video.create,
         )
+        self.modify = to_streamed_response_wrapper(
+            video.modify,
+        )
         self.reframe = to_streamed_response_wrapper(
             video.reframe,
         )
@@ -448,6 +603,9 @@ class AsyncVideoResourceWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             video.create,
+        )
+        self.modify = async_to_streamed_response_wrapper(
+            video.modify,
         )
         self.reframe = async_to_streamed_response_wrapper(
             video.reframe,

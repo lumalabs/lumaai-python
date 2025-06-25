@@ -59,9 +59,9 @@ class VideoReframeParams(TypedDict, total=False):
 
 class Media(TypedDict, total=False):
     url: Required[str]
-    """The URL of the image"""
+    """The URL of the media"""
 
 
 class FirstFrame(TypedDict, total=False):
     url: Required[str]
-    """The URL of the image"""
+    """The URL of the media"""
