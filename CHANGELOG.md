@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.15.1 (2025-07-02)
+
+Full Changelog: [v1.15.0...v1.15.1](https://github.com/lumalabs/lumaai-python/compare/v1.15.0...v1.15.1)
+
+### Bug Fixes
+
+* **ci:** correct conditional ([7cd4571](https://github.com/lumalabs/lumaai-python/commit/7cd4571c6553c4f540bff998e14dc871cc58271e))
+* **ci:** release-doctor — report correct token name ([adda4e4](https://github.com/lumalabs/lumaai-python/commit/adda4e42e705f849c2c73e6ebb61f0753bd23745))
+
+
+### Chores
+
+* **ci:** change upload type ([351a0e8](https://github.com/lumalabs/lumaai-python/commit/351a0e8c979c206a8f94a5b68f1fdd5793bcb278))
+* **ci:** only run for pushes and fork pull requests ([50b8ecb](https://github.com/lumalabs/lumaai-python/commit/50b8ecb28a5e6c65e681467b9787b7bc23661556))
+
 ## 1.15.0 (2025-06-25)
 
 Full Changelog: [v1.14.0...v1.15.0](https://github.com/lumalabs/lumaai-python/compare/v1.14.0...v1.15.0)
