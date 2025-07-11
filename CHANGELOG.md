@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.15.1 (2025-07-11)
+
+Full Changelog: [v1.15.0...v1.15.1](https://github.com/lumalabs/lumaai-python/compare/v1.15.0...v1.15.1)
+
+### Bug Fixes
+
+* **ci:** correct conditional ([7cd4571](https://github.com/lumalabs/lumaai-python/commit/7cd4571c6553c4f540bff998e14dc871cc58271e))
+* **ci:** release-doctor — report correct token name ([adda4e4](https://github.com/lumalabs/lumaai-python/commit/adda4e42e705f849c2c73e6ebb61f0753bd23745))
+* **parsing:** correctly handle nested discriminated unions ([d97d872](https://github.com/lumalabs/lumaai-python/commit/d97d872c579e363844a941cc8318d5e54de342c5))
+
+
+### Chores
+
+* **ci:** change upload type ([351a0e8](https://github.com/lumalabs/lumaai-python/commit/351a0e8c979c206a8f94a5b68f1fdd5793bcb278))
+* **ci:** only run for pushes and fork pull requests ([50b8ecb](https://github.com/lumalabs/lumaai-python/commit/50b8ecb28a5e6c65e681467b9787b7bc23661556))
+* **internal:** bump pinned h11 dep ([2f98b9a](https://github.com/lumalabs/lumaai-python/commit/2f98b9a4afdcb76c12221c660d43dbdaff9741af))
+* **internal:** codegen related update ([b89b147](https://github.com/lumalabs/lumaai-python/commit/b89b1470c88c4825b3b52ab15fccd8a1587334ba))
+* **package:** mark python 3.13 as supported ([7f37491](https://github.com/lumalabs/lumaai-python/commit/7f374916e24833705e85f06788ea24c5eec15b43))
+* **readme:** fix version rendering on pypi ([24f04ae](https://github.com/lumalabs/lumaai-python/commit/24f04aeeca03973aece5756f563cb48b4fd0e8a1))
+
 ## 1.15.0 (2025-06-25)
 
 Full Changelog: [v1.14.0...v1.15.0](https://github.com/lumalabs/lumaai-python/compare/v1.14.0...v1.15.0)
