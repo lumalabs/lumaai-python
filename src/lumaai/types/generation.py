@@ -371,7 +371,7 @@ class RequestModifyVideoRequest(BaseModel):
     ]
     """The mode of the modify video"""
 
-    model: Literal["ray-2"]
+    model: Literal["ray-2", "ray-flash-2"]
     """The model used for the modify video"""
 
     callback_url: Optional[str] = None
