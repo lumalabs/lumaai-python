@@ -28,7 +28,7 @@ class VideoModifyParams(TypedDict, total=False):
     ]
     """The mode of the modify video"""
 
-    model: Required[Literal["ray-2"]]
+    model: Required[Literal["ray-2", "ray-flash-2"]]
     """The model used for the modify video"""
 
     callback_url: str
