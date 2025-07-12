@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.16.1 (2025-07-12)
+
+Full Changelog: [v1.16.0...v1.16.1](https://github.com/lumalabs/lumaai-python/compare/v1.16.0...v1.16.1)
+
+### Bug Fixes
+
+* **client:** don't send Content-Type header on GET requests ([bb09d4d](https://github.com/lumalabs/lumaai-python/commit/bb09d4df6e2b7fe741848e3986aa310c39a1bf6d))
+
 ## 1.16.0 (2025-07-11)
 
 Full Changelog: [v1.15.1...v1.16.0](https://github.com/lumalabs/lumaai-python/compare/v1.15.1...v1.16.0)
