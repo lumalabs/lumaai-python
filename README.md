@@ -87,7 +87,6 @@ pip install lumaai[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
-import os
 import asyncio
 from lumaai import DefaultAioHttpClient
 from lumaai import AsyncLumaAI
@@ -95,7 +94,7 @@ from lumaai import AsyncLumaAI
 
 async def main() -> None:
     async with AsyncLumaAI(
-        auth_token=os.environ.get("LUMAAI_API_KEY"),  # This is the default and can be omitted
+        auth_token="My Auth Token",
         http_client=DefaultAioHttpClient(),
     ) as client:
         generation = await client.generations.create(
