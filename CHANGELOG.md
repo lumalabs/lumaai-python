@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.16.2 (2025-07-25)
+
+Full Changelog: [v1.16.1...v1.16.2](https://github.com/lumalabs/lumaai-python/compare/v1.16.1...v1.16.2)
+
+### Bug Fixes
+
+* **parsing:** ignore empty metadata ([cc3dcfd](https://github.com/lumalabs/lumaai-python/commit/cc3dcfda83fb923c4841642a6efbd47e87b52920))
+* **parsing:** parse extra field types ([096e433](https://github.com/lumalabs/lumaai-python/commit/096e433a7fb3d04f82b72b2db0ed2ee6c09d418c))
+
+
+### Chores
+
+* **project:** add settings file for vscode ([e2867b5](https://github.com/lumalabs/lumaai-python/commit/e2867b50de439679e686996f1e5eef45a9608c14))
+
 ## 1.16.1 (2025-07-19)
 
 Full Changelog: [v1.16.0...v1.16.1](https://github.com/lumalabs/lumaai-python/compare/v1.16.0...v1.16.1)
