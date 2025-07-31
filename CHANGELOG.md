@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.17.0 (2025-07-31)
+
+Full Changelog: [v1.16.2...v1.17.0](https://github.com/lumalabs/lumaai-python/compare/v1.16.2...v1.17.0)
+
+### Features
+
+* **client:** support file upload requests ([34a3cfb](https://github.com/lumalabs/lumaai-python/commit/34a3cfb3ca6655c5014fcebf8fb6fbee157cf202))
+
 ## 1.16.2 (2025-07-25)
 
 Full Changelog: [v1.16.1...v1.16.2](https://github.com/lumalabs/lumaai-python/compare/v1.16.1...v1.16.2)
