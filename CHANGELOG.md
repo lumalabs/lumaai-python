@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.17.0 (2025-08-06)
+
+Full Changelog: [v1.16.2...v1.17.0](https://github.com/lumalabs/lumaai-python/compare/v1.16.2...v1.17.0)
+
+### Features
+
+* **client:** support file upload requests ([34a3cfb](https://github.com/lumalabs/lumaai-python/commit/34a3cfb3ca6655c5014fcebf8fb6fbee157cf202))
+
+
+### Chores
+
+* **internal:** fix ruff target version ([eb0161d](https://github.com/lumalabs/lumaai-python/commit/eb0161d4e30ec79cb2e6193b508af6e9bfd36668))
+
 ## 1.16.2 (2025-07-25)
 
 Full Changelog: [v1.16.1...v1.16.2](https://github.com/lumalabs/lumaai-python/compare/v1.16.1...v1.16.2)
