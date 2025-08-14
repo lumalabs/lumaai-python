@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.17.1 (2025-08-14)
+
+Full Changelog: [v1.17.0...v1.17.1](https://github.com/lumalabs/lumaai-python/compare/v1.17.0...v1.17.1)
+
+### Chores
+
+* **internal:** update comment in script ([dca67fb](https://github.com/lumalabs/lumaai-python/commit/dca67fb93dd6c999356f3d91403eb673155403e1))
+* update @stainless-api/prism-cli to v5.15.0 ([5c8641c](https://github.com/lumalabs/lumaai-python/commit/5c8641c895858ade3f24c8c1876f5969824538d8))
+
 ## 1.17.0 (2025-08-06)
 
 Full Changelog: [v1.16.2...v1.17.0](https://github.com/lumalabs/lumaai-python/compare/v1.16.2...v1.17.0)
