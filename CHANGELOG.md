@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.17.2 (2025-08-22)
+
+Full Changelog: [v1.17.1...v1.17.2](https://github.com/lumalabs/lumaai-python/compare/v1.17.1...v1.17.2)
+
+### Chores
+
+* update github action ([e4e2029](https://github.com/lumalabs/lumaai-python/commit/e4e20297f21e3e87806939216aff01803f387d19))
+
 ## 1.17.1 (2025-08-14)
 
 Full Changelog: [v1.17.0...v1.17.1](https://github.com/lumalabs/lumaai-python/compare/v1.17.0...v1.17.1)
