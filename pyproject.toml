@@ -1,6 +1,6 @@
 [project]
 name = "lumaai"
-version = "1.17.1"
+version = "1.17.2"
 description = "The official Python library for the lumaai API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -148,6 +148,7 @@ exclude = [
     "_dev",
     ".venv",
     ".nox",
+    ".git",
 ]
 
 reportImplicitOverride = true

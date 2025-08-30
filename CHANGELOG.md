@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.17.2 (2025-08-30)
+
+Full Changelog: [v1.17.1...v1.17.2](https://github.com/lumalabs/lumaai-python/compare/v1.17.1...v1.17.2)
+
+### Bug Fixes
+
+* avoid newer type syntax ([4c7e849](https://github.com/lumalabs/lumaai-python/commit/4c7e849ff9b0efbabba24aab8f4c3ad182756940))
+
+
+### Chores
+
+* **internal:** add Sequence related utils ([dc85243](https://github.com/lumalabs/lumaai-python/commit/dc8524308fe02225a82c0ef9ad3b424920e416e4))
+* **internal:** change ci workflow machines ([eb1b9a6](https://github.com/lumalabs/lumaai-python/commit/eb1b9a6fb577b0577fc812d68d1d96cd38d3f3d1))
+* **internal:** update pyright exclude list ([413b33b](https://github.com/lumalabs/lumaai-python/commit/413b33b4a4805b1e45a8986e05ab7800ca08d277))
+* update github action ([e4e2029](https://github.com/lumalabs/lumaai-python/commit/e4e20297f21e3e87806939216aff01803f387d19))
+
 ## 1.17.1 (2025-08-14)
 
 Full Changelog: [v1.17.0...v1.17.1](https://github.com/lumalabs/lumaai-python/compare/v1.17.0...v1.17.1)
