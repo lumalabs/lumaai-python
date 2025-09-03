@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal, Required, TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["ImageCreateParams", "CharacterRef", "CharacterRefIdentity0", "ImageRef", "ModifyImageRef", "StyleRef"]
 
@@ -43,7 +45,7 @@ class ImageCreateParams(TypedDict, total=False):
 
 
 class CharacterRefIdentity0(TypedDict, total=False):
-    images: List[str]
+    images: SequenceNotStr[str]
     """The URLs of the image identity"""
 
 
