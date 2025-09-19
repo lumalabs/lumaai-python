@@ -29,7 +29,7 @@ from ...types import (
     generation_create_params,
     generation_upscale_params,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from .concepts import (
     ConceptsResource,
@@ -90,21 +90,21 @@ class GenerationsResource(SyncAPIResource):
         self,
         *,
         model: Literal["ray-1-6", "ray-2", "ray-flash-2"],
-        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
-        callback_url: str | NotGiven = NOT_GIVEN,
-        concepts: Iterable[generation_create_params.Concept] | NotGiven = NOT_GIVEN,
-        duration: Union[Literal["5s", "9s"], str] | NotGiven = NOT_GIVEN,
-        generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
-        keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
-        loop: bool | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
-        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
+        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | Omit = omit,
+        callback_url: str | Omit = omit,
+        concepts: Iterable[generation_create_params.Concept] | Omit = omit,
+        duration: Union[Literal["5s", "9s"], str] | Omit = omit,
+        generation_type: Literal["video"] | Omit = omit,
+        keyframes: generation_create_params.Keyframes | Omit = omit,
+        loop: bool | Omit = omit,
+        prompt: str | Omit = omit,
+        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Initiate a new generation with the provided prompt
@@ -164,14 +164,14 @@ class GenerationsResource(SyncAPIResource):
     def list(
         self,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        offset: int | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GenerationListResponse:
         """
         Retrieve a list of generations with optional filtering and sorting
@@ -212,7 +212,7 @@ class GenerationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Remove a specific generation by its ID
@@ -241,16 +241,16 @@ class GenerationsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        callback_url: str | NotGiven = NOT_GIVEN,
-        generation_type: Literal["add_audio"] | NotGiven = NOT_GIVEN,
-        negative_prompt: str | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
+        callback_url: str | Omit = omit,
+        generation_type: Literal["add_audio"] | Omit = omit,
+        negative_prompt: str | Omit = omit,
+        prompt: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Add audio to a generation by its ID
@@ -298,7 +298,7 @@ class GenerationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Retrieve details of a specific generation by its ID
@@ -326,15 +326,15 @@ class GenerationsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        callback_url: str | NotGiven = NOT_GIVEN,
-        generation_type: Literal["upscale_video"] | NotGiven = NOT_GIVEN,
-        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
+        callback_url: str | Omit = omit,
+        generation_type: Literal["upscale_video"] | Omit = omit,
+        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Upscale a generation by its ID
@@ -407,21 +407,21 @@ class AsyncGenerationsResource(AsyncAPIResource):
         self,
         *,
         model: Literal["ray-1-6", "ray-2", "ray-flash-2"],
-        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
-        callback_url: str | NotGiven = NOT_GIVEN,
-        concepts: Iterable[generation_create_params.Concept] | NotGiven = NOT_GIVEN,
-        duration: Union[Literal["5s", "9s"], str] | NotGiven = NOT_GIVEN,
-        generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
-        keyframes: generation_create_params.Keyframes | NotGiven = NOT_GIVEN,
-        loop: bool | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
-        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
+        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | Omit = omit,
+        callback_url: str | Omit = omit,
+        concepts: Iterable[generation_create_params.Concept] | Omit = omit,
+        duration: Union[Literal["5s", "9s"], str] | Omit = omit,
+        generation_type: Literal["video"] | Omit = omit,
+        keyframes: generation_create_params.Keyframes | Omit = omit,
+        loop: bool | Omit = omit,
+        prompt: str | Omit = omit,
+        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Initiate a new generation with the provided prompt
@@ -481,14 +481,14 @@ class AsyncGenerationsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        offset: int | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GenerationListResponse:
         """
         Retrieve a list of generations with optional filtering and sorting
@@ -529,7 +529,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Remove a specific generation by its ID
@@ -558,16 +558,16 @@ class AsyncGenerationsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        callback_url: str | NotGiven = NOT_GIVEN,
-        generation_type: Literal["add_audio"] | NotGiven = NOT_GIVEN,
-        negative_prompt: str | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
+        callback_url: str | Omit = omit,
+        generation_type: Literal["add_audio"] | Omit = omit,
+        negative_prompt: str | Omit = omit,
+        prompt: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Add audio to a generation by its ID
@@ -615,7 +615,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Retrieve details of a specific generation by its ID
@@ -643,15 +643,15 @@ class AsyncGenerationsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        callback_url: str | NotGiven = NOT_GIVEN,
-        generation_type: Literal["upscale_video"] | NotGiven = NOT_GIVEN,
-        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
+        callback_url: str | Omit = omit,
+        generation_type: Literal["upscale_video"] | Omit = omit,
+        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Upscale a generation by its ID

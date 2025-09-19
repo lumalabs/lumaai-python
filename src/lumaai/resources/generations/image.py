@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -48,23 +48,23 @@ class ImageResource(SyncAPIResource):
         self,
         *,
         model: Literal["photon-1", "photon-flash-1"],
-        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
-        callback_url: str | NotGiven = NOT_GIVEN,
-        character_ref: image_create_params.CharacterRef | NotGiven = NOT_GIVEN,
-        format: Literal["jpg", "png"] | NotGiven = NOT_GIVEN,
-        generation_type: Literal["image"] | NotGiven = NOT_GIVEN,
-        image_ref: Iterable[image_create_params.ImageRef] | NotGiven = NOT_GIVEN,
-        modify_image_ref: image_create_params.ModifyImageRef | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
-        style_ref: Iterable[image_create_params.StyleRef] | NotGiven = NOT_GIVEN,
-        sync: bool | NotGiven = NOT_GIVEN,
-        sync_timeout: float | NotGiven = NOT_GIVEN,
+        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | Omit = omit,
+        callback_url: str | Omit = omit,
+        character_ref: image_create_params.CharacterRef | Omit = omit,
+        format: Literal["jpg", "png"] | Omit = omit,
+        generation_type: Literal["image"] | Omit = omit,
+        image_ref: Iterable[image_create_params.ImageRef] | Omit = omit,
+        modify_image_ref: image_create_params.ModifyImageRef | Omit = omit,
+        prompt: str | Omit = omit,
+        style_ref: Iterable[image_create_params.StyleRef] | Omit = omit,
+        sync: bool | Omit = omit,
+        sync_timeout: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Generate an image with the provided prompt
@@ -126,23 +126,23 @@ class ImageResource(SyncAPIResource):
         generation_type: Literal["reframe_image"],
         media: image_reframe_params.Media,
         model: Literal["photon-1", "photon-flash-1"],
-        callback_url: str | NotGiven = NOT_GIVEN,
-        format: Literal["jpg", "png"] | NotGiven = NOT_GIVEN,
-        grid_position_x: int | NotGiven = NOT_GIVEN,
-        grid_position_y: int | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
-        resized_height: int | NotGiven = NOT_GIVEN,
-        resized_width: int | NotGiven = NOT_GIVEN,
-        x_end: int | NotGiven = NOT_GIVEN,
-        x_start: int | NotGiven = NOT_GIVEN,
-        y_end: int | NotGiven = NOT_GIVEN,
-        y_start: int | NotGiven = NOT_GIVEN,
+        callback_url: str | Omit = omit,
+        format: Literal["jpg", "png"] | Omit = omit,
+        grid_position_x: int | Omit = omit,
+        grid_position_y: int | Omit = omit,
+        prompt: str | Omit = omit,
+        resized_height: int | Omit = omit,
+        resized_width: int | Omit = omit,
+        x_end: int | Omit = omit,
+        x_start: int | Omit = omit,
+        y_end: int | Omit = omit,
+        y_start: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Reframe an image by its ID
@@ -239,23 +239,23 @@ class AsyncImageResource(AsyncAPIResource):
         self,
         *,
         model: Literal["photon-1", "photon-flash-1"],
-        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
-        callback_url: str | NotGiven = NOT_GIVEN,
-        character_ref: image_create_params.CharacterRef | NotGiven = NOT_GIVEN,
-        format: Literal["jpg", "png"] | NotGiven = NOT_GIVEN,
-        generation_type: Literal["image"] | NotGiven = NOT_GIVEN,
-        image_ref: Iterable[image_create_params.ImageRef] | NotGiven = NOT_GIVEN,
-        modify_image_ref: image_create_params.ModifyImageRef | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
-        style_ref: Iterable[image_create_params.StyleRef] | NotGiven = NOT_GIVEN,
-        sync: bool | NotGiven = NOT_GIVEN,
-        sync_timeout: float | NotGiven = NOT_GIVEN,
+        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | Omit = omit,
+        callback_url: str | Omit = omit,
+        character_ref: image_create_params.CharacterRef | Omit = omit,
+        format: Literal["jpg", "png"] | Omit = omit,
+        generation_type: Literal["image"] | Omit = omit,
+        image_ref: Iterable[image_create_params.ImageRef] | Omit = omit,
+        modify_image_ref: image_create_params.ModifyImageRef | Omit = omit,
+        prompt: str | Omit = omit,
+        style_ref: Iterable[image_create_params.StyleRef] | Omit = omit,
+        sync: bool | Omit = omit,
+        sync_timeout: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Generate an image with the provided prompt
@@ -317,23 +317,23 @@ class AsyncImageResource(AsyncAPIResource):
         generation_type: Literal["reframe_image"],
         media: image_reframe_params.Media,
         model: Literal["photon-1", "photon-flash-1"],
-        callback_url: str | NotGiven = NOT_GIVEN,
-        format: Literal["jpg", "png"] | NotGiven = NOT_GIVEN,
-        grid_position_x: int | NotGiven = NOT_GIVEN,
-        grid_position_y: int | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
-        resized_height: int | NotGiven = NOT_GIVEN,
-        resized_width: int | NotGiven = NOT_GIVEN,
-        x_end: int | NotGiven = NOT_GIVEN,
-        x_start: int | NotGiven = NOT_GIVEN,
-        y_end: int | NotGiven = NOT_GIVEN,
-        y_start: int | NotGiven = NOT_GIVEN,
+        callback_url: str | Omit = omit,
+        format: Literal["jpg", "png"] | Omit = omit,
+        grid_position_x: int | Omit = omit,
+        grid_position_y: int | Omit = omit,
+        prompt: str | Omit = omit,
+        resized_height: int | Omit = omit,
+        resized_width: int | Omit = omit,
+        x_end: int | Omit = omit,
+        x_start: int | Omit = omit,
+        y_end: int | Omit = omit,
+        y_start: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Reframe an image by its ID
