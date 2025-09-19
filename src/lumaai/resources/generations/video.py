@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -48,21 +48,21 @@ class VideoResource(SyncAPIResource):
         self,
         *,
         model: Literal["ray-1-6", "ray-2", "ray-flash-2"],
-        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
-        callback_url: str | NotGiven = NOT_GIVEN,
-        concepts: Iterable[video_create_params.Concept] | NotGiven = NOT_GIVEN,
-        duration: Union[Literal["5s", "9s"], str] | NotGiven = NOT_GIVEN,
-        generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
-        keyframes: video_create_params.Keyframes | NotGiven = NOT_GIVEN,
-        loop: bool | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
-        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
+        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | Omit = omit,
+        callback_url: str | Omit = omit,
+        concepts: Iterable[video_create_params.Concept] | Omit = omit,
+        duration: Union[Literal["5s", "9s"], str] | Omit = omit,
+        generation_type: Literal["video"] | Omit = omit,
+        keyframes: video_create_params.Keyframes | Omit = omit,
+        loop: bool | Omit = omit,
+        prompt: str | Omit = omit,
+        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Initiate a new generation with the provided prompt
@@ -136,15 +136,15 @@ class VideoResource(SyncAPIResource):
             "reimagine_3",
         ],
         model: Literal["ray-2", "ray-flash-2"],
-        callback_url: str | NotGiven = NOT_GIVEN,
-        first_frame: video_modify_params.FirstFrame | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
+        callback_url: str | Omit = omit,
+        first_frame: video_modify_params.FirstFrame | Omit = omit,
+        prompt: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Modify a video with style transfer and prompt-based editing
@@ -199,23 +199,23 @@ class VideoResource(SyncAPIResource):
         generation_type: Literal["reframe_video"],
         media: video_reframe_params.Media,
         model: Literal["ray-2", "ray-flash-2"],
-        callback_url: str | NotGiven = NOT_GIVEN,
-        first_frame: video_reframe_params.FirstFrame | NotGiven = NOT_GIVEN,
-        grid_position_x: int | NotGiven = NOT_GIVEN,
-        grid_position_y: int | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
-        resized_height: int | NotGiven = NOT_GIVEN,
-        resized_width: int | NotGiven = NOT_GIVEN,
-        x_end: int | NotGiven = NOT_GIVEN,
-        x_start: int | NotGiven = NOT_GIVEN,
-        y_end: int | NotGiven = NOT_GIVEN,
-        y_start: int | NotGiven = NOT_GIVEN,
+        callback_url: str | Omit = omit,
+        first_frame: video_reframe_params.FirstFrame | Omit = omit,
+        grid_position_x: int | Omit = omit,
+        grid_position_y: int | Omit = omit,
+        prompt: str | Omit = omit,
+        resized_height: int | Omit = omit,
+        resized_width: int | Omit = omit,
+        x_end: int | Omit = omit,
+        x_start: int | Omit = omit,
+        y_end: int | Omit = omit,
+        y_start: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Reframe a video by its ID
@@ -312,21 +312,21 @@ class AsyncVideoResource(AsyncAPIResource):
         self,
         *,
         model: Literal["ray-1-6", "ray-2", "ray-flash-2"],
-        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | NotGiven = NOT_GIVEN,
-        callback_url: str | NotGiven = NOT_GIVEN,
-        concepts: Iterable[video_create_params.Concept] | NotGiven = NOT_GIVEN,
-        duration: Union[Literal["5s", "9s"], str] | NotGiven = NOT_GIVEN,
-        generation_type: Literal["video"] | NotGiven = NOT_GIVEN,
-        keyframes: video_create_params.Keyframes | NotGiven = NOT_GIVEN,
-        loop: bool | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
-        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | NotGiven = NOT_GIVEN,
+        aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | Omit = omit,
+        callback_url: str | Omit = omit,
+        concepts: Iterable[video_create_params.Concept] | Omit = omit,
+        duration: Union[Literal["5s", "9s"], str] | Omit = omit,
+        generation_type: Literal["video"] | Omit = omit,
+        keyframes: video_create_params.Keyframes | Omit = omit,
+        loop: bool | Omit = omit,
+        prompt: str | Omit = omit,
+        resolution: Union[Literal["540p", "720p", "1080p", "4k"], str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Initiate a new generation with the provided prompt
@@ -400,15 +400,15 @@ class AsyncVideoResource(AsyncAPIResource):
             "reimagine_3",
         ],
         model: Literal["ray-2", "ray-flash-2"],
-        callback_url: str | NotGiven = NOT_GIVEN,
-        first_frame: video_modify_params.FirstFrame | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
+        callback_url: str | Omit = omit,
+        first_frame: video_modify_params.FirstFrame | Omit = omit,
+        prompt: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Modify a video with style transfer and prompt-based editing
@@ -463,23 +463,23 @@ class AsyncVideoResource(AsyncAPIResource):
         generation_type: Literal["reframe_video"],
         media: video_reframe_params.Media,
         model: Literal["ray-2", "ray-flash-2"],
-        callback_url: str | NotGiven = NOT_GIVEN,
-        first_frame: video_reframe_params.FirstFrame | NotGiven = NOT_GIVEN,
-        grid_position_x: int | NotGiven = NOT_GIVEN,
-        grid_position_y: int | NotGiven = NOT_GIVEN,
-        prompt: str | NotGiven = NOT_GIVEN,
-        resized_height: int | NotGiven = NOT_GIVEN,
-        resized_width: int | NotGiven = NOT_GIVEN,
-        x_end: int | NotGiven = NOT_GIVEN,
-        x_start: int | NotGiven = NOT_GIVEN,
-        y_end: int | NotGiven = NOT_GIVEN,
-        y_start: int | NotGiven = NOT_GIVEN,
+        callback_url: str | Omit = omit,
+        first_frame: video_reframe_params.FirstFrame | Omit = omit,
+        grid_position_x: int | Omit = omit,
+        grid_position_y: int | Omit = omit,
+        prompt: str | Omit = omit,
+        resized_height: int | Omit = omit,
+        resized_width: int | Omit = omit,
+        x_end: int | Omit = omit,
+        x_start: int | Omit = omit,
+        y_end: int | Omit = omit,
+        y_start: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Generation:
         """
         Reframe a video by its ID
