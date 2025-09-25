@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.18.0 (2025-09-20)
+
+Full Changelog: [v1.17.2...v1.18.0](https://github.com/lumalabs/lumaai-python/compare/v1.17.2...v1.18.0)
+
+### Features
+
+* improve future compat with pydantic v3 ([81e50ec](https://github.com/lumalabs/lumaai-python/commit/81e50ec1ccc146880857c0d3ae53db6799152722))
+* **types:** replace List[str] with SequenceNotStr in params ([ef79710](https://github.com/lumalabs/lumaai-python/commit/ef797106cb84a311dea7159dd141836225857595))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([7444c4e](https://github.com/lumalabs/lumaai-python/commit/7444c4e953704dd0d691efbb89bd39cda233270d))
+* **internal:** move mypy configurations to `pyproject.toml` file ([f92365c](https://github.com/lumalabs/lumaai-python/commit/f92365c915f3e720890ba6e4ecdcdc958f458124))
+* **internal:** update pydantic dependency ([58cb6aa](https://github.com/lumalabs/lumaai-python/commit/58cb6aa0a9fb27eed8a667ad7a91dd416ef70ba1))
+* **tests:** simplify `get_platform` test ([8db8236](https://github.com/lumalabs/lumaai-python/commit/8db82362ec34723d1d6a17a29aa02f245e312073))
+* **types:** change optional parameter type from NotGiven to Omit ([e347327](https://github.com/lumalabs/lumaai-python/commit/e347327f9ad5c34ac7bc5cf923c773007ce286ad))
+
 ## 1.17.2 (2025-08-30)
 
 Full Changelog: [v1.17.1...v1.17.2](https://github.com/lumalabs/lumaai-python/compare/v1.17.1...v1.17.2)
