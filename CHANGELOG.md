@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.18.1 (2025-10-18)
+
+Full Changelog: [v1.18.0...v1.18.1](https://github.com/lumalabs/lumaai-python/compare/v1.18.0...v1.18.1)
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([d5510ae](https://github.com/lumalabs/lumaai-python/commit/d5510ae0bee832e619c93db9a4c43ee8fade791c))
+* **internal:** detect missing future annotations with ruff ([b7f9ede](https://github.com/lumalabs/lumaai-python/commit/b7f9ede6d3ad8f6d42b6d726ee4cf7608c9133c5))
+
 ## 1.18.0 (2025-09-20)
 
 Full Changelog: [v1.17.2...v1.18.0](https://github.com/lumalabs/lumaai-python/compare/v1.17.2...v1.18.0)
