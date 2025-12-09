@@ -9,6 +9,8 @@ __all__ = ["GenerationListResponse"]
 
 
 class GenerationListResponse(BaseModel):
+    """The generations response object"""
+
     generations: List[Generation]
     """The generations requested"""
 
