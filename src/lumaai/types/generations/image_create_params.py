@@ -45,6 +45,8 @@ class ImageCreateParams(TypedDict, total=False):
 
 
 class CharacterRefIdentity0(TypedDict, total=False):
+    """The image identity object"""
+
     images: SequenceNotStr[str]
     """The URLs of the image identity"""
 
@@ -55,6 +57,8 @@ class CharacterRef(TypedDict, total=False):
 
 
 class ImageRef(TypedDict, total=False):
+    """The image reference object"""
+
     url: str
     """The URL of the image reference"""
 
@@ -63,6 +67,8 @@ class ImageRef(TypedDict, total=False):
 
 
 class ModifyImageRef(TypedDict, total=False):
+    """The modify image reference object"""
+
     url: str
     """The URL of the image reference"""
 
@@ -71,6 +77,8 @@ class ModifyImageRef(TypedDict, total=False):
 
 
 class StyleRef(TypedDict, total=False):
+    """The image reference object"""
+
     url: str
     """The URL of the image reference"""
 

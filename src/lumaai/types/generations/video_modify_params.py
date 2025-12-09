@@ -46,10 +46,14 @@ class VideoModifyParams(TypedDict, total=False):
 
 
 class Media(TypedDict, total=False):
+    """The image entity object"""
+
     url: Required[str]
     """The URL of the media"""
 
 
 class FirstFrame(TypedDict, total=False):
+    """The image entity object"""
+
     url: Required[str]
     """The URL of the media"""
