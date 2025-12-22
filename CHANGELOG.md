@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.18.2 (2025-12-19)
+
+Full Changelog: [v1.18.1...v1.18.2](https://github.com/lumalabs/lumaai-python/compare/v1.18.1...v1.18.2)
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([bb74e0e](https://github.com/lumalabs/lumaai-python/commit/bb74e0e1e9879226b035d48969e27a26106b9313))
+* compat with Python 3.14 ([6c50b92](https://github.com/lumalabs/lumaai-python/commit/6c50b925da3bf7aa7f4230d6b2eee69fa310761e))
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([195aebe](https://github.com/lumalabs/lumaai-python/commit/195aebe165bc24e0cbb94de7dbb39b61e0635a1e))
+* ensure streams are always closed ([7c0964c](https://github.com/lumalabs/lumaai-python/commit/7c0964cc2a8a08618cc4fa46709e6546b6b50949))
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([407770f](https://github.com/lumalabs/lumaai-python/commit/407770fa3b66a652dfeab7d5737b157735f47c88))
+* use async_to_httpx_files in patch method ([04202cd](https://github.com/lumalabs/lumaai-python/commit/04202cd1984050063dfb04fc3e10e0757a7ad03d))
+
+
+### Chores
+
+* add missing docstrings ([e32f03a](https://github.com/lumalabs/lumaai-python/commit/e32f03ae9302de2b83a1aee55c75c6be8f35da61))
+* add Python 3.14 classifier and testing ([df59a3e](https://github.com/lumalabs/lumaai-python/commit/df59a3eb574cd6d80999eec78336074cfefcbe46))
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([509bb97](https://github.com/lumalabs/lumaai-python/commit/509bb971869279743360f4e4bb6054c68f1d9333))
+* **docs:** use environment variables for authentication in code snippets ([8d332b4](https://github.com/lumalabs/lumaai-python/commit/8d332b468d3b48d32533021de27767064779d445))
+* **internal/tests:** avoid race condition with implicit client cleanup ([0157eb1](https://github.com/lumalabs/lumaai-python/commit/0157eb1653e0ce84760b1dda5a87b83ec8acaf89))
+* **internal:** add `--fix` argument to lint script ([12c0306](https://github.com/lumalabs/lumaai-python/commit/12c03067db5eb94b107078883d3b139c517be036))
+* **internal:** add missing files argument to base client ([91b4b41](https://github.com/lumalabs/lumaai-python/commit/91b4b41773b5811dc60367218e8e14f3c6482c06))
+* **internal:** grammar fix (it's -&gt; its) ([abbf8b2](https://github.com/lumalabs/lumaai-python/commit/abbf8b291a2e3f52eee9caf33f701b8cc9be4f67))
+* **package:** drop Python 3.8 support ([13b55a3](https://github.com/lumalabs/lumaai-python/commit/13b55a332e6b348b4572b60c5efb352005c4ec52))
+* speedup initial import ([b399d2f](https://github.com/lumalabs/lumaai-python/commit/b399d2f694a665aa5c28a1a90e9b44ebceb38e73))
+* update lockfile ([c73c583](https://github.com/lumalabs/lumaai-python/commit/c73c5834c494214a3e02ea4654ec8866a639d19a))
+
 ## 1.18.1 (2025-10-18)
 
 Full Changelog: [v1.18.0...v1.18.1](https://github.com/lumalabs/lumaai-python/compare/v1.18.0...v1.18.1)

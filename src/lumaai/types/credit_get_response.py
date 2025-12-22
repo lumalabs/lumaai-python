@@ -6,5 +6,7 @@ __all__ = ["CreditGetResponse"]
 
 
 class CreditGetResponse(BaseModel):
+    """The credits object"""
+
     credit_balance: float
     """Available credits balance in USD cents"""

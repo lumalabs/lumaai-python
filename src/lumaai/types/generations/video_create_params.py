@@ -54,11 +54,15 @@ class VideoCreateParams(TypedDict, total=False):
 
 
 class Concept(TypedDict, total=False):
+    """The concept object"""
+
     key: Required[str]
     """The key of the concept"""
 
 
 class KeyframesFrame0GenerationReference(TypedDict, total=False):
+    """The generation reference object"""
+
     id: Required[str]
     """The ID of the generation"""
 
@@ -66,6 +70,8 @@ class KeyframesFrame0GenerationReference(TypedDict, total=False):
 
 
 class KeyframesFrame0ImageReference(TypedDict, total=False):
+    """The image object"""
+
     type: Required[Literal["image"]]
 
     url: Required[str]
@@ -76,6 +82,8 @@ KeyframesFrame0: TypeAlias = Union[KeyframesFrame0GenerationReference, Keyframes
 
 
 class KeyframesFrame1GenerationReference(TypedDict, total=False):
+    """The generation reference object"""
+
     id: Required[str]
     """The ID of the generation"""
 
@@ -83,6 +91,8 @@ class KeyframesFrame1GenerationReference(TypedDict, total=False):
 
 
 class KeyframesFrame1ImageReference(TypedDict, total=False):
+    """The image object"""
+
     type: Required[Literal["image"]]
 
     url: Required[str]
@@ -93,6 +103,8 @@ KeyframesFrame1: TypeAlias = Union[KeyframesFrame1GenerationReference, Keyframes
 
 
 class Keyframes(TypedDict, total=False):
+    """The keyframes of the generation"""
+
     frame0: KeyframesFrame0
     """The frame 0 of the generation"""
 

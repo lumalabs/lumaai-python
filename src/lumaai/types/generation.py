@@ -40,6 +40,8 @@ __all__ = [
 
 
 class Assets(BaseModel):
+    """The assets of the generation"""
+
     image: Optional[str] = None
     """The URL of the image"""
 
@@ -51,11 +53,15 @@ class Assets(BaseModel):
 
 
 class RequestGenerationRequestConcept(BaseModel):
+    """The concept object"""
+
     key: str
     """The key of the concept"""
 
 
 class RequestGenerationRequestKeyframesFrame0GenerationReference(BaseModel):
+    """The generation reference object"""
+
     id: str
     """The ID of the generation"""
 
@@ -63,6 +69,8 @@ class RequestGenerationRequestKeyframesFrame0GenerationReference(BaseModel):
 
 
 class RequestGenerationRequestKeyframesFrame0ImageReference(BaseModel):
+    """The image object"""
+
     type: Literal["image"]
 
     url: str
@@ -79,6 +87,8 @@ RequestGenerationRequestKeyframesFrame0: TypeAlias = Annotated[
 
 
 class RequestGenerationRequestKeyframesFrame1GenerationReference(BaseModel):
+    """The generation reference object"""
+
     id: str
     """The ID of the generation"""
 
@@ -86,6 +96,8 @@ class RequestGenerationRequestKeyframesFrame1GenerationReference(BaseModel):
 
 
 class RequestGenerationRequestKeyframesFrame1ImageReference(BaseModel):
+    """The image object"""
+
     type: Literal["image"]
 
     url: str
@@ -102,6 +114,8 @@ RequestGenerationRequestKeyframesFrame1: TypeAlias = Annotated[
 
 
 class RequestGenerationRequestKeyframes(BaseModel):
+    """The keyframes of the generation"""
+
     frame0: Optional[RequestGenerationRequestKeyframesFrame0] = None
     """The frame 0 of the generation"""
 
@@ -110,6 +124,8 @@ class RequestGenerationRequestKeyframes(BaseModel):
 
 
 class RequestGenerationRequest(BaseModel):
+    """The generation request object"""
+
     model: Literal["ray-1-6", "ray-2", "ray-flash-2"]
     """The model used for the generation"""
 
@@ -145,6 +161,8 @@ class RequestGenerationRequest(BaseModel):
 
 
 class RequestImageGenerationRequestCharacterRefIdentity0(BaseModel):
+    """The image identity object"""
+
     images: Optional[List[str]] = None
     """The URLs of the image identity"""
 
@@ -155,6 +173,8 @@ class RequestImageGenerationRequestCharacterRef(BaseModel):
 
 
 class RequestImageGenerationRequestImageRef(BaseModel):
+    """The image reference object"""
+
     url: Optional[str] = None
     """The URL of the image reference"""
 
@@ -163,6 +183,8 @@ class RequestImageGenerationRequestImageRef(BaseModel):
 
 
 class RequestImageGenerationRequestModifyImageRef(BaseModel):
+    """The modify image reference object"""
+
     url: Optional[str] = None
     """The URL of the image reference"""
 
@@ -171,6 +193,8 @@ class RequestImageGenerationRequestModifyImageRef(BaseModel):
 
 
 class RequestImageGenerationRequestStyleRef(BaseModel):
+    """The image reference object"""
+
     url: Optional[str] = None
     """The URL of the image reference"""
 
@@ -179,6 +203,8 @@ class RequestImageGenerationRequestStyleRef(BaseModel):
 
 
 class RequestImageGenerationRequest(BaseModel):
+    """The image generation request object"""
+
     model: Literal["photon-1", "photon-flash-1"]
     """The model used for the generation"""
 
@@ -213,6 +239,8 @@ class RequestImageGenerationRequest(BaseModel):
 
 
 class RequestUpscaleVideoGenerationRequest(BaseModel):
+    """The upscale generation request object"""
+
     callback_url: Optional[str] = None
     """The callback URL for the upscale"""
 
@@ -223,6 +251,8 @@ class RequestUpscaleVideoGenerationRequest(BaseModel):
 
 
 class RequestAudioGenerationRequest(BaseModel):
+    """The audio generation request object"""
+
     callback_url: Optional[str] = None
     """The callback URL for the audio"""
 
@@ -236,11 +266,15 @@ class RequestAudioGenerationRequest(BaseModel):
 
 
 class RequestReframeImageRequestMedia(BaseModel):
+    """The image entity object"""
+
     url: str
     """The URL of the media"""
 
 
 class RequestReframeImageRequest(BaseModel):
+    """The reframe image generation request object"""
+
     aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]
     """The aspect ratio of the generation"""
 
@@ -291,16 +325,22 @@ class RequestReframeImageRequest(BaseModel):
 
 
 class RequestReframeVideoRequestMedia(BaseModel):
+    """The image entity object"""
+
     url: str
     """The URL of the media"""
 
 
 class RequestReframeVideoRequestFirstFrame(BaseModel):
+    """The image entity object"""
+
     url: str
     """The URL of the media"""
 
 
 class RequestReframeVideoRequest(BaseModel):
+    """The reframe video generation request object"""
+
     aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"]
     """The aspect ratio of the generation"""
 
@@ -351,16 +391,22 @@ class RequestReframeVideoRequest(BaseModel):
 
 
 class RequestModifyVideoRequestMedia(BaseModel):
+    """The image entity object"""
+
     url: str
     """The URL of the media"""
 
 
 class RequestModifyVideoRequestFirstFrame(BaseModel):
+    """The image entity object"""
+
     url: str
     """The URL of the media"""
 
 
 class RequestModifyVideoRequest(BaseModel):
+    """The modify video generation request object"""
+
     generation_type: Literal["modify_video"]
 
     media: RequestModifyVideoRequestMedia
@@ -400,6 +446,8 @@ Request: TypeAlias = Union[
 
 
 class Generation(BaseModel):
+    """The generation response object"""
+
     id: Optional[str] = None
     """The ID of the generation"""
 
