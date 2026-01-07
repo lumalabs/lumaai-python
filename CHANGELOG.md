@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.19.0 (2026-01-07)
+
+Full Changelog: [v1.18.2...v1.19.0](https://github.com/lumalabs/lumaai-python/compare/v1.18.2...v1.19.0)
+
+### Features
+
+* **api:** api update ([6360134](https://github.com/lumalabs/lumaai-python/commit/6360134afa6bd6b2255006eada63cec14a31c83f))
+
+
+### Chores
+
+* **internal:** codegen related update ([ddae3b2](https://github.com/lumalabs/lumaai-python/commit/ddae3b2abd9a341c070e9541c9e5e5771f03bbd5))
+
 ## 1.18.2 (2025-12-19)
 
 Full Changelog: [v1.18.1...v1.18.2](https://github.com/lumalabs/lumaai-python/compare/v1.18.1...v1.18.2)
