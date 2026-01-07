@@ -129,7 +129,7 @@ from lumaai import LumaAI
 client = LumaAI()
 
 generation = client.generations.create(
-    model="ray-1-6",
+    model="ray-2",
     keyframes={
         "frame0": {
             "type": "image",

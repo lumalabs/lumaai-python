@@ -47,7 +47,7 @@ class VideoResource(SyncAPIResource):
     def create(
         self,
         *,
-        model: Literal["ray-1-6", "ray-2", "ray-flash-2"],
+        model: Literal["ray-2", "ray-flash-2"],
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | Omit = omit,
         callback_url: str | Omit = omit,
         concepts: Iterable[video_create_params.Concept] | Omit = omit,
@@ -311,7 +311,7 @@ class AsyncVideoResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        model: Literal["ray-1-6", "ray-2", "ray-flash-2"],
+        model: Literal["ray-2", "ray-flash-2"],
         aspect_ratio: Literal["1:1", "16:9", "9:16", "4:3", "3:4", "21:9", "9:21"] | Omit = omit,
         callback_url: str | Omit = omit,
         concepts: Iterable[video_create_params.Concept] | Omit = omit,
