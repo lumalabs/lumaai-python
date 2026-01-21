@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.19.1 (2026-01-21)
+
+Full Changelog: [v1.19.0...v1.19.1](https://github.com/lumalabs/lumaai-python/compare/v1.19.0...v1.19.1)
+
+### Features
+
+* **client:** add support for binary request streaming ([b2af547](https://github.com/lumalabs/lumaai-python/commit/b2af547bc7a7f78046570b7fe44af49afe76ef93))
+
+
+### Chores
+
+* **internal:** update `actions/checkout` version ([04aae72](https://github.com/lumalabs/lumaai-python/commit/04aae7237e2b8289153bcf576ccc0882728efdf8))
+
 ## 1.19.0 (2026-01-07)
 
 Full Changelog: [v1.18.2...v1.19.0](https://github.com/lumalabs/lumaai-python/compare/v1.18.2...v1.19.0)
