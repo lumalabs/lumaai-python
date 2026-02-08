@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.20.0 (2026-01-30)
+
+Full Changelog: [v1.19.1...v1.20.0](https://github.com/lumalabs/lumaai-python/compare/v1.19.1...v1.20.0)
+
+### Features
+
+* **client:** add custom JSON encoder for extended type support ([6d70ff1](https://github.com/lumalabs/lumaai-python/commit/6d70ff1931539ffe3e63becaef004cdbb3697e2a))
+
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([78ec263](https://github.com/lumalabs/lumaai-python/commit/78ec26336fed6122844e563766558124e63c916e))
+
 ## 1.19.1 (2026-01-21)
 
 Full Changelog: [v1.19.0...v1.19.1](https://github.com/lumalabs/lumaai-python/compare/v1.19.0...v1.19.1)
