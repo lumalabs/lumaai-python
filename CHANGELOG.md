@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.20.1 (2026-03-07)
+
+Full Changelog: [v1.20.0...v1.20.1](https://github.com/lumalabs/lumaai-python/compare/v1.20.0...v1.20.1)
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([b795117](https://github.com/lumalabs/lumaai-python/commit/b7951176017ca324d0bd6b21622ff4c79c915354))
+* format all `api.md` files ([c14890e](https://github.com/lumalabs/lumaai-python/commit/c14890edd5237624606ea6a24351175db783b251))
+* **internal:** add request options to SSE classes ([5a468db](https://github.com/lumalabs/lumaai-python/commit/5a468db1fc3aad5c9ec8a421477019c0bde6f17d))
+* **internal:** bump dependencies ([8bad62a](https://github.com/lumalabs/lumaai-python/commit/8bad62a1b1f869c76b035dda27f2a9fefd67d7b9))
+* **internal:** fix lint error on Python 3.14 ([f5b61cd](https://github.com/lumalabs/lumaai-python/commit/f5b61cd7e616d7cde935e5d2e654d1359b46eae8))
+* **internal:** make `test_proxy_environment_variables` more resilient ([7fb93ce](https://github.com/lumalabs/lumaai-python/commit/7fb93cee20173f54edc2cf70740b1535b3823144))
+* **internal:** make `test_proxy_environment_variables` more resilient to env ([7b5389c](https://github.com/lumalabs/lumaai-python/commit/7b5389c44914f9f904a6995e7c33e2c7bffd8ba5))
+* **test:** do not count install time for mock server timeout ([2f70cc8](https://github.com/lumalabs/lumaai-python/commit/2f70cc822b5089b75b2b6eb0a35ddba9dccaa913))
+* update mock server docs ([2d211d3](https://github.com/lumalabs/lumaai-python/commit/2d211d34ec948e0a057f91925ed7e820d8613f47))
+
 ## 1.20.0 (2026-01-30)
 
 Full Changelog: [v1.19.1...v1.20.0](https://github.com/lumalabs/lumaai-python/compare/v1.19.1...v1.20.0)
