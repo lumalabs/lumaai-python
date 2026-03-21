@@ -104,10 +104,10 @@ def path_template(template: str, /, **kwargs: Any) -> str:
         rest, fragment_template = rest.split("#", 1)
     if "?" in rest:
         rest, query_template = rest.split("?", 1)
-    path_template = rest
+    path_template_part = rest
 
     # Interpolate each portion with the appropriate quoting rules.
-    path_result = _interpolate(path_template, kwargs, _quote_path_segment_part)
+    path_result = _interpolate(path_template_part, kwargs, _quote_path_segment_part)
 
     # Reject dot-segments (. and ..) in the final assembled path.  The check
     # runs after interpolation so that adjacent placeholders or a mix of static
