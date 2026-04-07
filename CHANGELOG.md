@@ -1,5 +1,38 @@
 # Changelog
 
+## 1.21.0 (2026-04-01)
+
+Full Changelog: [v1.20.1...v1.21.0](https://github.com/lumalabs/lumaai-python/compare/v1.20.1...v1.21.0)
+
+### Features
+
+* **internal:** implement indices array format for query and form serialization ([bf30550](https://github.com/lumalabs/lumaai-python/commit/bf30550cbd372f68771b990b7102d89b0550958e))
+
+
+### Bug Fixes
+
+* **deps:** bump minimum typing-extensions version ([9a5f3d8](https://github.com/lumalabs/lumaai-python/commit/9a5f3d87b8ba2776f53cb55aa90a6bb6411b2077))
+* **pydantic:** do not pass `by_alias` unless set ([aea1d45](https://github.com/lumalabs/lumaai-python/commit/aea1d457fb4f16dbe13f0a6cf610a61df3b285a2))
+* sanitize endpoint path params ([7e283ad](https://github.com/lumalabs/lumaai-python/commit/7e283ad39cda75baacbf7dfcbdad1de4585379bd))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([e1c08c8](https://github.com/lumalabs/lumaai-python/commit/e1c08c895eef12d58ebc18fa91bd09a1a5fafc28))
+* **internal:** tweak CI branches ([49a2700](https://github.com/lumalabs/lumaai-python/commit/49a2700e789ff83bad62f4ae1579d4d7061a6cd9))
+* **internal:** update gitignore ([f08d2fc](https://github.com/lumalabs/lumaai-python/commit/f08d2fca0ce724d014117f8ce03d4ddc592328d9))
+* **tests:** bump steady to v0.19.4 ([c5e1192](https://github.com/lumalabs/lumaai-python/commit/c5e119202420b199889808f5a9022fa4782715f7))
+* **tests:** bump steady to v0.19.5 ([c41fde7](https://github.com/lumalabs/lumaai-python/commit/c41fde70e6ad9edd7f3545efa43fa78c383c0768))
+* **tests:** bump steady to v0.19.6 ([344bef0](https://github.com/lumalabs/lumaai-python/commit/344bef0aeee0ef869130a4c51b9c4288765e5b41))
+* **tests:** bump steady to v0.19.7 ([3fb0ab0](https://github.com/lumalabs/lumaai-python/commit/3fb0ab0ce19a91fd51049231f48673276657b05c))
+* **tests:** bump steady to v0.20.1 ([f74f104](https://github.com/lumalabs/lumaai-python/commit/f74f10407ab52745a6674eb4c967b91de5fbf12a))
+* **tests:** bump steady to v0.20.2 ([c65c06c](https://github.com/lumalabs/lumaai-python/commit/c65c06c43c3247fea872c39415a279ade3ceae01))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([9e43236](https://github.com/lumalabs/lumaai-python/commit/9e4323605f6442e1c07c20d47d8650e857303949))
+
 ## 1.20.1 (2026-03-07)
 
 Full Changelog: [v1.20.0...v1.20.1](https://github.com/lumalabs/lumaai-python/compare/v1.20.0...v1.20.1)

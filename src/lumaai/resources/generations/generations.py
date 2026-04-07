@@ -30,7 +30,7 @@ from ...types import (
     generation_upscale_params,
 )
 from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from .concepts import (
     ConceptsResource,
     AsyncConceptsResource,
@@ -230,7 +230,7 @@ class GenerationsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/generations/{id}",
+            path_template("/generations/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -273,7 +273,7 @@ class GenerationsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._post(
-            f"/generations/{id}/audio",
+            path_template("/generations/{id}/audio", id=id),
             body=maybe_transform(
                 {
                     "callback_url": callback_url,
@@ -315,7 +315,7 @@ class GenerationsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/generations/{id}",
+            path_template("/generations/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -355,7 +355,7 @@ class GenerationsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._post(
-            f"/generations/{id}/upscale",
+            path_template("/generations/{id}/upscale", id=id),
             body=maybe_transform(
                 {
                     "callback_url": callback_url,
@@ -547,7 +547,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/generations/{id}",
+            path_template("/generations/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -590,7 +590,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._post(
-            f"/generations/{id}/audio",
+            path_template("/generations/{id}/audio", id=id),
             body=await async_maybe_transform(
                 {
                     "callback_url": callback_url,
@@ -632,7 +632,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/generations/{id}",
+            path_template("/generations/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -672,7 +672,7 @@ class AsyncGenerationsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._post(
-            f"/generations/{id}/upscale",
+            path_template("/generations/{id}/upscale", id=id),
             body=await async_maybe_transform(
                 {
                     "callback_url": callback_url,
