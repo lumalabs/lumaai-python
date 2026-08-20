@@ -109,8 +109,10 @@ def _extract_items(
     if is_dict(obj):
         try:
             # Remove the field if there are no more dict keys in the path,
-            # only "<array>" traversal markers or end.
-            if all(p == "<array>" for p in path[index:]):
+            # only "<array>" traversal markers or end. Only pop leftover
+            # "<array>" segments when the value is actually a list.
+            remaining = path[index:]
+            if not remaining or (all(p == "<array>" for p in remaining) and is_list(obj.get(key))):
                 item = obj.pop(key)
             else:
                 item = obj[key]

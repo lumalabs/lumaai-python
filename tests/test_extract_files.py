@@ -41,6 +41,20 @@ def test_top_level_file_array() -> None:
     assert query == {"title": "hello"}
 
 
+def test_array_path_does_not_drop_non_list() -> None:
+    query = {"files": b"single file", "title": "hello"}
+    assert extract_files(query, paths=[["files", "<array>"]]) == []
+    assert query == {"files": b"single file", "title": "hello"}
+
+    nested = {"foo": {"files": b"single file"}, "keep": 1}
+    assert extract_files(nested, paths=[["foo", "files", "<array>"]]) == []
+    assert nested == {"foo": {"files": b"single file"}, "keep": 1}
+
+    query2 = {"files": {"not": "a list"}}
+    assert extract_files(query2, paths=[["files", "<array>"]]) == []
+    assert query2 == {"files": {"not": "a list"}}
+
+
 @pytest.mark.parametrize(
     "query,paths,expected",
     [
