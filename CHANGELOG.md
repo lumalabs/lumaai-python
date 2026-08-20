@@ -1,5 +1,36 @@
 # Changelog
 
+## 1.22.0 (2026-08-20)
+
+Full Changelog: [v1.21.0...v1.22.0](https://github.com/lumalabs/lumaai-python/compare/v1.21.0...v1.22.0)
+
+### Features
+
+* **internal/types:** support eagerly validating pydantic iterators ([04e4187](https://github.com/lumalabs/lumaai-python/commit/04e41872d35ce8c95a1a5f2ca313f9d6e43f4486))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([48c8386](https://github.com/lumalabs/lumaai-python/commit/48c8386f35b2e1281fb4a64dd219f5188adcf573))
+* support setting headers via env ([30a033a](https://github.com/lumalabs/lumaai-python/commit/30a033a956da9dbe522d3550cb634dee52ecc126))
+
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([ab34d42](https://github.com/lumalabs/lumaai-python/commit/ab34d429fa232f0d2c68cf9f2def593273f359da))
+* **client:** preserve hardcoded query params when merging with user params ([987fbc7](https://github.com/lumalabs/lumaai-python/commit/987fbc7ffba76551ab1599def928d9c1097f52f9))
+* ensure file data are only sent as 1 parameter ([a7c0bac](https://github.com/lumalabs/lumaai-python/commit/a7c0bac3f06d2b362199676ea634ee07e4f33f47))
+* use correct field name format for multipart file arrays ([c335429](https://github.com/lumalabs/lumaai-python/commit/c3354299cb69a22ba0fbaea85bd0cb124044ddcb))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([ea9d673](https://github.com/lumalabs/lumaai-python/commit/ea9d673460d6d43f4325bd87ba8c7a209abdc428))
+
+
+### Chores
+
+* **internal:** allow the mock server port to be set with STAINLESS_MOCK_PORT ([23f1a89](https://github.com/lumalabs/lumaai-python/commit/23f1a89bccccb84f438e2b8bf91928f5c1c746b8))
+* **internal:** more robust bootstrap script ([2291709](https://github.com/lumalabs/lumaai-python/commit/22917098ae746aea42d03d4606c3e28bdcab2ec8))
+* **internal:** reformat pyproject.toml ([acc97d1](https://github.com/lumalabs/lumaai-python/commit/acc97d18afe10c6bb6e65c0660ed5a5a5fb8592c))
+* **tests:** bump steady to v0.22.1 ([02f10ea](https://github.com/lumalabs/lumaai-python/commit/02f10eaf1668601f100c394918abe10f2ce4444f))
+
 ## 1.21.0 (2026-04-01)
 
 Full Changelog: [v1.20.1...v1.21.0](https://github.com/lumalabs/lumaai-python/compare/v1.20.1...v1.21.0)
